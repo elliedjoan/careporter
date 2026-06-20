@@ -1,8 +1,11 @@
 node_modules/
 dist/
 *.tsbuildinfo
-vite-dev*.log
+*.log
 vite.config.js
 vite.config.d.ts
 
 .vercel
+.env
+.env.*
+!.env.example
