@@ -10,7 +10,7 @@ export function MessagesPage() {
       <PageHeader
         eyebrow="Communication"
         title="Messages"
-        description="Client, family, package-provider, and CarePorter support conversations attached to bookings and listings."
+        description="Client notes, CarePorter admin updates, care-provider approvals, and finance messages attached to requests and invoices."
       />
 
       <div className="mt-6 grid gap-5 xl:grid-cols-[0.82fr_1.18fr]">
@@ -46,7 +46,7 @@ export function MessagesPage() {
               </button>
               <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-business-line bg-white px-3 text-sm font-bold">
                 <MailCheck className="h-4 w-4" />
-                Mark handled
+                Mark resolved
               </button>
             </div>
           </div>

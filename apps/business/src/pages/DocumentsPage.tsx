@@ -12,9 +12,9 @@ export function DocumentsPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Compliance"
+        eyebrow="Verification"
         title="Documents"
-        description="Credentials, insurance, service-specific certificates, and verification documents that control listing eligibility."
+        description="Upload the documents CarePorter needs to verify your vendor profile and keep your service visible to clients."
         action={
           <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-business-ink px-3.5 text-sm font-bold text-white">
             <FileUp className="h-4 w-4" />
@@ -23,7 +23,7 @@ export function DocumentsPage() {
         }
       />
 
-      <Panel className="mt-6" title="Document register">
+      <Panel className="mt-6" title="Verification documents">
         <div className="divide-y divide-business-line">
           {documents.map((document) => (
             <div key={document.name} className="grid gap-4 px-4 py-4 md:grid-cols-[42px_1fr_160px_150px_auto] md:items-center">

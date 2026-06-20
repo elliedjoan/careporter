@@ -1,11 +1,11 @@
-import { CircleDollarSign, Edit3, Plus, ShieldCheck } from "lucide-react";
-import { Panel, PageHeader, StatusBadge } from "../components/Primitives";
-import { serviceListings } from "../data/businessData";
+import { BadgeCheck, Edit3, MapPin, Plus, ShieldCheck } from "lucide-react";
+import { FieldLabel, Panel, PageHeader, StatusBadge } from "../components/Primitives";
+import { serviceExamples, serviceProfile } from "../data/businessData";
 import { formatCurrency } from "../lib/utils";
 
-function listingTone(status: string) {
-  if (status === "Published") return "green" as const;
-  if (status === "Needs verification") return "amber" as const;
+function exampleTone(status: string) {
+  if (status === "Bookable") return "green" as const;
+  if (status === "Admin review") return "amber" as const;
   return "slate" as const;
 }
 
@@ -13,73 +13,90 @@ export function ServicesPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Marketplace supply"
-        title="Services and listings"
-        description="Manage public service listings, package-funded eligibility, pricing, coverage, and verification gates."
+        eyebrow="What clients see"
+        title="Service profile"
+        description="Manage the public service profile CarePorter clients use when they request your work."
         action={
-          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-business-ink px-3.5 text-sm font-bold text-white">
-            <Plus className="h-4 w-4" />
-            New listing
+          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-business-line bg-white px-3.5 text-sm font-bold">
+            <Edit3 className="h-4 w-4" />
+            Edit profile
           </button>
         }
       />
 
-      <section className="mt-6 grid gap-4 lg:grid-cols-2">
-        {serviceListings.map((listing) => (
-          <article key={listing.id} className="rounded-lg border border-business-line bg-white p-4 shadow-business">
-            <div className="flex items-start justify-between gap-3">
+      <section className="mt-6 grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
+        <Panel>
+          <div className="p-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <h2 className="text-lg font-black text-business-ink">{listing.name}</h2>
-                <p className="mt-1 text-sm font-semibold text-slate-600">{listing.category}</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h2 className="text-2xl font-black text-business-ink">{serviceProfile.name}</h2>
+                  <StatusBadge tone="green">{serviceProfile.status}</StatusBadge>
+                </div>
+                <p className="mt-2 text-sm font-bold text-slate-600">{serviceProfile.category}</p>
               </div>
-              <StatusBadge tone={listingTone(listing.status)}>{listing.status}</StatusBadge>
-            </div>
-
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-lg bg-business-mist p-3">
-                <CircleDollarSign className="h-4 w-4 text-business-sea" />
-                <p className="mt-2 text-sm font-black">{formatCurrency(listing.rate)}/hr</p>
-                <p className="text-xs font-semibold text-slate-500">Base rate</p>
-              </div>
-              <div className="rounded-lg bg-business-mist p-3">
-                <ShieldCheck className="h-4 w-4 text-business-coral" />
-                <p className="mt-2 text-sm font-black">{listing.funding}</p>
-                <p className="text-xs font-semibold text-slate-500">Funding</p>
-              </div>
-              <div className="rounded-lg bg-business-mist p-3">
-                <p className="text-2xl font-black text-business-ink">{listing.utilisation}%</p>
-                <p className="text-xs font-semibold text-slate-500">Utilisation</p>
+              <div className="rounded-lg bg-business-mint p-3 text-right">
+                <p className="text-2xl font-black text-business-ink">{formatCurrency(serviceProfile.rate)}/hr</p>
+                <p className="text-xs font-bold text-business-sea">Displayed base rate</p>
               </div>
             </div>
 
-            <div className="mt-4 grid gap-3 md:grid-cols-[1fr_auto] md:items-end">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-slate-500">Coverage</p>
-                <p className="mt-1 text-sm font-bold text-business-ink">{listing.coverage}</p>
-                <p className="mt-2 text-xs font-semibold text-slate-500">Next open slot: {listing.nextOpenSlot}</p>
+            <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-700">{serviceProfile.description}</p>
+
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <div className="rounded-lg border border-business-line bg-business-mist p-3">
+                <MapPin className="h-4 w-4 text-business-sea" />
+                <FieldLabel label="Coverage" value={serviceProfile.coverage} />
               </div>
-              <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-business-line px-3 text-sm font-bold">
-                <Edit3 className="h-4 w-4" />
-                Edit
-              </button>
+              <div className="rounded-lg border border-business-line bg-business-mist p-3">
+                <BadgeCheck className="h-4 w-4 text-business-coral" />
+                <FieldLabel label="Verification" value={serviceProfile.verification} />
+              </div>
+              <div className="rounded-lg border border-business-line bg-business-mist p-3">
+                <ShieldCheck className="h-4 w-4 text-business-sea" />
+                <FieldLabel label="Next slot" value={serviceProfile.nextOpenSlot} />
+              </div>
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              {listing.requirements.map((requirement) => (
-                <span key={requirement} className="rounded-full bg-business-mint px-2.5 py-1 text-[11px] font-bold text-business-sea">
-                  {requirement}
-                </span>
-              ))}
+            <div className="mt-5">
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-slate-500">Included</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {serviceProfile.included.map((item) => (
+                  <span key={item} className="rounded-full bg-business-mint px-3 py-1.5 text-xs font-bold text-business-sea">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-          </article>
-        ))}
+          </div>
+        </Panel>
+
+        <Panel title="Verification requirements">
+          <div className="grid gap-3 p-4">
+            {serviceProfile.requirements.map((requirement) => (
+              <div key={requirement} className="flex items-center justify-between gap-3 rounded-lg border border-business-line bg-business-mist p-3">
+                <span className="text-sm font-black text-business-ink">{requirement}</span>
+                <StatusBadge tone={requirement === "Public liability insurance" ? "amber" : "green"}>
+                  {requirement === "Public liability insurance" ? "Renew soon" : "Current"}
+                </StatusBadge>
+              </div>
+            ))}
+          </div>
+        </Panel>
       </section>
 
-      <Panel className="mt-5" title="Listing rules">
-        <div className="grid gap-3 p-4 md:grid-cols-3">
-          {["Coverage controls marketplace visibility", "Credentials gate package-funded services", "Availability controls bookable time slots"].map((rule) => (
-            <div key={rule} className="rounded-lg border border-business-line bg-business-mist p-4 text-sm font-bold text-business-ink">
-              {rule}
+      <Panel className="mt-5" title="Bookable options" action={<button className="inline-flex items-center gap-2 text-[13px] font-bold text-business-sea"><Plus className="h-3.5 w-3.5" /> Add option</button>}>
+        <div className="divide-y divide-business-line">
+          {serviceExamples.map((example) => (
+            <div key={example.id} className="grid gap-4 px-4 py-4 md:grid-cols-[1fr_120px_120px_140px_auto] md:items-center">
+              <div>
+                <h3 className="font-black text-business-ink">{example.name}</h3>
+                <p className="mt-1 text-sm font-semibold text-slate-600">{example.availability}</p>
+              </div>
+              <FieldLabel label="Duration" value={example.duration} />
+              <FieldLabel label="Rate" value={`${formatCurrency(example.rate)}/hr`} />
+              <StatusBadge tone={exampleTone(example.status)}>{example.status}</StatusBadge>
+              <button className="min-h-9 rounded-lg border border-business-line bg-white px-3 text-sm font-bold">Edit</button>
             </div>
           ))}
         </div>

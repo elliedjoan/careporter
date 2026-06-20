@@ -3,7 +3,6 @@ import {
   CalendarCheck,
   CalendarDays,
   ChevronDown,
-  ClipboardList,
   FileCheck2,
   Inbox,
   LayoutDashboard,
@@ -19,12 +18,12 @@ import { cx } from "../lib/utils";
 
 const primaryNav = [
   { to: "/", label: "Overview", icon: LayoutDashboard },
-  { to: "/services", label: "Services", icon: Store },
+  { to: "/service-profile", label: "Service profile", icon: Store },
   { to: "/availability", label: "Availability", icon: CalendarDays },
-  { to: "/bookings", label: "Bookings", icon: CalendarCheck, badge: "12" },
-  { to: "/messages", label: "Messages", icon: Inbox, badge: "3" },
+  { to: "/requests", label: "Requests", icon: CalendarCheck, badge: "5" },
+  { to: "/messages", label: "Messages", icon: Inbox, badge: "4" },
   { to: "/documents", label: "Documents", icon: FileCheck2 },
-  { to: "/billing", label: "Billing", icon: Receipt },
+  { to: "/invoices", label: "Invoices", icon: Receipt, badge: "2" },
 ];
 
 const mobileNav = primaryNav.slice(0, 5);
@@ -74,7 +73,7 @@ export function BusinessShell() {
         <div className="mx-3 mt-4 rounded-lg border border-business-line bg-business-mist p-3">
           <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Workspace</p>
           <p className="mt-2 text-sm font-black">{businessProfile.name}</p>
-          <p className="mt-1 text-xs font-semibold text-slate-600">{businessProfile.suburb}</p>
+          <p className="mt-1 text-xs font-semibold text-slate-600">{businessProfile.service} · {businessProfile.suburb}</p>
         </div>
       </aside>
 
@@ -92,7 +91,7 @@ export function BusinessShell() {
               <Search className="h-4 w-4 text-slate-500" />
               <input
                 className="w-full bg-transparent text-sm font-semibold outline-none placeholder:text-slate-500"
-                placeholder="Search bookings, clients, invoices..."
+                placeholder="Search requests, clients, invoices..."
               />
             </label>
             <button
@@ -111,14 +110,14 @@ export function BusinessShell() {
             >
               <Bell className="h-4 w-4" />
               <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-business-coral px-1 text-[10px] font-black text-white">
-                3
+                4
               </span>
             </button>
             <button
               type="button"
               className="hidden min-h-10 items-center gap-2 rounded-lg border border-business-line bg-white px-2 text-sm font-bold text-business-ink sm:flex"
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-business-mint text-xs">AH</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-business-mint text-xs">BC</span>
               {businessProfile.owner}
               <ChevronDown className="h-3.5 w-3.5 text-slate-500" />
             </button>
