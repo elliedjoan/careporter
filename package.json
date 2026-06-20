@@ -9,8 +9,11 @@
   ],
   "scripts": {
     "dev:client": "npm --workspace @careporter/client run dev",
-    "build": "npm run build:client",
+    "dev:business": "npm --workspace @careporter/business run dev",
+    "build": "npm run build:client && npm run build:business",
     "build:client": "npm --workspace @careporter/client run build",
-    "preview:client": "npm --workspace @careporter/client run preview"
+    "build:business": "npm --workspace @careporter/business run build",
+    "preview:client": "npm --workspace @careporter/client run preview",
+    "preview:business": "npm --workspace @careporter/business run preview"
   }
 }
