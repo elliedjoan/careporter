@@ -6,19 +6,22 @@ export default {
     extend: {
       colors: {
         business: {
-          ink: "#151917",
-          graphite: "#2f3835",
-          sea: "#2f6f65",
-          mint: "#dceee8",
-          coral: "#e46f5c",
-          amber: "#d89b35",
-          lavender: "#b7a3cf",
-          mist: "#f6f4ee",
-          line: "#e5ded2",
+          ink: "#17211f",
+          graphite: "#33413c",
+          road: "#111411",
+          sea: "#35665b",
+          mint: "#eef4ef",
+          coral: "#ef7f6d",
+          amber: "#d49a2e",
+          lavender: "#d8aecf",
+          mist: "#f4ecde",
+          line: "#e5d8c7",
+          cream: "#fffaf4",
         },
       },
       boxShadow: {
-        business: "0 14px 34px rgba(34, 43, 39, 0.08)",
+        business: "0 16px 50px rgba(31, 51, 46, 0.10)",
+        lift: "0 22px 70px rgba(31, 51, 46, 0.14)",
       },
       fontFamily: {
         sans: ["Manrope", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],

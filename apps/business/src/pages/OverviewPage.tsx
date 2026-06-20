@@ -75,7 +75,7 @@ export function OverviewPage() {
                 </span>
                 <div className="min-w-0">
                   <h3 className="truncate text-sm font-black">{item.service}</h3>
-                  <p className="mt-0.5 truncate text-xs font-semibold text-slate-600">{item.client} · {item.worker}</p>
+                  <p className="mt-0.5 truncate text-xs font-semibold text-slate-600">{item.client} - {item.worker}</p>
                 </div>
                 <StatusBadge tone={item.status === "Needs confirmation" ? "coral" : item.status === "In progress" ? "sea" : "slate"}>
                   {item.status}
@@ -96,7 +96,7 @@ export function OverviewPage() {
                     <h3 className="font-black">{request.client}</h3>
                     <StatusBadge tone={requestTone(request.status)}>{request.status}</StatusBadge>
                   </div>
-                  <p className="mt-1 text-sm font-semibold text-slate-600">{request.service} · {request.date}, {request.time}</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-600">{request.service} - {request.date}, {request.time}</p>
                   <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">{request.notes}</p>
                 </div>
                 <button className="min-h-9 rounded-lg bg-business-ink px-3 text-sm font-bold text-white">{request.action}</button>

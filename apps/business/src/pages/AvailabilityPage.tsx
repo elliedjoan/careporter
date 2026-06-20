@@ -1,5 +1,5 @@
-import { CalendarClock, Clock, MapPinned } from "lucide-react";
-import { FieldLabel, PageHeader, Panel, StatusBadge } from "../components/Primitives";
+import { CalendarClock, Clock, ExternalLink, MapPinned } from "lucide-react";
+import { FieldLabel, MapPreview, PageHeader, Panel, StatusBadge } from "../components/Primitives";
 import { availabilityRules, serviceProfile } from "../data/businessData";
 
 function availabilityTone(status: string) {
@@ -23,11 +23,11 @@ export function AvailabilityPage() {
         }
       />
 
-      <div className="mt-6 grid gap-5 xl:grid-cols-[1.35fr_0.65fr]">
+      <div className="mt-6 grid gap-5 xl:grid-cols-[1.24fr_0.76fr]">
         <Panel title="Weekly availability">
           <div className="divide-y divide-business-line">
             {availabilityRules.map((rule) => (
-              <div key={rule.day} className="grid gap-3 px-4 py-4 md:grid-cols-[70px_1fr_120px_120px_auto] md:items-center">
+              <div key={rule.day} className="grid gap-3 px-4 py-4 md:grid-cols-[70px_1fr_120px_96px_96px_auto] md:items-center">
                 <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-business-mint text-sm font-black text-business-sea">
                   {rule.day}
                 </span>
@@ -37,6 +37,15 @@ export function AvailabilityPage() {
                 </div>
                 <FieldLabel label="Team" value={`${rule.workers} available`} />
                 <FieldLabel label="Slots" value={`${rule.openSlots}`} />
+                <a
+                  href={rule.googleMapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 text-xs font-black text-business-ink"
+                >
+                  Map
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
                 <StatusBadge tone={availabilityTone(rule.status)}>{rule.status}</StatusBadge>
               </div>
             ))}
@@ -44,6 +53,12 @@ export function AvailabilityPage() {
         </Panel>
 
         <div className="grid gap-5">
+          <MapPreview
+            title="Service area"
+            subtitle="Preview the areas clients can request. Supabase will later power editable service zones and saved map links."
+            googleMapsUrl={serviceProfile.serviceAreaMapUrl}
+          />
+
           <Panel title="Client-facing next slot">
             <div className="p-4">
               <Clock className="h-4 w-4 text-business-sea" />

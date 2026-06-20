@@ -1,4 +1,4 @@
-import { CheckCircle2, MessageSquare, Send, SlidersHorizontal } from "lucide-react";
+import { CheckCircle2, ExternalLink, MessageSquare, Send, SlidersHorizontal } from "lucide-react";
 import { FieldLabel, PageHeader, Panel, StatusBadge } from "../components/Primitives";
 import { serviceRequests } from "../data/businessData";
 
@@ -37,7 +37,7 @@ export function RequestsPage() {
                     <StatusBadge tone={requestTone(request.status)}>{request.status}</StatusBadge>
                   </div>
                   <p className="mt-1 text-sm font-semibold text-slate-600">
-                    {request.service} · requested by {request.requestedBy}
+                    {request.service} - requested by {request.requestedBy}
                   </p>
                   <p className="mt-2 text-sm leading-6 text-slate-700">{request.notes}</p>
                 </div>
@@ -49,10 +49,19 @@ export function RequestsPage() {
                 <button className="min-h-9 rounded-lg bg-business-ink px-3 text-sm font-bold text-white">{request.action}</button>
               </div>
 
-              <div className="mt-4 grid gap-3 rounded-lg border border-business-line bg-business-mist p-3 md:grid-cols-3">
+              <div className="mt-4 grid gap-3 rounded-lg border border-business-line bg-business-mist p-3 md:grid-cols-[1fr_1fr_1fr_auto] md:items-center">
                 <FieldLabel label="Address area" value={request.address} />
                 <FieldLabel label="Approval contact" value={request.approvalEmail} />
                 <FieldLabel label="Finance contact" value={request.financeEmail} />
+                <a
+                  href={request.googleMapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg bg-[#111411] px-3 text-xs font-black text-white"
+                >
+                  Open map
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
               </div>
             </article>
           ))}

@@ -1,5 +1,5 @@
 import { BadgeCheck, Edit3, MapPin, Plus, ShieldCheck } from "lucide-react";
-import { FieldLabel, Panel, PageHeader, StatusBadge } from "../components/Primitives";
+import { FieldLabel, MapPreview, Panel, PageHeader, StatusBadge } from "../components/Primitives";
 import { serviceExamples, serviceProfile } from "../data/businessData";
 import { formatCurrency } from "../lib/utils";
 
@@ -84,6 +84,13 @@ export function ServicesPage() {
           </div>
         </Panel>
       </section>
+
+      <MapPreview
+        className="mt-5"
+        title="Client coverage preview"
+        subtitle="This placeholder will become the editable vendor service area once Supabase stores the coverage zones."
+        googleMapsUrl={serviceProfile.serviceAreaMapUrl}
+      />
 
       <Panel className="mt-5" title="Bookable options" action={<button className="inline-flex items-center gap-2 text-[13px] font-bold text-business-sea"><Plus className="h-3.5 w-3.5" /> Add option</button>}>
         <div className="divide-y divide-business-line">

@@ -57,7 +57,7 @@ export function InvoicesPage() {
                 <FieldLabel label="Invoice" value={invoice.id} />
                 <div>
                   <h2 className="font-black text-business-ink">{invoice.client}</h2>
-                  <p className="mt-1 text-sm font-semibold text-slate-600">{invoice.service} · {invoice.serviceDate}</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-600">{invoice.service} - {invoice.serviceDate}</p>
                 </div>
                 <FieldLabel label="Sent to" value={invoice.sentTo} />
                 <div>

@@ -32,17 +32,17 @@ export function BusinessShell() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-business-mist text-business-ink lg:grid lg:grid-cols-[240px_1fr]">
-      <aside className="hidden border-r border-business-line bg-white lg:block">
-        <div className="flex h-20 items-center border-b border-business-line px-5">
+    <div className="min-h-screen bg-business-mist text-business-ink lg:grid lg:grid-cols-[252px_1fr]">
+      <aside className="hidden border-r border-black/10 bg-[#fbfaf7] lg:block">
+        <div className="flex h-24 items-center border-b border-black/10 px-5">
           <img
             src="/images/careporter-for-business-logo.png"
             alt="CarePorter for Business"
-            className="h-auto w-full max-w-[172px] object-contain"
+            className="h-auto w-full max-w-[178px] object-contain"
           />
         </div>
 
-        <nav className="grid gap-1 px-3 py-4">
+        <nav className="grid gap-1.5 px-3 py-4">
           {primaryNav.map((item) => {
             const Icon = item.icon;
             const isActive = item.to === "/" ? location.pathname === item.to : location.pathname.startsWith(item.to);
@@ -52,8 +52,8 @@ export function BusinessShell() {
                 key={item.to}
                 to={item.to}
                 className={cx(
-                  "flex min-h-10 items-center justify-between rounded-lg px-3 text-sm font-bold transition",
-                  isActive ? "bg-business-mint text-business-ink" : "text-slate-600 hover:bg-business-mist hover:text-business-ink",
+                  "flex min-h-11 items-center justify-between rounded-lg px-3 text-sm font-black transition",
+                  isActive ? "bg-business-lavender text-business-ink" : "text-business-ink/68 hover:bg-white hover:text-business-ink",
                 )}
               >
                 <span className="flex items-center gap-2.5">
@@ -61,7 +61,10 @@ export function BusinessShell() {
                   {item.label}
                 </span>
                 {item.badge && (
-                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1.5 text-[11px] text-business-sea">
+                  <span className={cx(
+                    "flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-black",
+                    isActive ? "bg-white text-business-ink" : "bg-business-mint text-business-sea",
+                  )}>
                     {item.badge}
                   </span>
                 )}
@@ -70,15 +73,30 @@ export function BusinessShell() {
           })}
         </nav>
 
-        <div className="mx-3 mt-4 rounded-lg border border-business-line bg-business-mist p-3">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Workspace</p>
-          <p className="mt-2 text-sm font-black">{businessProfile.name}</p>
-          <p className="mt-1 text-xs font-semibold text-slate-600">{businessProfile.service} · {businessProfile.suburb}</p>
+        <div className="mx-3 mt-4 rounded-lg border border-black/10 bg-white p-3 shadow-business">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-business-ink/48">Workspace</p>
+            <span className="rounded-full bg-business-mint px-2 py-1 text-[10px] font-black text-business-sea">
+              {businessProfile.verificationStatus}
+            </span>
+          </div>
+          <p className="mt-3 text-sm font-black">{businessProfile.name}</p>
+          <p className="mt-1 text-xs font-semibold text-business-ink/62">{businessProfile.service} - {businessProfile.suburb}</p>
+          <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
+            <span className="rounded-lg bg-business-mist p-2">
+              <span className="block font-black">{businessProfile.rating}</span>
+              <span className="text-business-ink/48">rating</span>
+            </span>
+            <span className="rounded-lg bg-business-mist p-2">
+              <span className="block font-black">{businessProfile.responseTime}</span>
+              <span className="text-business-ink/48">reply</span>
+            </span>
+          </div>
         </div>
       </aside>
 
       <div className="min-w-0 pb-24 lg:pb-0">
-        <header className="sticky top-0 z-40 border-b border-business-line bg-white/95 backdrop-blur-xl">
+        <header className="sticky top-0 z-40 border-b border-black/10 bg-business-mist/95 backdrop-blur-xl">
           <div className="flex min-h-16 items-center gap-3 px-4 sm:px-6 lg:px-7">
             <NavLink to="/" className="mr-auto flex items-center lg:hidden">
               <img
@@ -87,7 +105,7 @@ export function BusinessShell() {
                 className="h-auto w-[170px] object-contain"
               />
             </NavLink>
-            <label className="hidden min-h-10 min-w-0 flex-1 max-w-xl items-center gap-2 rounded-lg border border-business-line bg-business-mist px-3 md:flex">
+            <label className="hidden min-h-11 min-w-0 flex-1 max-w-xl items-center gap-2 rounded-lg border border-black/10 bg-white/85 px-3 shadow-sm md:flex">
               <Search className="h-4 w-4 text-slate-500" />
               <input
                 className="w-full bg-transparent text-sm font-semibold outline-none placeholder:text-slate-500"
@@ -98,7 +116,7 @@ export function BusinessShell() {
               type="button"
               title="Create"
               aria-label="Create"
-              className="flex h-10 w-10 items-center justify-center rounded-lg bg-business-ink text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#111411] text-white shadow-[0_12px_28px_rgba(17,20,17,0.16)]"
             >
               <Plus className="h-4 w-4" />
             </button>
@@ -106,7 +124,7 @@ export function BusinessShell() {
               type="button"
               title="Notifications"
               aria-label="Notifications"
-              className="relative flex h-10 w-10 items-center justify-center rounded-lg border border-business-line bg-white text-slate-700"
+              className="relative flex h-11 w-11 items-center justify-center rounded-lg border border-black/10 bg-white text-slate-700 shadow-sm"
             >
               <Bell className="h-4 w-4" />
               <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-business-coral px-1 text-[10px] font-black text-white">
@@ -115,7 +133,7 @@ export function BusinessShell() {
             </button>
             <button
               type="button"
-              className="hidden min-h-10 items-center gap-2 rounded-lg border border-business-line bg-white px-2 text-sm font-bold text-business-ink sm:flex"
+              className="hidden min-h-11 items-center gap-2 rounded-lg border border-black/10 bg-white px-2.5 text-sm font-black text-business-ink shadow-sm sm:flex"
             >
               <span className="flex h-7 w-7 items-center justify-center rounded-md bg-business-mint text-xs">BC</span>
               {businessProfile.owner}
@@ -125,19 +143,19 @@ export function BusinessShell() {
               type="button"
               title="Settings"
               aria-label="Settings"
-              className="hidden h-10 w-10 items-center justify-center rounded-lg border border-business-line bg-white text-slate-700 lg:flex"
+              className="hidden h-11 w-11 items-center justify-center rounded-lg border border-black/10 bg-white text-slate-700 shadow-sm lg:flex"
             >
               <Settings className="h-4 w-4" />
             </button>
           </div>
         </header>
 
-        <main className="mx-auto max-w-[1280px] px-4 py-5 sm:px-6 lg:px-7 lg:py-7">
+        <main className="mx-auto max-w-[1320px] px-4 py-5 sm:px-6 lg:px-7 lg:py-8">
           <Outlet />
         </main>
       </div>
 
-      <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-business-line bg-white px-2 py-2 lg:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-business-mist/95 px-2 py-2 shadow-[0_-16px_36px_rgba(31,51,46,0.08)] backdrop-blur-xl lg:hidden">
         <div className="grid grid-cols-5 gap-1">
           {mobileNav.map((item) => {
             const Icon = item.icon;
@@ -148,8 +166,8 @@ export function BusinessShell() {
                 key={item.to}
                 to={item.to}
                 className={cx(
-                  "flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg text-[11px] font-bold",
-                  isActive ? "bg-business-mint text-business-ink" : "text-slate-500",
+                  "flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg text-[11px] font-black",
+                  isActive ? "bg-business-lavender text-business-ink" : "text-business-ink/58",
                 )}
               >
                 <Icon className="h-4 w-4" />
