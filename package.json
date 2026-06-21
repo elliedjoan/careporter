@@ -10,10 +10,16 @@
   "scripts": {
     "dev:client": "npm --workspace @careporter/client run dev",
     "dev:business": "npm --workspace @careporter/business run dev",
-    "build": "npm run build:client && npm run build:business",
+    "dev:provider": "npm --workspace @careporter/provider run dev",
+    "dev:admin": "npm --workspace @careporter/admin run dev",
+    "build": "npm run build:client && npm run build:business && npm run build:provider && npm run build:admin",
     "build:client": "npm --workspace @careporter/client run build",
     "build:business": "npm --workspace @careporter/business run build",
+    "build:provider": "npm --workspace @careporter/provider run build",
+    "build:admin": "npm --workspace @careporter/admin run build",
     "preview:client": "npm --workspace @careporter/client run preview",
-    "preview:business": "npm --workspace @careporter/business run preview"
+    "preview:business": "npm --workspace @careporter/business run preview",
+    "preview:provider": "npm --workspace @careporter/provider run preview",
+    "preview:admin": "npm --workspace @careporter/admin run preview"
   }
 }

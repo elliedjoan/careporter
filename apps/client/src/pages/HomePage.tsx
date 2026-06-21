@@ -23,7 +23,7 @@ const familyReviews = [
     name: "Leah Martin",
     role: "Family carer, Melbourne",
     quote:
-      "The service notes helped our family stay aligned. We knew what happened after each visit and could plan the next booking with confidence.",
+      "The progress notes helped our family stay aligned. We knew what happened after each visit and could plan the next booking with confidence.",
   },
   {
     name: "Anne Wallace",
@@ -47,7 +47,7 @@ const familyReviews = [
     name: "Helen Morris",
     role: "Client, Newcastle",
     quote:
-      "The language is simple and reassuring. I could understand the difference between self-funded bookings and package approvals without needing help.",
+      "The language is simple and reassuring. I could understand the difference between private pay bookings and provider approvals without needing help.",
   },
   {
     name: "Rachel Nguyen",
@@ -242,12 +242,12 @@ export function HomePage() {
                 body: "View availability upfront and request services that fit your schedule.",
               },
               {
-                title: "Works with self-funded and package-funded care",
+                title: "Works with private pay and provider-managed care",
                 body: "Choose the funding option that suits your circumstances.",
               },
               {
                 title: "Stay informed from booking to completion",
-                body: "Track approvals, appointments, updates, and service notes in one place.",
+                body: "Track approvals, appointments, updates, and progress notes in one place.",
               },
             ].map((item) => (
               <div key={item.title} className="flex min-h-28 items-start gap-3 rounded-lg bg-porter-mist p-4">

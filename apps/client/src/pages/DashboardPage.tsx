@@ -48,7 +48,7 @@ const upcomingServices = [
     serviceName: "Northside Home Care",
     status: "Pending",
     time: "11:00 am",
-    note: "Awaiting package-provider approval",
+    note: "Awaiting provider approval",
   },
 ];
 
@@ -62,10 +62,10 @@ const recentUpdates = [
   },
   {
     sender: "Coast & Garden Support",
-    summary: "Garden tidy-up completed. Photos, notes and follow-up recommendations were added.",
+    summary: "Garden tidy-up completed. Photos, progress note and follow-up recommendations were added.",
     time: "Yesterday",
     image: gardeningImage,
-    action: "Open notes",
+    action: "Open progress note",
   },
   {
     sender: "BrightPath Care",
@@ -105,14 +105,14 @@ const messages = [
   {
     sender: "Northside Home Care",
     type: "Cleaning service",
-    message: "Maggie's regular cleaning service is available next Friday if the package-provider approval is confirmed.",
+    message: "Maggie's regular cleaning service is available next Friday if the provider approval is confirmed.",
     time: "2h ago",
     unread: true,
     image: cleaningImage,
   },
   {
     sender: "BrightPath Care",
-    type: "Package provider",
+    type: "Provider",
     message: "Approval request received for the upcoming transport service. Please confirm the service details.",
     time: "2 days ago",
     unread: true,
@@ -135,9 +135,9 @@ const invoices = [
 ];
 
 const documents = [
-  { title: "Transport service notes", source: "Kindway Transport", updated: "2 days ago", type: "Service notes" },
+  { title: "Transport progress note", source: "Kindway Transport", updated: "2 days ago", type: "Progress note" },
   { title: "Garden tidy-up photos", source: "Coast & Garden Support", updated: "Yesterday", type: "Photos" },
-  { title: "June package-provider approvals", source: "BrightPath Care", updated: "2 days ago", type: "Approval record" },
+  { title: "June provider approvals", source: "BrightPath Care", updated: "2 days ago", type: "Approval record" },
   { title: "Maggie's care preferences", source: "CarePorter", updated: "14 Jun 2026", type: "Profile" },
 ];
 
@@ -192,12 +192,12 @@ export function DashboardPage() {
               <div className="mt-5 grid gap-2.5">
                 <Detail icon={<Calendar className="h-4 w-4" />} label="When" text="Wed, 18 Jun 2026, 9:15-10:00 am" />
                 <Detail icon={<MapPin className="h-4 w-4" />} label="Where" text="123 Main Street, Drummoyne NSW 2047" />
-                <Detail icon={<CreditCard className="h-4 w-4" />} label="Funding" text="Self-funded, estimated $42/hr" />
+                <Detail icon={<CreditCard className="h-4 w-4" />} label="Pathway" text="Pay privately, estimated $42/hr" />
               </div>
 
               <div className="mt-4 rounded-xl border border-black/[0.07] bg-[#faf9f5] p-3">
                 <p className="text-sm leading-6 text-slate-700">
-                  Driver will meet Maggie at the front door. Mobility aid and return trip notes are already attached.
+                  Driver will meet Maggie at the front door. Mobility aid and return trip preferences are already attached.
                 </p>
               </div>
 
@@ -240,7 +240,7 @@ export function DashboardBookingsPage() {
     <DashboardShell>
       <PageHeader
         title="Bookings"
-        description="Track confirmed, scheduled and package-provider funded services in one place."
+        description="Track confirmed, scheduled, private pay, and provider-managed services in one place."
         action={
           <Link
             to="/services"
@@ -267,10 +267,10 @@ export function DashboardBookingsPage() {
           <div className="mt-4 grid gap-2.5">
             <Detail icon={<Calendar className="h-4 w-4" />} label="When" text="Wed, 18 Jun 2026, 9:15-10:00 am" />
             <Detail icon={<MapPin className="h-4 w-4" />} label="Where" text="123 Main Street, Drummoyne NSW" />
-            <Detail icon={<CreditCard className="h-4 w-4" />} label="Funding" text="Self-funded" />
+            <Detail icon={<CreditCard className="h-4 w-4" />} label="Pathway" text="Pay privately" />
           </div>
           <p className="mt-4 rounded-xl border border-black/[0.07] bg-[#faf9f5] p-3 text-sm leading-6 text-slate-700">
-            Maggie's return trip notes are attached. The driver will call Sarah if there is a delay longer than 10 minutes.
+            Maggie's return trip preferences are attached. The driver will call Sarah if there is a delay longer than 10 minutes.
           </p>
           <button className="mt-4 min-h-10 w-full rounded-lg bg-[#111411] text-sm font-semibold text-white">Open booking</button>
         </Card>
@@ -288,7 +288,7 @@ export function DashboardBookingsPage() {
 export function DashboardMessagesPage() {
   return (
     <DashboardShell>
-      <PageHeader title="Messages" description="Service and package-provider updates that need Maggie or Sarah's attention." />
+      <PageHeader title="Messages" description="Vendor and provider updates that need Maggie or Sarah's attention." />
 
       <div className="mt-5 grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
         <Card className="p-3">
@@ -326,7 +326,7 @@ export function DashboardMessagesPage() {
           </div>
           <div className="mt-5 rounded-2xl border border-black/[0.07] bg-[#faf9f5] p-4">
             <p className="text-sm leading-7 text-slate-700">
-              Maggie's regular cleaning service can attend next Friday at 10:00 am if the package-provider approval is confirmed.
+              Maggie's regular cleaning service can attend next Friday at 10:00 am if the provider approval is confirmed.
               Linen refresh and kitchen clean-up are included in the request.
             </p>
           </div>
@@ -347,7 +347,7 @@ export function DashboardApprovalsPage() {
     <DashboardShell>
       <PageHeader
         title="Approvals"
-        description="Package-provider approval requests for services that are not self-funded."
+        description="Provider approval requests for bookings that need care-package confidence before the vendor confirms."
         action={
           <button className="min-h-10 rounded-lg border border-black/[0.1] bg-white px-4 text-sm font-semibold text-[#151917]">
             Approval history
@@ -369,7 +369,7 @@ export function DashboardApprovalsPage() {
                   <StatusPill status={approval.status} />
                 </div>
                 <div className="mt-4 grid gap-2 text-sm md:grid-cols-3">
-                  <FieldLabel label="Package provider" value={approval.packageProvider} />
+                  <FieldLabel label="Provider" value={approval.packageProvider} />
                   <FieldLabel label="Requested" value={approval.requested} />
                   <FieldLabel label="Amount" value={approval.amount} />
                 </div>
@@ -388,7 +388,7 @@ export function DashboardApprovalsPage() {
           <PanelHeading title="Approval context" />
           <div className="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
             <p className="rounded-xl border border-[#efd58d] bg-[#fffaf0] p-3">
-              BrightPath Care manages Maggie's government funded spending package. Self-funded services do not need approval.
+              BrightPath Care manages Maggie's package budget. Private pay services do not need provider approval.
             </p>
             <p className="rounded-xl border border-black/[0.07] bg-[#faf9f5] p-3">
               The transport request has been waiting 2 days. Confirming it keeps the 18 Jun booking on schedule.
@@ -447,7 +447,7 @@ export function DashboardServicesPage() {
         <PanelHeading title="Recommended next steps" action="Browse all" />
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           <Recommendation image={mealsImage} title="Meal preparation" body="Add weekly meal prep when cleaning is confirmed." />
-          <Recommendation image={transportImage} title="Appointment transport" body="Save return-trip notes for repeat bookings." />
+          <Recommendation image={transportImage} title="Appointment transport" body="Save return-trip preferences for repeat bookings." />
           <Recommendation image={gardeningImage} title="Seasonal garden care" body="Schedule safety checks before the next heatwave." />
         </div>
       </Card>
@@ -458,7 +458,7 @@ export function DashboardServicesPage() {
 export function DashboardInvoicesPage() {
   return (
     <DashboardShell>
-      <PageHeader title="Invoices" description="Self-funded payments, package-provider funded invoices and upcoming charges." />
+      <PageHeader title="Invoices" description="Private pay charges, provider-managed invoices and upcoming payment status." />
 
       <div className="mt-5 grid gap-4 xl:grid-cols-[0.8fr_1.2fr]">
         <Card className="p-4 sm:p-5">
@@ -466,7 +466,7 @@ export function DashboardInvoicesPage() {
           <p className="mt-5 text-3xl font-bold tracking-[-0.05em] text-[#111411]">$84.00</p>
           <p className="mt-2 text-sm text-slate-600">Kindway Transport, due after the 18 Jun service.</p>
           <div className="mt-5 grid gap-2.5">
-            <Detail icon={<CreditCard className="h-4 w-4" />} label="Funding" text="Self-funded" />
+            <Detail icon={<CreditCard className="h-4 w-4" />} label="Pathway" text="Pay privately" />
             <Detail icon={<Calendar className="h-4 w-4" />} label="Service" text="Wed, 18 Jun 2026" />
           </div>
           <button className="mt-5 min-h-10 w-full rounded-lg bg-[#111411] text-sm font-semibold text-white">Manage payment</button>
@@ -499,7 +499,7 @@ export function DashboardInvoicesPage() {
 export function DashboardDocumentsPage() {
   return (
     <DashboardShell>
-      <PageHeader title="Documents" description="Service notes, approvals, receipts and care records collected for Maggie." />
+      <PageHeader title="Documents" description="Progress notes, approvals, receipts and care records collected for Maggie." />
 
       <Card className="mt-5 p-4 sm:p-5">
         <PanelHeading title="Recent documents" action="Upload" />
@@ -528,7 +528,7 @@ export function DashboardDocumentsPage() {
 export function DashboardProfilePage() {
   return (
     <DashboardShell>
-      <PageHeader title="Profile" description="Maggie's details, package-provider information and care preferences." />
+      <PageHeader title="Profile" description="Maggie's details, provider information and care preferences." />
 
       <div className="mt-5 grid gap-4 xl:grid-cols-2">
         <ProfilePanel title="Personal information" icon={<UserRound className="h-4 w-4" />}>
@@ -537,7 +537,7 @@ export function DashboardProfilePage() {
           <Field label="Date of birth" value="14 March 1947" />
           <Field label="Suburb" value="New Farm, QLD" />
         </ProfilePanel>
-        <ProfilePanel title="Package provider" icon={<ShieldCheck className="h-4 w-4" />}>
+        <ProfilePanel title="Provider" icon={<ShieldCheck className="h-4 w-4" />}>
           <Field label="Company" value="BrightPath Care Packages" />
           <Field label="Contact" value="Emma Wilson" />
           <Field label="Approval email" value="approvals@brightpath.com.au" />
@@ -557,17 +557,17 @@ export function DashboardSettingsPage() {
         <Card className="p-4 sm:p-5">
           <PanelHeading title="Notifications" />
           <div className="mt-4 grid gap-3">
-            <SettingRow title="Approval alerts" body="Notify Sarah when package-provider approval is needed." checked />
+            <SettingRow title="Approval alerts" body="Notify Sarah when provider approval is needed." checked />
             <SettingRow title="Service reminders" body="Send a reminder the day before each confirmed service." checked />
-            <SettingRow title="New service notes" body="Email a summary when notes are added after a service." checked />
+            <SettingRow title="New progress notes" body="Email a summary when a progress note is added after a service." checked />
           </div>
         </Card>
         <Card className="p-4 sm:p-5">
           <PanelHeading title="Account preferences" />
           <div className="mt-4 grid gap-3">
             <SettingRow title="Family copied on updates" body="Copy Sarah on booking and document updates." checked />
-            <SettingRow title="Show package-provider funded services first" body="Prioritise services that can use Maggie's package." />
-            <SettingRow title="Require confirmation before self-funded bookings" body="Ask before confirming any direct payment service." checked />
+            <SettingRow title="Show provider-managed services first" body="Prioritise services that can use Maggie's package." />
+            <SettingRow title="Require confirmation before private pay bookings" body="Ask before confirming any direct payment service." checked />
           </div>
         </Card>
       </div>

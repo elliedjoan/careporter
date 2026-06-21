@@ -4,7 +4,7 @@ export function ProfilePage() {
   return (
     <div className="mx-auto max-w-5xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
       <h1 className="text-4xl font-black tracking-normal">Profile</h1>
-      <p className="mt-3 text-porter-ink/65">Personal details, emergency contacts, saved package provider details, and communication preferences.</p>
+      <p className="mt-3 text-porter-ink/65">Personal details, emergency contacts, saved provider details, and communication preferences.</p>
 
       <div className="mt-8 grid gap-5">
         <Panel icon={<UserRound />} title="Personal information">
@@ -27,7 +27,7 @@ export function ProfilePage() {
             <Field label="Phone" value="+61 418 555 904" />
           </div>
         </Panel>
-        <Panel icon={<Mail />} title="Saved package provider">
+        <Panel icon={<Mail />} title="Saved provider">
           <div className="grid gap-3 md:grid-cols-2">
             <Field label="Company" value="BrightPath Care Packages" />
             <Field label="Contact" value="Emma Wilson" />
@@ -37,7 +37,7 @@ export function ProfilePage() {
         </Panel>
         <Panel icon={<Bell />} title="Communication preferences">
           <div className="grid gap-3 md:grid-cols-3">
-            {["Email updates", "SMS reminders", "Family copied on notes"].map((item) => (
+            {["Email updates", "SMS reminders", "Family copied on progress notes"].map((item) => (
               <label key={item} className="flex min-h-12 items-center justify-between rounded-lg bg-porter-mist px-4 font-bold">
                 {item}
                 <input type="checkbox" defaultChecked className="h-5 w-5 accent-[#d8aecf]" />
