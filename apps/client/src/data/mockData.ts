@@ -237,7 +237,7 @@ export const bookings = [
     date: "18 Jun 2026",
     time: "9:15 am",
     status: "Confirmed",
-    funding: "Self-Funded",
+    funding: "Pay privately",
   },
   {
     id: "CP-1038",
@@ -246,7 +246,7 @@ export const bookings = [
     date: "21 Jun 2026",
     time: "10:00 am",
     status: "Pending approval",
-    funding: "Package provider funded",
+    funding: "Provider managed",
   },
   {
     id: "CP-1025",
@@ -255,6 +255,6 @@ export const bookings = [
     date: "07 Jun 2026",
     time: "8:30 am",
     status: "Completed",
-    funding: "Package provider funded",
+    funding: "Provider managed",
   },
 ];
