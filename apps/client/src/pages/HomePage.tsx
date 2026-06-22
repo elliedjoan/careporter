@@ -102,14 +102,15 @@ export function HomePage() {
         </div>
         <div className="relative mx-auto grid min-h-[680px] max-w-7xl items-center px-4 py-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
           <div className="max-w-2xl">
-            <span className="inline-flex rounded-full border border-black/[0.1] bg-white/90 px-4 py-2 text-sm font-medium text-porter-ink/78 shadow-sm">
-              Book verified support
+            <span className="inline-flex rounded-full bg-[#d8aecf] px-4 py-2 text-sm font-black text-porter-ink/78 shadow-sm">
+              Verified care and support services
             </span>
-            <h1 className="mt-6 max-w-xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
-              Book trusted support at home.
+            <h1 className="mt-6 max-w-xl text-5xl font-black leading-[1.02] tracking-normal sm:text-6xl lg:text-7xl">
+              Finding trusted support is now simple.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-porter-ink/78">
-              Choose the service, pick a vendor, and track the request from one calm place.
+            <p className="mt-6 max-w-2xl rounded-lg bg-white/90 px-4 py-3 text-lg leading-8 text-porter-ink/78 shadow-sm backdrop-blur-md">
+              Search trusted Australian home-care and aged-care services, compare verified services, and book with
+              confidence.
             </p>
             <div className="glass mt-8 max-w-2xl rounded-lg border border-white/70 p-3 shadow-soft">
               <div className="grid gap-3 md:grid-cols-[1fr_auto]">
@@ -122,24 +123,24 @@ export function HomePage() {
                 </label>
                 <Link
                   to="/services"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-[#111411] px-6 font-medium text-white"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#111411] px-6 font-black text-white"
                 >
-                  Book now <ChevronRight className="h-5 w-5" />
+                  Browse services <ChevronRight className="h-5 w-5" />
                 </Link>
               </div>
             </div>
-            <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm font-medium text-porter-ink/78 sm:grid-cols-3">
-              <span className="flex min-h-11 items-center gap-2 rounded-full border border-black/[0.08] bg-white/90 px-3 shadow-sm backdrop-blur-md">
+            <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm font-black text-porter-ink/78 sm:grid-cols-3">
+              <span className="flex min-h-11 items-center gap-2 rounded-lg bg-white/90 px-3 shadow-sm backdrop-blur-md">
                 <ShieldCheck className="h-4 w-4 shrink-0 text-[#7a3f8f]" />
                 Verified
               </span>
-              <span className="flex min-h-11 items-center gap-2 rounded-full border border-black/[0.08] bg-white/90 px-3 shadow-sm backdrop-blur-md">
+              <span className="flex min-h-11 items-center gap-2 rounded-lg bg-white/90 px-3 shadow-sm backdrop-blur-md">
                 <CalendarDays className="h-4 w-4 shrink-0 text-[#7a3f8f]" />
                 Easy booking
               </span>
-              <span className="flex min-h-11 items-center gap-2 rounded-full border border-black/[0.08] bg-white/90 px-3 shadow-sm backdrop-blur-md">
+              <span className="flex min-h-11 items-center gap-2 rounded-lg bg-white/90 px-3 shadow-sm backdrop-blur-md">
                 <MailCheck className="h-4 w-4 shrink-0 text-[#7a3f8f]" />
-                Live status
+                Approval links
               </span>
             </div>
           </div>
@@ -170,8 +171,8 @@ export function HomePage() {
               </p>
               <div className="mt-8 grid gap-3">
                 {["Select a service", "Choose a date and time", "Self-fund or request package approval"].map((item, index) => (
-                  <div key={item} className="flex items-center gap-3 rounded-lg border border-black/[0.08] bg-white p-4 font-medium">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#111411] text-white">{index + 1}</span>
+                  <div key={item} className="flex items-center gap-3 rounded-lg bg-porter-mist p-4 font-bold">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#d8aecf] text-[#111411]">{index + 1}</span>
                     {item}
                   </div>
                 ))}
@@ -184,7 +185,7 @@ export function HomePage() {
                   aria-label="Previous featured service"
                   title="Previous featured service"
                   onClick={() => scrollFeaturedServices("left")}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-black/8 bg-white text-porter-ink shadow-sm transition hover:bg-porter-mist"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-black/8 bg-white text-porter-ink shadow-sm transition hover:bg-porter-mist"
                 >
                   <ChevronLeft className="h-5 w-5" />
                 </button>
@@ -193,7 +194,7 @@ export function HomePage() {
                   aria-label="Next featured service"
                   title="Next featured service"
                   onClick={() => scrollFeaturedServices("right")}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-black/8 bg-white text-porter-ink shadow-sm transition hover:bg-porter-mist"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-black/8 bg-white text-porter-ink shadow-sm transition hover:bg-porter-mist"
                 >
                   <ChevronRight className="h-5 w-5" />
                 </button>
@@ -277,7 +278,7 @@ export function HomePage() {
               aria-label="Previous review"
               title="Previous review"
               onClick={() => changeReview("previous")}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-[#111411] shadow-sm transition hover:bg-[#fbfaf7]"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-black/10 bg-white text-[#111411] shadow-sm transition hover:bg-[#d8aecf]"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -289,7 +290,7 @@ export function HomePage() {
                   className={[
                     "rounded-lg border border-black/10 p-5 text-center shadow-sm transition",
                     review.offset === 0
-                      ? "min-h-[18rem] bg-white md:scale-105 md:p-7"
+                      ? "min-h-[18rem] bg-[#d8aecf] md:scale-105 md:p-7"
                       : "hidden min-h-[14rem] bg-white md:block",
                   ].join(" ")}
                 >
@@ -318,7 +319,7 @@ export function HomePage() {
               aria-label="Next review"
               title="Next review"
               onClick={() => changeReview("next")}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-[#111411] shadow-sm transition hover:bg-[#fbfaf7]"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-black/10 bg-white text-[#111411] shadow-sm transition hover:bg-[#d8aecf]"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -333,7 +334,7 @@ export function HomePage() {
                 onClick={() => setActiveReviewIndex(index)}
                 className={[
                   "h-2.5 rounded-full transition",
-                  index === activeReviewIndex ? "w-8 bg-[#111411]" : "w-2.5 bg-slate-300",
+                  index === activeReviewIndex ? "w-8 bg-[#111411]" : "w-2.5 bg-[#d8aecf]",
                 ].join(" ")}
               />
             ))}
@@ -343,7 +344,7 @@ export function HomePage() {
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-[60rem] gap-3 lg:grid-cols-2">
-          <article className="flex min-h-[18.75rem] flex-col rounded-lg border border-black/10 bg-white p-4 shadow-sm md:p-6">
+          <article className="flex min-h-[18.75rem] flex-col rounded-lg border border-black/10 bg-[#f4ecde] p-4 shadow-sm md:p-6">
             <div className="flex min-h-24 items-center justify-center rounded-lg bg-white px-4 py-5">
               <img
                 src="/images/careporter-for-business-logo.png"
@@ -361,14 +362,14 @@ export function HomePage() {
               </p>
               <Link
                 to="/business"
-                className="mt-5 inline-flex min-h-9 w-fit items-center justify-center rounded-full bg-[#111411] px-4 text-sm font-medium text-white"
+                className="mt-5 inline-flex min-h-9 w-fit items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-black text-white"
               >
                 Learn more
               </Link>
             </div>
           </article>
 
-          <article className="flex min-h-[18.75rem] flex-col rounded-lg border border-black/10 bg-white p-4 shadow-sm md:p-6">
+          <article className="flex min-h-[18.75rem] flex-col rounded-lg border border-black/10 bg-[#d8aecf] p-4 shadow-sm md:p-6">
             <div className="flex min-h-24 items-center justify-center rounded-lg bg-white px-4 py-5">
               <img
                 src="/images/careporter-for-providers-logo.png"
@@ -385,7 +386,7 @@ export function HomePage() {
               </p>
               <Link
                 to="/providers"
-                className="mt-5 inline-flex min-h-9 w-fit items-center justify-center rounded-full bg-[#111411] px-4 text-sm font-medium text-white"
+                className="mt-5 inline-flex min-h-9 w-fit items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-black text-white"
               >
                 Learn more
               </Link>
