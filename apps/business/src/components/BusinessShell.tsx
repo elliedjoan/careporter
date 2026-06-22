@@ -32,7 +32,7 @@ export function BusinessShell() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-business-mist text-business-ink lg:grid lg:grid-cols-[252px_1fr]">
+    <div className="min-h-screen bg-[#f7f5ef] text-business-ink lg:grid lg:grid-cols-[252px_1fr]">
       <aside className="hidden border-r border-black/10 bg-[#fbfaf7] lg:block">
         <div className="flex h-24 items-center border-b border-black/10 px-5">
           <img
@@ -52,8 +52,10 @@ export function BusinessShell() {
                 key={item.to}
                 to={item.to}
                 className={cx(
-                  "flex min-h-11 items-center justify-between rounded-lg px-3 text-sm font-black transition",
-                  isActive ? "bg-business-lavender text-business-ink" : "text-business-ink/68 hover:bg-white hover:text-business-ink",
+                  "flex min-h-11 items-center justify-between rounded-full border px-3 text-sm font-medium transition",
+                  isActive
+                    ? "border-black/[0.08] bg-white text-business-ink shadow-[0_10px_26px_rgba(15,23,42,0.05)]"
+                    : "border-transparent text-business-ink/68 hover:bg-white/72 hover:text-business-ink",
                 )}
               >
                 <span className="flex items-center gap-2.5">
@@ -63,7 +65,7 @@ export function BusinessShell() {
                 {item.badge && (
                   <span className={cx(
                     "flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-black",
-                    isActive ? "bg-white text-business-ink" : "bg-business-mint text-business-sea",
+                    isActive ? "bg-[#111411] text-white" : "bg-white text-business-sea",
                   )}>
                     {item.badge}
                   </span>
@@ -76,18 +78,18 @@ export function BusinessShell() {
         <div className="mx-3 mt-4 rounded-lg border border-black/10 bg-white p-3 shadow-business">
           <div className="flex items-center justify-between gap-3">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-business-ink/48">Workspace</p>
-            <span className="rounded-full bg-business-mint px-2 py-1 text-[10px] font-black text-business-sea">
+            <span className="rounded-full border border-black/[0.1] bg-white px-2 py-1 text-[10px] font-semibold text-business-sea">
               {businessProfile.verificationStatus}
             </span>
           </div>
           <p className="mt-3 text-sm font-black">{businessProfile.name}</p>
           <p className="mt-1 text-xs font-semibold text-business-ink/62">{businessProfile.service} - {businessProfile.suburb}</p>
           <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
-            <span className="rounded-lg bg-business-mist p-2">
+            <span className="rounded-lg border border-black/[0.06] bg-white p-2">
               <span className="block font-black">{businessProfile.rating}</span>
               <span className="text-business-ink/48">rating</span>
             </span>
-            <span className="rounded-lg bg-business-mist p-2">
+            <span className="rounded-lg border border-black/[0.06] bg-white p-2">
               <span className="block font-black">{businessProfile.responseTime}</span>
               <span className="text-business-ink/48">reply</span>
             </span>
@@ -96,7 +98,7 @@ export function BusinessShell() {
       </aside>
 
       <div className="min-w-0 pb-24 lg:pb-0">
-        <header className="sticky top-0 z-40 border-b border-black/10 bg-business-mist/95 backdrop-blur-xl">
+        <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f7f5ef]/95 backdrop-blur-xl">
           <div className="flex min-h-16 items-center gap-3 px-4 sm:px-6 lg:px-7">
             <NavLink to="/" className="mr-auto flex items-center lg:hidden">
               <img
@@ -116,7 +118,7 @@ export function BusinessShell() {
               type="button"
               title="Create"
               aria-label="Create"
-              className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#111411] text-white shadow-[0_12px_28px_rgba(17,20,17,0.16)]"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#111411] text-white shadow-[0_12px_28px_rgba(17,20,17,0.14)]"
             >
               <Plus className="h-4 w-4" />
             </button>
@@ -124,18 +126,18 @@ export function BusinessShell() {
               type="button"
               title="Notifications"
               aria-label="Notifications"
-              className="relative flex h-11 w-11 items-center justify-center rounded-lg border border-black/10 bg-white text-slate-700 shadow-sm"
+              className="relative flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-slate-700 shadow-sm"
             >
               <Bell className="h-4 w-4" />
-              <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-business-coral px-1 text-[10px] font-black text-white">
+              <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#111411] px-1 text-[10px] font-semibold text-white">
                 4
               </span>
             </button>
             <button
               type="button"
-              className="hidden min-h-11 items-center gap-2 rounded-lg border border-black/10 bg-white px-2.5 text-sm font-black text-business-ink shadow-sm sm:flex"
+              className="hidden min-h-11 items-center gap-2 rounded-full border border-black/10 bg-white px-2.5 text-sm font-medium text-business-ink shadow-sm sm:flex"
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-business-mint text-xs">BC</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#111411] text-xs text-white">BC</span>
               {businessProfile.owner}
               <ChevronDown className="h-3.5 w-3.5 text-slate-500" />
             </button>
@@ -143,7 +145,7 @@ export function BusinessShell() {
               type="button"
               title="Settings"
               aria-label="Settings"
-              className="hidden h-11 w-11 items-center justify-center rounded-lg border border-black/10 bg-white text-slate-700 shadow-sm lg:flex"
+              className="hidden h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-slate-700 shadow-sm lg:flex"
             >
               <Settings className="h-4 w-4" />
             </button>
@@ -155,7 +157,7 @@ export function BusinessShell() {
         </main>
       </div>
 
-      <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-business-mist/95 px-2 py-2 shadow-[0_-16px_36px_rgba(31,51,46,0.08)] backdrop-blur-xl lg:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-[#f7f5ef]/95 px-2 py-2 shadow-[0_-16px_36px_rgba(31,51,46,0.08)] backdrop-blur-xl lg:hidden">
         <div className="grid grid-cols-5 gap-1">
           {mobileNav.map((item) => {
             const Icon = item.icon;
@@ -166,8 +168,8 @@ export function BusinessShell() {
                 key={item.to}
                 to={item.to}
                 className={cx(
-                  "flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg text-[11px] font-black",
-                  isActive ? "bg-business-lavender text-business-ink" : "text-business-ink/58",
+                  "flex min-h-14 flex-col items-center justify-center gap-1 rounded-full text-[11px] font-medium",
+                  isActive ? "bg-[#111411] text-white" : "text-business-ink/58",
                 )}
               >
                 <Icon className="h-4 w-4" />

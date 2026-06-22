@@ -16,7 +16,7 @@ export function AvailabilityPage() {
         title="Availability"
         description="Control when clients can request your service and which travel areas are available on each day."
         action={
-          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-business-ink px-3.5 text-sm font-bold text-white">
+          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-business-ink px-3.5 text-sm font-medium text-white">
             <CalendarClock className="h-4 w-4" />
             Add availability
           </button>
@@ -28,7 +28,7 @@ export function AvailabilityPage() {
           <div className="divide-y divide-business-line">
             {availabilityRules.map((rule) => (
               <div key={rule.day} className="grid gap-3 px-4 py-4 md:grid-cols-[70px_1fr_120px_96px_96px_auto] md:items-center">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-business-mint text-sm font-black text-business-sea">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.08] bg-white text-sm font-semibold text-business-sea">
                   {rule.day}
                 </span>
                 <div>
@@ -41,7 +41,7 @@ export function AvailabilityPage() {
                   href={rule.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 text-xs font-black text-business-ink"
+                  className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 text-xs font-medium text-business-ink"
                 >
                   Map
                   <ExternalLink className="h-3.5 w-3.5" />
@@ -72,7 +72,7 @@ export function AvailabilityPage() {
           <Panel title="Travel notes">
             <div className="space-y-3 p-4 text-sm font-bold">
               {["Avoid long cross-city jobs after 2 pm", "Green-waste removal available Monday to Thursday", "Friday is reserved for shorter local jobs"].map((note) => (
-                <div key={note} className="flex gap-3 rounded-lg bg-business-mist p-3">
+                <div key={note} className="flex gap-3 rounded-lg border border-black/[0.08] bg-white p-3">
                   <MapPinned className="mt-0.5 h-4 w-4 shrink-0 text-business-coral" />
                   <span>{note}</span>
                 </div>

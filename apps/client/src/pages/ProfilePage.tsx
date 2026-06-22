@@ -3,7 +3,7 @@ import { Bell, HeartPulse, Mail, Phone, UserRound } from "lucide-react";
 export function ProfilePage() {
   return (
     <div className="mx-auto max-w-5xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-black tracking-normal">Profile</h1>
+      <h1 className="text-4xl font-semibold tracking-[-0.055em]">Profile</h1>
       <p className="mt-3 text-porter-ink/65">Personal details, emergency contacts, saved provider details, and communication preferences.</p>
 
       <div className="mt-8 grid gap-5">
@@ -38,9 +38,9 @@ export function ProfilePage() {
         <Panel icon={<Bell />} title="Communication preferences">
           <div className="grid gap-3 md:grid-cols-3">
             {["Email updates", "SMS reminders", "Family copied on progress notes"].map((item) => (
-              <label key={item} className="flex min-h-12 items-center justify-between rounded-lg bg-porter-mist px-4 font-bold">
+              <label key={item} className="flex min-h-12 items-center justify-between rounded-lg border border-black/[0.08] bg-white px-4 font-medium">
                 {item}
-                <input type="checkbox" defaultChecked className="h-5 w-5 accent-[#d8aecf]" />
+                <input type="checkbox" defaultChecked className="h-5 w-5 accent-[#111411]" />
               </label>
             ))}
           </div>
@@ -52,10 +52,10 @@ export function ProfilePage() {
 
 function Panel({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-lg bg-white p-5 shadow-sm">
+    <section className="rounded-lg border border-black/[0.08] bg-white p-5 shadow-sm">
       <div className="mb-5 flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#d8aecf] text-[#111411]">{icon}</span>
-        <h2 className="text-xl font-black">{title}</h2>
+        <span className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.08] bg-white text-[#111411]">{icon}</span>
+        <h2 className="text-xl font-semibold tracking-[-0.03em]">{title}</h2>
       </div>
       {children}
     </section>
@@ -64,9 +64,9 @@ function Panel({ icon, title, children }: { icon: React.ReactNode; title: string
 
 function Field({ label, value }: { label: string; value: string }) {
   return (
-    <label className="grid gap-2 text-sm font-bold text-porter-ink/58">
+    <label className="grid gap-2 text-sm font-medium text-porter-ink/58">
       {label}
-      <input className="min-h-12 rounded-lg border border-black/8 bg-white px-3 font-semibold text-porter-ink outline-none focus:border-[#d8aecf]" defaultValue={value} />
+      <input className="min-h-12 rounded-lg border border-black/[0.08] bg-white px-3 font-medium text-porter-ink outline-none focus:border-[#111411]" defaultValue={value} />
     </label>
   );
 }

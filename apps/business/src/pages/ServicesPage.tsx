@@ -17,7 +17,7 @@ export function ServicesPage() {
         title="Service profile"
         description="Manage the public service profile CarePorter clients use when they request your work."
         action={
-          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-business-line bg-white px-3.5 text-sm font-bold">
+          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white px-3.5 text-sm font-medium">
             <Edit3 className="h-4 w-4" />
             Edit profile
           </button>
@@ -35,7 +35,7 @@ export function ServicesPage() {
                 </div>
                 <p className="mt-2 text-sm font-bold text-slate-600">{serviceProfile.category}</p>
               </div>
-              <div className="rounded-lg bg-business-mint p-3 text-right">
+              <div className="rounded-lg border border-black/[0.08] bg-white p-3 text-right">
                 <p className="text-2xl font-black text-business-ink">{formatCurrency(serviceProfile.rate)}/hr</p>
                 <p className="text-xs font-bold text-business-sea">Displayed base rate</p>
               </div>
@@ -44,15 +44,15 @@ export function ServicesPage() {
             <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-700">{serviceProfile.description}</p>
 
             <div className="mt-5 grid gap-3 md:grid-cols-3">
-              <div className="rounded-lg border border-business-line bg-business-mist p-3">
+              <div className="rounded-lg border border-business-line bg-white p-3">
                 <MapPin className="h-4 w-4 text-business-sea" />
                 <FieldLabel label="Coverage" value={serviceProfile.coverage} />
               </div>
-              <div className="rounded-lg border border-business-line bg-business-mist p-3">
+              <div className="rounded-lg border border-business-line bg-white p-3">
                 <BadgeCheck className="h-4 w-4 text-business-coral" />
                 <FieldLabel label="Verification" value={serviceProfile.verification} />
               </div>
-              <div className="rounded-lg border border-business-line bg-business-mist p-3">
+              <div className="rounded-lg border border-business-line bg-white p-3">
                 <ShieldCheck className="h-4 w-4 text-business-sea" />
                 <FieldLabel label="Next slot" value={serviceProfile.nextOpenSlot} />
               </div>
@@ -74,7 +74,7 @@ export function ServicesPage() {
         <Panel title="Verification requirements">
           <div className="grid gap-3 p-4">
             {serviceProfile.requirements.map((requirement) => (
-              <div key={requirement} className="flex items-center justify-between gap-3 rounded-lg border border-business-line bg-business-mist p-3">
+              <div key={requirement} className="flex items-center justify-between gap-3 rounded-lg border border-business-line bg-white p-3">
                 <span className="text-sm font-black text-business-ink">{requirement}</span>
                 <StatusBadge tone={requirement === "Public liability insurance" ? "amber" : "green"}>
                   {requirement === "Public liability insurance" ? "Renew soon" : "Current"}
@@ -103,7 +103,7 @@ export function ServicesPage() {
               <FieldLabel label="Duration" value={example.duration} />
               <FieldLabel label="Rate" value={`${formatCurrency(example.rate)}/hr`} />
               <StatusBadge tone={exampleTone(example.status)}>{example.status}</StatusBadge>
-              <button className="min-h-9 rounded-lg border border-business-line bg-white px-3 text-sm font-bold">Edit</button>
+              <button className="min-h-9 rounded-full border border-black/[0.12] bg-white px-3 text-sm font-medium">Edit</button>
             </div>
           ))}
         </div>

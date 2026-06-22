@@ -41,7 +41,7 @@ export const bookingPathways: Array<{
     id: "self_managed_package",
     label: "Self-managed package",
     shortLabel: "Self-managed",
-    description: "You book directly and keep package records, progress notes, and invoices together.",
+    description: "You book directly and keep package records and service updates together.",
     requiresProviderApproval: false,
   },
   {
@@ -101,7 +101,7 @@ export const launchMetrics = {
   client: [
     { label: "Upcoming services", value: "4", detail: "1 awaiting provider approval" },
     { label: "Progress notes", value: "7", detail: "Added this month" },
-    { label: "Private pay spend", value: "$216", detail: "June services" },
+    { label: "Booked this month", value: "3", detail: "Across trusted services" },
   ],
   provider: [
     { label: "Approvals waiting", value: "12", detail: "4 due today" },

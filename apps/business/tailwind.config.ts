@@ -24,7 +24,7 @@ export default {
         lift: "0 22px 70px rgba(31, 51, 46, 0.14)",
       },
       fontFamily: {
-        sans: ["Manrope", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Geist", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
     },
   },

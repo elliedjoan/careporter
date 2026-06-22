@@ -18,7 +18,7 @@ export function RequestsPage() {
         title="Requests"
         description="Review client service requests, confirm the visit, reply to notes, and mark completed services so invoices are generated."
         action={
-          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-business-line bg-white px-3.5 text-sm font-bold">
+          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white px-3.5 text-sm font-medium">
             <SlidersHorizontal className="h-4 w-4" />
             Filter
           </button>
@@ -46,10 +46,10 @@ export function RequestsPage() {
                   <FieldLabel label="Invoice recipient" value={request.careProvider} />
                   <p className="mt-1 text-xs font-semibold text-slate-500">{request.financeEmail}</p>
                 </div>
-                <button className="min-h-9 rounded-lg bg-business-ink px-3 text-sm font-bold text-white">{request.action}</button>
+                <button className="min-h-9 rounded-full bg-business-ink px-3 text-sm font-medium text-white">{request.action}</button>
               </div>
 
-              <div className="mt-4 grid gap-3 rounded-lg border border-business-line bg-business-mist p-3 md:grid-cols-[1fr_1fr_1fr_auto] md:items-center">
+              <div className="mt-4 grid gap-3 rounded-lg border border-business-line bg-white p-3 md:grid-cols-[1fr_1fr_1fr_auto] md:items-center">
                 <FieldLabel label="Address area" value={request.address} />
                 <FieldLabel label="Approval contact" value={request.approvalEmail} />
                 <FieldLabel label="Finance contact" value={request.financeEmail} />
@@ -57,7 +57,7 @@ export function RequestsPage() {
                   href={request.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg bg-[#111411] px-3 text-xs font-black text-white"
+                  className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full bg-[#111411] px-3 text-xs font-medium text-white"
                 >
                   Open map
                   <ExternalLink className="h-3.5 w-3.5" />

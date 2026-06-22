@@ -36,19 +36,19 @@ export function ServiceDetailPage() {
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
             <div>
-              <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-[#d8aecf] text-[#111411]">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-black/[0.08] bg-white text-[#111411]">
                 <Icon className="h-7 w-7" />
               </div>
-              <h1 className="mt-6 text-4xl font-black tracking-normal md:text-5xl">{service.name} services</h1>
+              <h1 className="mt-6 text-4xl font-semibold tracking-[-0.055em] md:text-5xl">{service.name} services</h1>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-porter-ink/70">{service.description}</p>
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-lg bg-porter-mist p-5">
-                  <p className="text-sm font-bold text-porter-ink/55">Typical price</p>
-                  <p className="mt-2 text-2xl font-black">From {formatCurrency(service.priceFrom)}/hr</p>
+                <div className="rounded-lg border border-black/[0.08] bg-white p-5">
+                  <p className="text-sm font-medium text-porter-ink/55">Typical price</p>
+                  <p className="mt-2 text-2xl font-semibold tracking-[-0.04em]">From {formatCurrency(service.priceFrom)}/hr</p>
                 </div>
-                <div className="rounded-lg bg-porter-mist p-5">
-                  <p className="text-sm font-bold text-porter-ink/55">Session length</p>
-                  <p className="mt-2 flex items-center gap-2 text-2xl font-black"><Clock className="h-5 w-5" /> {service.duration}</p>
+                <div className="rounded-lg border border-black/[0.08] bg-white p-5">
+                  <p className="text-sm font-medium text-porter-ink/55">Session length</p>
+                  <p className="mt-2 flex items-center gap-2 text-2xl font-semibold tracking-[-0.04em]"><Clock className="h-5 w-5" /> {service.duration}</p>
                 </div>
               </div>
             </div>
@@ -58,13 +58,13 @@ export function ServiceDetailPage() {
                 style={{ backgroundImage: `url(${service.image})`, backgroundPosition: service.imagePosition }}
               />
               <div className="p-4 md:p-5">
-              <div className="flex items-center gap-2 text-sm font-black text-[#7a3f8f]">
+              <div className="flex items-center gap-2 text-sm font-medium text-[#111411]">
                 <SlidersHorizontal className="h-4 w-4" />
                 Find the right service
               </div>
               <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_220px]">
-                <label className="flex min-h-12 items-center gap-3 rounded-lg bg-white px-4">
-                  <Search className="h-5 w-5 text-[#7a3f8f]" />
+                <label className="flex min-h-12 items-center gap-3 rounded-full bg-white px-4">
+                  <Search className="h-5 w-5 text-[#111411]" />
                   <input
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
@@ -72,8 +72,8 @@ export function ServiceDetailPage() {
                     placeholder="Search service name, suburb, or specialty"
                   />
                 </label>
-                <label className="flex min-h-12 items-center gap-3 rounded-lg bg-white px-4">
-                  <MapPin className="h-5 w-5 text-[#7a3f8f]" />
+                <label className="flex min-h-12 items-center gap-3 rounded-full bg-white px-4">
+                  <MapPin className="h-5 w-5 text-[#111411]" />
                   <select
                     value={location}
                     onChange={(event) => setLocation(event.target.value)}
@@ -86,7 +86,7 @@ export function ServiceDetailPage() {
                   </select>
                 </label>
               </div>
-              <p className="mt-4 text-sm font-bold text-porter-ink/62">
+              <p className="mt-4 text-sm font-medium text-porter-ink/62">
                 Showing {filteredServices.length} of {matches.length} available services
               </p>
               </div>
@@ -97,10 +97,10 @@ export function ServiceDetailPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
           <div>
-            <h2 className="text-3xl font-black">Available {service.name.toLowerCase()} services</h2>
+            <h2 className="text-3xl font-semibold tracking-[-0.04em]">Available {service.name.toLowerCase()} services</h2>
             <p className="mt-2 text-porter-ink/65">Choose a service, then select a date, time, and funding option.</p>
           </div>
-          <Link to="/services" className="font-black text-[#7a3f8f]">Browse all categories</Link>
+          <Link to="/services" className="font-medium text-[#111411]">Browse all categories</Link>
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {filteredServices.map((provider) => (
@@ -114,8 +114,8 @@ export function ServiceDetailPage() {
           ))}
         </div>
         {filteredServices.length === 0 && (
-          <div className="mt-6 rounded-lg border border-dashed border-[#d8aecf] bg-white p-8 text-center">
-            <h3 className="text-xl font-black">No services match those filters</h3>
+          <div className="mt-6 rounded-lg border border-dashed border-black/[0.16] bg-white p-8 text-center">
+            <h3 className="text-xl font-semibold">No services match those filters</h3>
             <p className="mt-2 text-porter-ink/65">Try another suburb or search term.</p>
           </div>
         )}

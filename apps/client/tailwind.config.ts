@@ -19,7 +19,7 @@ export default {
         soft: "0 16px 50px rgba(31, 51, 46, 0.12)",
       },
       fontFamily: {
-        sans: ["Manrope", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Geist", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
     },
   },

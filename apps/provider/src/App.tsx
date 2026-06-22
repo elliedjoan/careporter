@@ -240,7 +240,7 @@ function ApprovalRow({ approval }: { approval: (typeof providerApprovalQueue)[nu
 
 function FeatureLock({ title, body }: { title: string; body: string }) {
   return (
-    <div className="rounded-xl border border-[#ead8ec] bg-[#fbf7fb] p-3">
+    <div className="rounded-lg border border-black/[0.08] bg-white p-3">
       <div className="flex items-start gap-3">
         <Sparkles className="mt-0.5 h-4 w-4 text-[#7a3f8f]" />
         <div>

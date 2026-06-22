@@ -1,7 +1,5 @@
 import {
-  ArrowRight,
   Calendar,
-  Clock3,
   CreditCard,
   Download,
   FileText,
@@ -145,91 +143,122 @@ export function DashboardPage() {
   return (
     <DashboardShell>
       <PageHeader
-        title="Good morning, Maggie"
-        description="You have 1 approval waiting, 1 confirmed service this week, and 2 service updates since your last visit."
+        title="Hi Maggie"
+        description="Book support, then track what is happening now. The rest stays out of the way."
+        action={
+          <Link
+            to="/services"
+            className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#111411] px-4 text-sm font-medium text-white"
+          >
+            Book a service
+          </Link>
+        }
       />
 
-      <section className="mt-5 rounded-xl border border-[#e8c466] bg-[#fffaf0] px-4 py-3 shadow-[0_10px_30px_rgba(120,79,16,0.06)]">
-        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <div className="flex gap-3">
-            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#eccf86] bg-white text-[#b76b08]">
-              <Clock3 className="h-4 w-4" />
-            </span>
+      <div className="mt-6 grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
+        <Card className="overflow-hidden shadow-none">
+          <div className="grid gap-5 p-4 sm:p-5 lg:grid-cols-[1fr_240px] lg:items-center">
             <div>
-              <h2 className="text-sm font-semibold text-[#151917]">1 approval awaiting confirmation</h2>
-              <p className="mt-1 text-[13px] leading-5 text-slate-700">
-                Transport service requested by BrightPath Care, 2 days ago. Maggie's June plan is otherwise on track.
-              </p>
-            </div>
-          </div>
-          <Link
-            to="/dashboard/approvals"
-            className="inline-flex min-h-9 shrink-0 items-center justify-center gap-2 rounded-lg border border-black/[0.08] bg-white px-3.5 text-[13px] font-semibold text-[#151917] shadow-[0_8px_20px_rgba(15,23,42,0.05)]"
-          >
-            View approval <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
-        </div>
-      </section>
-
-      <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1.6fr)_minmax(310px,0.85fr)]">
-        <Card className="p-4 shadow-[0_18px_44px_rgba(15,23,42,0.06)] sm:p-5">
-          <div className="flex items-start justify-between gap-4">
-            <h2 className="text-xl font-bold tracking-[-0.03em] text-[#111411]">Your next service</h2>
-            <StatusPill status="Confirmed" />
-          </div>
-
-          <div className="mt-4 grid gap-5 md:grid-cols-[260px_1fr]">
-            <img src={transportImage} alt="" className="h-56 w-full rounded-xl object-cover md:h-full" />
-            <div className="flex min-w-0 flex-col">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <h3 className="text-2xl font-bold tracking-[-0.04em] text-[#111411]">Transport</h3>
-                  <p className="mt-1 text-sm text-slate-600">Kindway Transport</p>
-                </div>
-                <p className="rounded-full bg-[#f3f0ea] px-3 py-1 text-xs font-semibold text-slate-700">Booking CP-1042</p>
-              </div>
-
-              <div className="mt-5 grid gap-2.5">
-                <Detail icon={<Calendar className="h-4 w-4" />} label="When" text="Wed, 18 Jun 2026, 9:15-10:00 am" />
-                <Detail icon={<MapPin className="h-4 w-4" />} label="Where" text="123 Main Street, Drummoyne NSW 2047" />
-                <Detail icon={<CreditCard className="h-4 w-4" />} label="Pathway" text="Pay privately, estimated $42/hr" />
-              </div>
-
-              <div className="mt-4 rounded-xl border border-black/[0.07] bg-[#faf9f5] p-3">
-                <p className="text-sm leading-6 text-slate-700">
-                  Driver will meet Maggie at the front door. Mobility aid and return trip preferences are already attached.
-                </p>
-              </div>
-
-              <div className="mt-5 grid gap-2.5 sm:grid-cols-[1fr_142px]">
-                <Link
-                  to="/dashboard/bookings/CP-1042"
-                  className="flex min-h-11 items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-semibold text-white"
-                >
-                  View booking details
-                </Link>
-                <button className="min-h-11 rounded-lg border border-black/[0.1] bg-white px-4 text-sm font-semibold text-[#151917]">
-                  Reschedule
-                </button>
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Book</p>
+              <h2 className="mt-2 max-w-xl text-[2rem] font-semibold leading-[1] tracking-[-0.055em] text-[#111411] sm:text-[2.65rem]">
+                What support do you need today?
+              </h2>
+              <Link
+                to="/services"
+                className="mt-5 flex min-h-14 items-center justify-between rounded-full border border-black/[0.1] bg-white px-4 text-left text-sm font-medium text-slate-500 shadow-[0_14px_34px_rgba(15,23,42,0.05)]"
+              >
+                <span className="flex items-center gap-3">
+                  <Search className="h-4 w-4 text-[#111411]" />
+                  Cleaning, transport, gardening...
+                </span>
+                <span className="rounded-full bg-[#111411] px-3 py-1.5 text-xs text-white">Search</span>
+              </Link>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {[
+                  { label: "Cleaning", to: "/services/cleaning" },
+                  { label: "Transport", to: "/services/transport" },
+                  { label: "Gardening", to: "/services/gardening" },
+                  { label: "Meals", to: "/services/meals" },
+                ].map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    className="rounded-full border border-black/[0.1] bg-white px-3 py-1.5 text-xs font-medium text-[#151917] transition hover:border-black/20"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
             </div>
+            <img src={cleaningImage} alt="" className="h-48 w-full rounded-lg object-cover lg:h-56" />
           </div>
         </Card>
 
-        <Card className="p-4 sm:p-5">
-          <PanelHeading title="Today's focus" />
-          <div className="mt-4 grid gap-2.5">
-            <FocusRow tone="amber" title="Approval waiting" body="Transport service with BrightPath Care" count="1" />
-            <FocusRow tone="violet" title="Service update" body="Northside Home Care left a message" count="1" />
-            <FocusRow tone="neutral" title="All set after this" body="No other actions are needed today" />
+        <Card className="p-4 shadow-none sm:p-5">
+          <div className="flex items-start justify-between gap-4">
+            <PanelHeading title="Current booking" />
+            <StatusPill status="Confirmed" />
+          </div>
+          <div className="mt-4 overflow-hidden rounded-lg">
+            <img src={transportImage} alt="" className="h-40 w-full object-cover" />
+          </div>
+          <div className="mt-4">
+            <h2 className="text-xl font-semibold tracking-[-0.04em] text-[#111411]">Transport with Kindway</h2>
+            <p className="mt-1 text-sm text-slate-600">Wed, 18 Jun at 9:15 am</p>
+          </div>
+          <div className="mt-5 grid gap-3">
+            {[
+              { label: "Requested", active: true },
+              { label: "Confirmed", active: true },
+              { label: "Next up", active: false },
+            ].map((step) => (
+              <div key={step.label} className="grid grid-cols-[18px_1fr] items-center gap-3">
+                <span className={["h-2.5 w-2.5 rounded-full", step.active ? "bg-[#111411]" : "bg-slate-300"].join(" ")} />
+                <span className={["text-sm font-medium", step.active ? "text-[#111411]" : "text-slate-500"].join(" ")}>
+                  {step.label}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 grid gap-2 sm:grid-cols-2">
+            <Link
+              to="/dashboard/bookings/CP-1042"
+              className="flex min-h-10 items-center justify-center rounded-full bg-[#111411] px-4 text-sm font-medium text-white"
+            >
+              Track booking
+            </Link>
+            <Link
+              to="/dashboard/messages"
+              className="flex min-h-10 items-center justify-center rounded-full border border-black/[0.1] bg-white px-4 text-sm font-medium text-[#151917]"
+            >
+              Message
+            </Link>
           </div>
         </Card>
       </div>
 
-      <div className="mt-4 grid gap-4 xl:grid-cols-[0.92fr_1fr_1fr]">
-        <UpcomingServicesCard />
-        <RecentUpdatesCard />
-        <YourServicesCard />
+      <div className="mt-4 grid gap-4 md:grid-cols-3">
+        <SimpleCard
+          title="Needs action"
+          body="BrightPath still needs to approve your home cleaning request."
+          action="Review"
+          to="/dashboard/approvals"
+          tone="amber"
+        />
+        <SimpleCard
+          title="Latest update"
+          body="Coast & Garden added a progress note after the garden tidy-up."
+          action="Open"
+          to="/dashboard/messages"
+          tone="sea"
+        />
+        <SimpleCard
+          title="Book again"
+          body="Northside Home Care is saved for repeat cleaning visits."
+          action="Book"
+          to="/services/cleaning"
+          tone="slate"
+        />
       </div>
     </DashboardShell>
   );
@@ -244,7 +273,7 @@ export function DashboardBookingsPage() {
         action={
           <Link
             to="/services"
-            className="inline-flex min-h-10 items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-semibold text-white"
+            className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#111411] px-4 text-sm font-medium text-white"
           >
             Book a service
           </Link>
@@ -263,16 +292,16 @@ export function DashboardBookingsPage() {
 
         <Card className="p-4 sm:p-5">
           <PanelHeading title="Booking CP-1042" />
-          <img src={transportImage} alt="" className="mt-4 h-44 w-full rounded-xl object-cover" />
+          <img src={transportImage} alt="" className="mt-4 h-44 w-full rounded-lg object-cover" />
           <div className="mt-4 grid gap-2.5">
             <Detail icon={<Calendar className="h-4 w-4" />} label="When" text="Wed, 18 Jun 2026, 9:15-10:00 am" />
             <Detail icon={<MapPin className="h-4 w-4" />} label="Where" text="123 Main Street, Drummoyne NSW" />
             <Detail icon={<CreditCard className="h-4 w-4" />} label="Pathway" text="Pay privately" />
           </div>
-          <p className="mt-4 rounded-xl border border-black/[0.07] bg-[#faf9f5] p-3 text-sm leading-6 text-slate-700">
+          <p className="mt-4 rounded-lg border border-black/[0.07] bg-[#fbfaf7] p-3 text-sm leading-6 text-slate-700">
             Maggie's return trip preferences are attached. The driver will call Sarah if there is a delay longer than 10 minutes.
           </p>
-          <button className="mt-4 min-h-10 w-full rounded-lg bg-[#111411] text-sm font-semibold text-white">Open booking</button>
+          <button className="mt-4 min-h-10 w-full rounded-full bg-[#111411] text-sm font-medium text-white">Open booking</button>
         </Card>
       </div>
 
@@ -297,8 +326,8 @@ export function DashboardMessagesPage() {
               <button
                 key={`${message.sender}-${message.time}`}
                 className={[
-                  "grid grid-cols-[42px_1fr_auto] gap-3 rounded-xl border p-3 text-left transition",
-                  message.unread ? "border-[#ead8ec] bg-[#fbf7fb]" : "border-transparent hover:bg-[#faf9f5]",
+                  "grid grid-cols-[42px_1fr_auto] gap-3 rounded-lg border p-3 text-left transition",
+                  message.unread ? "border-black/[0.12] bg-white shadow-[0_10px_26px_rgba(15,23,42,0.04)]" : "border-transparent hover:bg-[#fbfaf7]",
                 ].join(" ")}
               >
                 <Avatar image={message.image} fallback={message.sender.slice(0, 2)} />
@@ -324,15 +353,15 @@ export function DashboardMessagesPage() {
             </div>
             <StatusPill status="Unread" />
           </div>
-          <div className="mt-5 rounded-2xl border border-black/[0.07] bg-[#faf9f5] p-4">
+          <div className="mt-5 rounded-lg border border-black/[0.07] bg-[#fbfaf7] p-4">
             <p className="text-sm leading-7 text-slate-700">
               Maggie's regular cleaning service can attend next Friday at 10:00 am if the provider approval is confirmed.
               Linen refresh and kitchen clean-up are included in the request.
             </p>
           </div>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            <button className="min-h-10 rounded-lg bg-[#111411] text-sm font-semibold text-white">Reply</button>
-            <button className="min-h-10 rounded-lg border border-black/[0.1] bg-white text-sm font-semibold text-[#151917]">
+            <button className="min-h-10 rounded-full bg-[#111411] text-sm font-medium text-white">Reply</button>
+            <button className="min-h-10 rounded-full border border-black/[0.1] bg-white text-sm font-medium text-[#151917]">
               Mark as handled
             </button>
           </div>
@@ -349,7 +378,7 @@ export function DashboardApprovalsPage() {
         title="Approvals"
         description="Provider approval requests for bookings that need care-package confidence before the vendor confirms."
         action={
-          <button className="min-h-10 rounded-lg border border-black/[0.1] bg-white px-4 text-sm font-semibold text-[#151917]">
+          <button className="min-h-10 rounded-full border border-black/[0.1] bg-white px-4 text-sm font-medium text-[#151917]">
             Approval history
           </button>
         }
@@ -360,7 +389,7 @@ export function DashboardApprovalsPage() {
           <PanelHeading title="Awaiting confirmation" />
           <div className="mt-4 grid gap-3">
             {approvals.map((approval) => (
-              <div key={approval.title} className="rounded-xl border border-black/[0.08] bg-white p-4">
+              <div key={approval.title} className="rounded-lg border border-black/[0.08] bg-white p-4">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="font-semibold tracking-[-0.02em] text-[#111411]">{approval.title}</h3>
@@ -374,8 +403,8 @@ export function DashboardApprovalsPage() {
                   <FieldLabel label="Amount" value={approval.amount} />
                 </div>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                  <button className="min-h-10 rounded-lg bg-[#111411] px-4 text-sm font-semibold text-white">View approval</button>
-                  <button className="min-h-10 rounded-lg border border-black/[0.1] bg-white px-4 text-sm font-semibold text-[#151917]">
+                  <button className="min-h-10 rounded-full bg-[#111411] px-4 text-sm font-medium text-white">View approval</button>
+                  <button className="min-h-10 rounded-full border border-black/[0.1] bg-white px-4 text-sm font-medium text-[#151917]">
                     Ask a question
                   </button>
                 </div>
@@ -387,10 +416,10 @@ export function DashboardApprovalsPage() {
         <Card className="p-4 sm:p-5">
           <PanelHeading title="Approval context" />
           <div className="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
-            <p className="rounded-xl border border-[#efd58d] bg-[#fffaf0] p-3">
+            <p className="rounded-lg border border-black/[0.08] bg-white p-3">
               BrightPath Care manages Maggie's package budget. Private pay services do not need provider approval.
             </p>
-            <p className="rounded-xl border border-black/[0.07] bg-[#faf9f5] p-3">
+            <p className="rounded-lg border border-black/[0.07] bg-[#fbfaf7] p-3">
               The transport request has been waiting 2 days. Confirming it keeps the 18 Jun booking on schedule.
             </p>
           </div>
@@ -409,7 +438,7 @@ export function DashboardServicesPage() {
         action={
           <Link
             to="/services"
-            className="inline-flex min-h-10 items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-semibold text-white"
+            className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#111411] px-4 text-sm font-medium text-white"
           >
             Browse services
           </Link>
@@ -435,7 +464,7 @@ export function DashboardServicesPage() {
                 <FieldLabel label="Next service" value={item.next} />
                 <FieldLabel label="Last service" value={item.last} />
               </div>
-              <button className="mt-4 min-h-10 w-full rounded-lg border border-black/[0.1] bg-white text-sm font-semibold text-[#151917]">
+                <button className="mt-4 min-h-10 w-full rounded-full border border-black/[0.1] bg-white text-sm font-medium text-[#151917]">
                 Message service
               </button>
             </div>
@@ -469,7 +498,7 @@ export function DashboardInvoicesPage() {
             <Detail icon={<CreditCard className="h-4 w-4" />} label="Pathway" text="Pay privately" />
             <Detail icon={<Calendar className="h-4 w-4" />} label="Service" text="Wed, 18 Jun 2026" />
           </div>
-          <button className="mt-5 min-h-10 w-full rounded-lg bg-[#111411] text-sm font-semibold text-white">Manage payment</button>
+          <button className="mt-5 min-h-10 w-full rounded-full bg-[#111411] text-sm font-medium text-white">Manage payment</button>
         </Card>
 
         <Card className="p-4 sm:p-5">
@@ -505,7 +534,7 @@ export function DashboardDocumentsPage() {
         <PanelHeading title="Recent documents" action="Upload" />
         <div className="mt-4 grid gap-3">
           {documents.map((document) => (
-            <div key={document.title} className="grid gap-3 rounded-xl border border-black/[0.08] p-3 md:grid-cols-[42px_1fr_160px_auto] md:items-center">
+            <div key={document.title} className="grid gap-3 rounded-lg border border-black/[0.08] p-3 md:grid-cols-[42px_1fr_160px_auto] md:items-center">
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#f3f0ea] text-slate-700">
                 <FileText className="h-4 w-4" />
               </span>
@@ -514,7 +543,7 @@ export function DashboardDocumentsPage() {
                 <p className="mt-0.5 text-[13px] text-slate-600">{document.source}</p>
               </div>
               <FieldLabel label={document.type} value={document.updated} />
-              <button className="min-h-9 rounded-lg border border-black/[0.1] bg-white px-3 text-sm font-semibold text-[#151917]">
+              <button className="min-h-9 rounded-full border border-black/[0.1] bg-white px-3 text-sm font-medium text-[#151917]">
                 Open
               </button>
             </div>
@@ -623,7 +652,7 @@ function UpcomingServicesCard() {
       </div>
       <Link
         to="/dashboard/bookings"
-        className="mt-5 flex min-h-10 w-full items-center justify-center rounded-lg border border-black/[0.1] bg-white text-sm font-semibold text-[#151917]"
+        className="mt-5 flex min-h-10 w-full items-center justify-center rounded-full border border-black/[0.1] bg-white text-sm font-medium text-[#151917]"
       >
         View all bookings
       </Link>
@@ -671,7 +700,7 @@ function YourServicesCard() {
               </p>
               <p className="mt-0.5 text-xs text-slate-500">Last service: {service.last}</p>
             </div>
-            <button className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-black/[0.1] bg-white text-slate-700">
+            <button className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/[0.1] bg-white text-slate-700">
               <MessageCircle className="h-4 w-4" />
             </button>
           </div>
@@ -679,7 +708,7 @@ function YourServicesCard() {
       </div>
       <Link
         to="/services"
-        className="mt-5 flex min-h-10 w-full items-center justify-center gap-2 rounded-lg border border-black/[0.1] bg-white text-sm font-semibold text-[#151917]"
+        className="mt-5 flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-black/[0.1] bg-white text-sm font-medium text-[#151917]"
       >
         <Search className="h-4 w-4" />
         Browse services
@@ -701,7 +730,7 @@ function BookingRow({ item }: { item: (typeof upcomingServices)[number] }) {
       </div>
       <p className="text-[13px] text-slate-600">{item.note}</p>
       <StatusPill status={item.status} />
-      <button className="min-h-9 rounded-lg border border-black/[0.1] bg-white px-3 text-sm font-semibold text-[#151917]">Open</button>
+      <button className="min-h-9 rounded-full border border-black/[0.1] bg-white px-3 text-sm font-medium text-[#151917]">Open</button>
     </div>
   );
 }
@@ -716,9 +745,43 @@ function MiniMetric({ title, value, detail }: { title: string; value: string; de
   );
 }
 
+function SimpleCard({
+  title,
+  body,
+  action,
+  to,
+  tone,
+}: {
+  title: string;
+  body: string;
+  action: string;
+  to: string;
+  tone: "amber" | "sea" | "slate";
+}) {
+  const dotClass = {
+    amber: "bg-[#d49a2e]",
+    sea: "bg-[#35665b]",
+    slate: "bg-slate-400",
+  }[tone];
+
+  return (
+    <Card className="p-4 shadow-none">
+      <span className={`block h-2 w-2 rounded-full ${dotClass}`} />
+      <h2 className="mt-4 text-base font-semibold tracking-[-0.03em] text-[#111411]">{title}</h2>
+      <p className="mt-2 min-h-12 text-sm leading-6 text-slate-600">{body}</p>
+      <Link
+        to={to}
+        className="mt-4 inline-flex min-h-9 items-center justify-center rounded-full border border-black/[0.1] bg-white px-3 text-sm font-medium text-[#151917]"
+      >
+        {action}
+      </Link>
+    </Card>
+  );
+}
+
 function Recommendation({ image, title, body }: { image: string; title: string; body: string }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-black/[0.08] bg-white">
+    <div className="overflow-hidden rounded-lg border border-black/[0.08] bg-white">
       <img src={image} alt="" className="h-28 w-full object-cover" />
       <div className="p-3">
         <h3 className="text-sm font-semibold text-[#111411]">{title}</h3>
@@ -742,7 +805,7 @@ function ProfilePanel({ title, icon, children }: { title: string; icon: ReactNod
 
 function SettingRow({ title, body, checked = false }: { title: string; body: string; checked?: boolean }) {
   return (
-    <label className="flex min-h-[68px] items-center justify-between gap-4 rounded-xl border border-black/[0.08] bg-white p-3">
+    <label className="flex min-h-[68px] items-center justify-between gap-4 rounded-lg border border-black/[0.08] bg-white p-3">
       <span>
         <span className="block text-sm font-semibold text-[#151917]">{title}</span>
         <span className="mt-0.5 block text-[13px] text-slate-600">{body}</span>
@@ -766,7 +829,7 @@ function Avatar({ image, fallback }: { image: string | null; fallback: string })
 
 function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <section className={["rounded-2xl border border-black/[0.08] bg-white shadow-[0_14px_36px_rgba(15,23,42,0.045)]", className].join(" ")}>
+    <section className={["rounded-lg border border-black/[0.08] bg-white shadow-[0_14px_36px_rgba(15,23,42,0.035)]", className].join(" ")}>
       {children}
     </section>
   );
@@ -805,64 +868,27 @@ function Field({ label, value }: { label: string; value: string }) {
     <label className="grid gap-2 text-xs font-medium text-slate-500">
       {label}
       <input
-        className="min-h-10 rounded-lg border border-black/[0.08] bg-white px-3 text-sm font-medium text-[#151917] outline-none focus:border-[#d8aecf]"
+        className="min-h-10 rounded-lg border border-black/[0.08] bg-white px-3 text-sm font-medium text-[#151917] outline-none focus:border-[#111411]"
         defaultValue={value}
       />
     </label>
   );
 }
 
-function FocusRow({
-  title,
-  body,
-  count,
-  tone,
-}: {
-  title: string;
-  body: string;
-  count?: string;
-  tone: "amber" | "violet" | "neutral";
-}) {
-  const toneClass = {
-    amber: "border-[#efd58d] bg-[#fffaf0]",
-    violet: "border-[#ead8ec] bg-[#fbf7fb]",
-    neutral: "border-black/[0.08] bg-[#faf9f5]",
-  }[tone];
-
-  const dotClass = {
-    amber: "bg-[#b76b08]",
-    violet: "bg-[#7a3f8f]",
-    neutral: "bg-[#d8aecf]",
-  }[tone];
+function StatusPill({ status }: { status: string }) {
+  const dot =
+    status === "Confirmed" || status === "Paid"
+      ? "bg-emerald-600"
+      : status === "Pending" || status === "Awaiting confirmation" || status === "Upcoming"
+        ? "bg-[#d49a2e]"
+        : status === "Unread"
+          ? "bg-[#7a3f8f]"
+          : "bg-slate-400";
 
   return (
-    <button className={`grid min-h-[68px] grid-cols-[10px_1fr_auto] items-center gap-3 rounded-xl border p-3 text-left ${toneClass}`}>
-      <span className={`h-2 w-2 rounded-full ${dotClass}`} />
-      <span className="min-w-0">
-        <span className="block truncate text-sm font-semibold text-[#151917]">{title}</span>
-        <span className="mt-0.5 block truncate text-[13px] text-slate-600">{body}</span>
-      </span>
-      <span className="flex items-center gap-2">
-        {count && (
-          <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1.5 text-[11px] font-semibold text-slate-700">
-            {count}
-          </span>
-        )}
-        <ArrowRight className="h-3.5 w-3.5 text-slate-500" />
-      </span>
-    </button>
+    <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-black/[0.1] bg-white px-2.5 py-1 text-[11px] font-medium text-[#17211f]">
+      <span className={`h-1.5 w-1.5 rounded-full ${dot}`} />
+      {status}
+    </span>
   );
-}
-
-function StatusPill({ status }: { status: string }) {
-  const tone =
-    status === "Confirmed" || status === "Paid"
-      ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-      : status === "Pending" || status === "Awaiting confirmation" || status === "Upcoming"
-        ? "border-amber-200 bg-amber-50 text-amber-800"
-        : status === "Unread"
-          ? "border-[#ead8ec] bg-[#fbf7fb] text-[#7a3f8f]"
-          : "border-slate-200 bg-slate-50 text-slate-700";
-
-  return <span className={`w-fit rounded-full border px-2.5 py-1 text-[11px] font-semibold ${tone}`}>{status}</span>;
 }

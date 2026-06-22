@@ -24,7 +24,7 @@ export function InvoicesPage() {
         title="Invoices"
         description="Track where each invoice was sent, when payment is expected, and which finance contacts need follow-up."
         action={
-          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-business-line bg-white px-3.5 text-sm font-bold">
+          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white px-3.5 text-sm font-medium">
             <Download className="h-4 w-4" />
             Export
           </button>
@@ -67,16 +67,16 @@ export function InvoicesPage() {
                 <p className="text-sm font-black text-business-ink">{formatCurrency(invoice.amount)}</p>
                 <StatusBadge tone={invoiceTone(invoice.status)}>{invoice.status}</StatusBadge>
               </div>
-              <div className="mt-4 flex flex-col gap-3 rounded-lg border border-business-line bg-business-mist p-3 md:flex-row md:items-center md:justify-between">
+              <div className="mt-4 flex flex-col gap-3 rounded-lg border border-business-line bg-white p-3 md:flex-row md:items-center md:justify-between">
                 <p className="text-sm font-bold text-business-ink">Expected payment: {invoice.expectedPayment}</p>
                 <div className="flex flex-wrap gap-2">
                   {invoice.status === "Overdue" && (
-                    <button className="inline-flex min-h-9 items-center justify-center gap-2 rounded-lg bg-business-ink px-3 text-sm font-bold text-white">
+                    <button className="inline-flex min-h-9 items-center justify-center gap-2 rounded-full bg-business-ink px-3 text-sm font-medium text-white">
                       <Send className="h-4 w-4" />
                       Follow up
                     </button>
                   )}
-                  <button className="min-h-9 rounded-lg border border-business-line bg-white px-3 text-sm font-bold">Open</button>
+                  <button className="min-h-9 rounded-full border border-black/[0.12] bg-white px-3 text-sm font-medium">Open</button>
                 </div>
               </div>
             </article>

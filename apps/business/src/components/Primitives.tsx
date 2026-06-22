@@ -5,12 +5,21 @@ import { cx } from "../lib/utils";
 type Tone = "sea" | "amber" | "coral" | "lavender" | "slate" | "green";
 
 const badgeTone: Record<Tone, string> = {
-  sea: "border-[#b9d8d0] bg-[#eef8f5] text-[#15574d]",
-  amber: "border-[#ecd29c] bg-[#fff6e2] text-[#83570f]",
-  coral: "border-[#f0b7ac] bg-[#fff0ec] text-[#9b3526]",
-  lavender: "border-[#d9c8e8] bg-[#f7f1fb] text-[#654278]",
-  slate: "border-slate-200 bg-white text-slate-700",
-  green: "border-emerald-200 bg-emerald-50 text-emerald-800",
+  sea: "border-black/[0.1] bg-white text-business-ink",
+  amber: "border-black/[0.1] bg-white text-business-ink",
+  coral: "border-black/[0.1] bg-white text-business-ink",
+  lavender: "border-black/[0.1] bg-white text-business-ink",
+  slate: "border-black/[0.1] bg-white text-slate-700",
+  green: "border-black/[0.1] bg-white text-business-ink",
+};
+
+const badgeDot: Record<Tone, string> = {
+  sea: "bg-business-sea",
+  amber: "bg-business-amber",
+  coral: "bg-business-coral",
+  lavender: "bg-[#7a3f8f]",
+  slate: "bg-slate-400",
+  green: "bg-emerald-600",
 };
 
 export function PageHeader({
@@ -27,8 +36,8 @@ export function PageHeader({
   return (
     <header className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
       <div className="max-w-3xl">
-        {eyebrow && <p className="text-xs font-black uppercase tracking-[0.18em] text-business-sea">{eyebrow}</p>}
-        <h1 className="mt-1 text-[2.35rem] font-black leading-[1.02] tracking-normal text-business-ink sm:text-[3rem]">
+        {eyebrow && <p className="text-xs font-semibold uppercase tracking-[0.14em] text-business-sea">{eyebrow}</p>}
+        <h1 className="mt-1 text-[2.1rem] font-semibold leading-[1] tracking-[-0.055em] text-business-ink sm:text-[2.75rem]">
           {title}
         </h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-7 text-slate-600">{description}</p>
@@ -53,7 +62,7 @@ export function Panel({
     <section className={cx("overflow-hidden rounded-lg border border-business-line bg-business-cream shadow-business", className)}>
       {(title || action) && (
         <div className="flex min-h-14 items-center justify-between gap-4 border-b border-business-line bg-white px-4">
-          {title && <h2 className="text-sm font-black text-business-ink">{title}</h2>}
+          {title && <h2 className="text-sm font-semibold text-business-ink">{title}</h2>}
           {action}
         </div>
       )}
@@ -63,7 +72,12 @@ export function Panel({
 }
 
 export function StatusBadge({ children, tone = "slate" }: { children: ReactNode; tone?: Tone }) {
-  return <span className={cx("w-fit rounded-full border px-2.5 py-1 text-[11px] font-black", badgeTone[tone])}>{children}</span>;
+  return (
+    <span className={cx("inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium", badgeTone[tone])}>
+      <span className={cx("h-1.5 w-1.5 rounded-full", badgeDot[tone])} />
+      {children}
+    </span>
+  );
 }
 
 export function IconTextButton({
@@ -79,10 +93,10 @@ export function IconTextButton({
     <button
       type="button"
       className={cx(
-        "inline-flex min-h-10 items-center justify-center gap-2 rounded-lg px-3.5 text-sm font-black transition",
+        "inline-flex min-h-10 items-center justify-center gap-2 rounded-full px-3.5 text-sm font-medium transition",
         variant === "primary"
-          ? "bg-business-ink text-white shadow-[0_10px_24px_rgba(11,13,12,0.16)] hover:bg-business-graphite"
-          : "border border-business-line bg-white text-business-ink hover:bg-business-mist",
+          ? "bg-business-ink text-white shadow-[0_10px_24px_rgba(11,13,12,0.12)] hover:bg-business-graphite"
+          : "border border-black/[0.12] bg-white text-business-ink hover:border-black/20 hover:bg-[#fbfaf7]",
       )}
     >
       {icon}
@@ -93,7 +107,7 @@ export function IconTextButton({
 
 export function TextAction({ children }: { children: ReactNode }) {
   return (
-    <button type="button" className="inline-flex items-center gap-1 text-[13px] font-black text-business-ink">
+    <button type="button" className="inline-flex items-center gap-1 text-[13px] font-medium text-business-ink">
       {children}
       <ArrowRight className="h-3.5 w-3.5" />
     </button>
@@ -103,8 +117,8 @@ export function TextAction({ children }: { children: ReactNode }) {
 export function FieldLabel({ label, value }: { label: string; value: string }) {
   return (
     <p>
-      <span className="block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{label}</span>
-      <span className="mt-1 block text-sm font-bold text-business-ink">{value}</span>
+      <span className="block text-[11px] font-medium uppercase tracking-[0.08em] text-slate-500">{label}</span>
+      <span className="mt-1 block text-sm font-semibold text-business-ink">{value}</span>
     </p>
   );
 }
@@ -138,19 +152,19 @@ export function MapPreview({
 
         <div className="relative flex min-h-[16rem] flex-col justify-between">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-business-sea">Map placeholder</p>
-            <h2 className="mt-2 max-w-sm text-2xl font-black leading-tight text-business-ink">{title}</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-business-sea">Map placeholder</p>
+            <h2 className="mt-2 max-w-sm text-2xl font-semibold leading-tight tracking-[-0.04em] text-business-ink">{title}</h2>
             <p className="mt-3 max-w-sm rounded-lg bg-white/88 p-3 text-sm leading-6 text-business-ink/72 shadow-sm">{subtitle}</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-sm rounded-lg bg-white/88 p-3 text-xs font-bold leading-5 text-business-ink/56 shadow-sm">
+            <p className="max-w-sm rounded-lg bg-white/88 p-3 text-xs font-medium leading-5 text-business-ink/56 shadow-sm">
               Supabase later stores service-area polygons, request coordinates, and the Google Maps deep link.
             </p>
             <a
               href={googleMapsUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-[#111411] px-3.5 text-sm font-black text-white"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-[#111411] px-3.5 text-sm font-medium text-white"
             >
               Open in Google Maps
               <ExternalLink className="h-4 w-4" />

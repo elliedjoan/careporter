@@ -8,17 +8,32 @@ export function cn(...classes: Array<string | false | null | undefined>) {
 export type Tone = "ink" | "sea" | "lavender" | "coral" | "amber" | "green" | "slate";
 
 const badgeTone: Record<Tone, string> = {
-  ink: "border-[#111411] bg-[#111411] text-white",
-  sea: "border-[#bad5cc] bg-[#eef7f2] text-[#23554c]",
-  lavender: "border-[#ead8ec] bg-[#fbf7fb] text-[#7a3f8f]",
-  coral: "border-[#f0c2ba] bg-[#fff1ee] text-[#a33b2d]",
-  amber: "border-[#efd58d] bg-[#fffaf0] text-[#945f08]",
-  green: "border-emerald-200 bg-emerald-50 text-emerald-800",
-  slate: "border-slate-200 bg-slate-50 text-slate-700",
+  ink: "border-[#111411]/20 bg-white text-[#111411]",
+  sea: "border-black/[0.1] bg-white text-[#17211f]",
+  lavender: "border-black/[0.1] bg-white text-[#17211f]",
+  coral: "border-black/[0.1] bg-white text-[#17211f]",
+  amber: "border-black/[0.1] bg-white text-[#17211f]",
+  green: "border-black/[0.1] bg-white text-[#17211f]",
+  slate: "border-black/[0.1] bg-white text-slate-700",
+};
+
+const badgeDot: Record<Tone, string> = {
+  ink: "bg-[#111411]",
+  sea: "bg-[#35665b]",
+  lavender: "bg-[#7a3f8f]",
+  coral: "bg-[#ef7f6d]",
+  amber: "bg-[#d49a2e]",
+  green: "bg-emerald-600",
+  slate: "bg-slate-400",
 };
 
 export function StatusPill({ children, tone = "slate" }: { children: ReactNode; tone?: Tone }) {
-  return <span className={cn("w-fit rounded-full border px-2.5 py-1 text-[11px] font-semibold", badgeTone[tone])}>{children}</span>;
+  return (
+    <span className={cn("inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium", badgeTone[tone])}>
+      <span className={cn("h-1.5 w-1.5 rounded-full", badgeDot[tone])} />
+      {children}
+    </span>
+  );
 }
 
 export function Surface({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -54,10 +69,10 @@ export function PageHeader({
 
 export function MetricCard({ label, value, detail, tone = "sea" }: { label: string; value: string; detail: string; tone?: Tone }) {
   return (
-    <Surface className="p-4">
+    <Surface className="p-4 shadow-none">
       <div className="flex items-start justify-between gap-3">
-        <p className="text-sm font-semibold text-slate-600">{label}</p>
-        <StatusPill tone={tone}>{label.split(" ")[0]}</StatusPill>
+        <p className="text-sm font-medium text-slate-600">{label}</p>
+        <span className={cn("mt-1 h-2 w-2 rounded-full", badgeDot[tone])} />
       </div>
       <p className="mt-5 text-3xl font-semibold tracking-[-0.05em] text-[#111411]">{value}</p>
       <p className="mt-1 text-xs font-medium text-slate-500">{detail}</p>
@@ -75,12 +90,12 @@ export function FieldLabel({ label, value }: { label: string; value: string }) {
 }
 
 export function PrimaryButton({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <button className={cn("min-h-10 rounded-lg bg-[#111411] px-4 text-sm font-semibold text-white", className)}>{children}</button>;
+  return <button className={cn("min-h-10 rounded-full bg-[#111411] px-4 text-sm font-medium text-white transition hover:bg-[#2a302b]", className)}>{children}</button>;
 }
 
 export function SecondaryButton({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <button className={cn("min-h-10 rounded-lg border border-black/[0.1] bg-white px-4 text-sm font-semibold text-[#151917]", className)}>
+    <button className={cn("min-h-10 rounded-full border border-black/[0.12] bg-white px-4 text-sm font-medium text-[#151917] transition hover:border-black/20 hover:bg-[#fbfaf7]", className)}>
       {children}
     </button>
   );
@@ -98,10 +113,10 @@ export function AppFrame({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#f5f7f4] text-[#17211f]">
-      <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.08] bg-white px-4 py-5 lg:block">
+    <div className="min-h-screen bg-[#f7f5ef] text-[#17211f]">
+      <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.08] bg-[#fbfaf7] px-4 py-5 lg:block">
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#d8aecf] text-sm font-black text-[#111411]">CP</span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111411] text-sm font-semibold text-white">CP</span>
           <div>
             <p className="text-sm font-semibold text-[#111411]">{appName}</p>
             <p className="text-xs font-medium text-slate-500">{workspace}</p>
@@ -115,8 +130,10 @@ export function AppFrame({
               end={item.end}
               className={({ isActive }) =>
                 cn(
-                  "rounded-lg px-3 py-2.5 text-sm font-semibold transition",
-                  isActive ? "bg-[#111411] text-white" : "text-slate-600 hover:bg-[#f3f0ea] hover:text-[#111411]",
+                  "rounded-full border px-3 py-2.5 text-sm font-medium transition",
+                  isActive
+                    ? "border-black/[0.08] bg-white text-[#111411] shadow-[0_10px_26px_rgba(15,23,42,0.05)]"
+                    : "border-transparent text-slate-600 hover:bg-white/70 hover:text-[#111411]",
                 )
               }
             >
@@ -135,7 +152,10 @@ export function AppFrame({
                 to={item.to}
                 end={item.end}
                 className={({ isActive }) =>
-                  cn("shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold", isActive ? "bg-[#111411] text-white" : "bg-[#f3f0ea] text-slate-700")
+                  cn(
+                    "shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium",
+                    isActive ? "border-black/[0.08] bg-[#111411] text-white" : "border-black/[0.08] bg-white text-slate-700",
+                  )
                 }
               >
                 {item.label}

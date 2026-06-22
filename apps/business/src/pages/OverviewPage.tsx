@@ -21,7 +21,7 @@ export function OverviewPage() {
         title={serviceProfile.name}
         description="Confirm client requests, keep your availability current, complete services, and follow up invoices sent to care-provider finance contacts."
         action={
-          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-business-ink px-3.5 text-sm font-bold text-white">
+          <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-business-ink px-3.5 text-sm font-medium text-white">
             <CalendarPlus className="h-4 w-4" />
             Update availability
           </button>
@@ -35,7 +35,7 @@ export function OverviewPage() {
             <article key={metric.label} className="rounded-lg border border-business-line bg-white p-4 shadow-business">
               <div className="flex items-start justify-between gap-3">
                 <p className="text-sm font-bold text-slate-600">{metric.label}</p>
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-business-mist text-business-sea">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.08] bg-white text-business-sea">
                   <Icon className="h-4 w-4" />
                 </span>
               </div>
@@ -58,7 +58,7 @@ export function OverviewPage() {
                 </div>
                 <p className="text-sm font-bold text-business-ink">{item.due}</p>
                 <StatusBadge tone={item.tone}>{item.priority}</StatusBadge>
-                <button className="min-h-9 rounded-lg border border-business-line bg-white px-3 text-sm font-bold text-business-ink">
+                <button className="min-h-9 rounded-full border border-black/[0.12] bg-white px-3 text-sm font-medium text-business-ink">
                   Open
                 </button>
               </div>
@@ -70,7 +70,7 @@ export function OverviewPage() {
           <div className="divide-y divide-business-line">
             {todaySchedule.map((item) => (
               <div key={`${item.time}-${item.client}`} className="grid grid-cols-[54px_1fr_auto] gap-3 px-4 py-3.5">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-business-mist text-xs font-black text-business-sea">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.08] bg-white text-xs font-semibold text-business-sea">
                   {item.time}
                 </span>
                 <div className="min-w-0">
@@ -99,7 +99,7 @@ export function OverviewPage() {
                   <p className="mt-1 text-sm font-semibold text-slate-600">{request.service} - {request.date}, {request.time}</p>
                   <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">{request.notes}</p>
                 </div>
-                <button className="min-h-9 rounded-lg bg-business-ink px-3 text-sm font-bold text-white">{request.action}</button>
+                <button className="min-h-9 rounded-full bg-business-ink px-3 text-sm font-medium text-white">{request.action}</button>
               </div>
             ))}
           </div>
@@ -108,7 +108,7 @@ export function OverviewPage() {
         <Panel title="Invoice follow-up">
           <div className="grid gap-3 p-4">
             {overdueInvoices.map((invoice) => (
-              <article key={invoice.id} className="rounded-lg border border-[#f0c2ba] bg-[#fff1ee] p-4">
+              <article key={invoice.id} className="rounded-lg border border-black/[0.08] bg-white p-4">
                 <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                   <div>
                     <h3 className="font-black text-business-ink">{invoice.id} is overdue</h3>
@@ -123,13 +123,13 @@ export function OverviewPage() {
                   <FieldLabel label="Due" value={invoice.dueDate} />
                   <FieldLabel label="Amount" value={`$${invoice.amount}`} />
                 </div>
-                <button className="mt-4 inline-flex min-h-9 items-center justify-center gap-2 rounded-lg bg-business-ink px-3 text-sm font-bold text-white">
+                <button className="mt-4 inline-flex min-h-9 items-center justify-center gap-2 rounded-full bg-business-ink px-3 text-sm font-medium text-white">
                   <Send className="h-4 w-4" />
                   Follow up finance
                 </button>
               </article>
             ))}
-            <article className="rounded-lg border border-business-line bg-business-mist p-4">
+            <article className="rounded-lg border border-business-line bg-white p-4">
               <Clock3 className="h-4 w-4 text-business-sea" />
               <h3 className="mt-2 font-black">When a service is complete</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">
