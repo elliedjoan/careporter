@@ -13,6 +13,7 @@ import {
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { DashboardShell, DashboardTopActions } from "../components/DashboardShell";
+import { ServiceSearchBar } from "../components/ServiceSearchBar";
 import { services } from "../data/mockData";
 
 const transportImage = services.find((service) => service.id === "transport")?.image ?? "/images/services/transport.png";
@@ -163,16 +164,11 @@ export function DashboardPage() {
               <h2 className="mt-2 max-w-md text-[1.75rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.15rem]">
                 What support do you need today?
               </h2>
-              <Link
-                to="/services"
-                className="mt-5 flex min-h-12 max-w-md items-center justify-between gap-3 rounded-full border border-[#ead8ec] bg-white px-4 text-left text-sm font-medium text-slate-500 shadow-[0_14px_34px_rgba(89,50,95,0.06)]"
-              >
-                <span className="flex min-w-0 items-center gap-3">
-                  <Search className="h-4 w-4 shrink-0 text-[#7a3f8f]" />
-                  <span className="truncate">Cleaning, transport, gardening...</span>
-                </span>
-                <span className="shrink-0 rounded-full bg-[#111411] px-3 py-1.5 text-xs text-white">Search</span>
-              </Link>
+              <ServiceSearchBar
+                className="mt-5 max-w-2xl"
+                servicePlaceholder="Cleaning, transport, gardening..."
+                actionTo="/services"
+              />
               <div className="mt-4 flex flex-wrap gap-2">
                 {[
                   { label: "Cleaning", to: "/services/cleaning" },

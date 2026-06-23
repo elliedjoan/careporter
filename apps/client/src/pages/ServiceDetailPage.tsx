@@ -1,26 +1,27 @@
-import { Clock, MapPin, Search, SlidersHorizontal } from "lucide-react";
+import { Clock, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { ProviderCard } from "../components/Cards";
+import { ServiceSearchBar } from "../components/ServiceSearchBar";
 import { providers, services } from "../data/mockData";
 import { formatCurrency } from "../lib/utils";
 
 export function ServiceDetailPage() {
   const { id } = useParams();
   const [query, setQuery] = useState("");
-  const [location, setLocation] = useState("all");
+  const [location, setLocation] = useState("");
   const service = services.find((item) => item.id === id);
   const serviceId = service?.id ?? "";
   const matches = useMemo(
     () => providers.filter((provider) => provider.serviceIds.includes(serviceId)),
     [serviceId],
   );
-  const locations = Array.from(new Set(matches.map((provider) => provider.suburb))).sort();
   const filteredServices = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
+    const normalizedLocation = location.trim().toLowerCase();
 
     return matches.filter((provider) => {
-      const matchesLocation = location === "all" || provider.suburb === location;
+      const matchesLocation = normalizedLocation.length === 0 || provider.suburb.toLowerCase().includes(normalizedLocation);
       const searchable = [provider.name, provider.suburb, provider.bio, ...provider.specialties].join(" ").toLowerCase();
       const matchesQuery = normalizedQuery.length === 0 || searchable.includes(normalizedQuery);
 
@@ -62,30 +63,15 @@ export function ServiceDetailPage() {
                 <SlidersHorizontal className="h-4 w-4" />
                 Find the right service
               </div>
-              <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_220px]">
-                <label className="flex min-h-12 items-center gap-3 rounded-full bg-white px-4">
-                  <Search className="h-5 w-5 text-[#111411]" />
-                  <input
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    className="w-full border-0 bg-transparent outline-none placeholder:text-porter-ink/42"
-                    placeholder="Search service name, suburb, or specialty"
-                  />
-                </label>
-                <label className="flex min-h-12 items-center gap-3 rounded-full bg-white px-4">
-                  <MapPin className="h-5 w-5 text-[#111411]" />
-                  <select
-                    value={location}
-                    onChange={(event) => setLocation(event.target.value)}
-                    className="w-full border-0 bg-transparent font-semibold outline-none"
-                  >
-                    <option value="all">All locations</option>
-                    {locations.map((suburb) => (
-                      <option key={suburb} value={suburb}>{suburb}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
+              <ServiceSearchBar
+                className="mt-4"
+                serviceValue={query}
+                locationValue={location}
+                servicePlaceholder="Service name or specialty"
+                locationPlaceholder="Suburb or postcode"
+                onServiceChange={setQuery}
+                onLocationChange={setLocation}
+              />
               <p className="mt-4 text-sm font-medium text-porter-ink/62">
                 Showing {filteredServices.length} of {matches.length} available services
               </p>

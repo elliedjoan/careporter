@@ -106,19 +106,27 @@ export function AppFrame({
   workspace,
   navItems,
   children,
+  logoSrc,
+  logoAlt,
 }: {
   appName: string;
   workspace: string;
   navItems: Array<{ label: string; to: string; end?: boolean }>;
   children: ReactNode;
+  logoSrc?: string;
+  logoAlt?: string;
 }) {
   return (
     <div className="min-h-screen bg-[#f4ecde] text-[#17211f]">
       <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.08] bg-[#fbfaf7] px-4 py-5 lg:block">
-        <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111411] text-sm font-semibold text-white">CP</span>
+        <div className={cn("flex", logoSrc ? "flex-col items-start gap-3" : "items-center gap-3")}>
+          {logoSrc ? (
+            <img src={logoSrc} alt={logoAlt ?? appName} className="h-auto w-full max-w-[178px] object-contain" />
+          ) : (
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111411] text-sm font-semibold text-white">CP</span>
+          )}
           <div>
-            <p className="text-sm font-semibold text-[#111411]">{appName}</p>
+            {!logoSrc && <p className="text-sm font-semibold text-[#111411]">{appName}</p>}
             <p className="text-xs font-medium text-slate-500">{workspace}</p>
           </div>
         </div>
@@ -144,7 +152,11 @@ export function AppFrame({
       </aside>
       <div className="lg:pl-[264px]">
         <header className="sticky top-0 z-10 border-b border-black/[0.08] bg-[#f4ecde]/92 px-4 py-3 backdrop-blur lg:hidden">
-          <p className="text-sm font-semibold">{appName}</p>
+          {logoSrc ? (
+            <img src={logoSrc} alt={logoAlt ?? appName} className="h-auto w-[176px] object-contain" />
+          ) : (
+            <p className="text-sm font-semibold">{appName}</p>
+          )}
           <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
             {navItems.map((item) => (
               <NavLink

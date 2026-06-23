@@ -32,7 +32,13 @@ const auditEvents = [
 
 export function App() {
   return (
-    <AppFrame appName="CarePorter for Providers" workspace="BrightPath Care Packages" navItems={navItems}>
+    <AppFrame
+      appName="CarePorter for Providers"
+      workspace="BrightPath Care Packages"
+      navItems={navItems}
+      logoSrc="/images/careporter-for-providers-logo.png"
+      logoAlt="CarePorter for Providers"
+    >
       <Routes>
         <Route path="/" element={<OverviewPage />} />
         <Route path="/approvals" element={<ApprovalsPage />} />

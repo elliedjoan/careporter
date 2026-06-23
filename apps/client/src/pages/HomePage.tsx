@@ -1,7 +1,8 @@
-import { CalendarDays, ChevronLeft, ChevronRight, MailCheck, Search, ShieldCheck, Star } from "lucide-react";
+import { CalendarDays, ChevronLeft, ChevronRight, MailCheck, ShieldCheck, Star } from "lucide-react";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProviderCard, ServiceCard } from "../components/Cards";
+import { ServiceSearchBar } from "../components/ServiceSearchBar";
 import { heroImage, providers, services } from "../data/mockData";
 
 const homeHeroImage = "/images/careporter-hero-panel1-edited.png";
@@ -112,23 +113,12 @@ export function HomePage() {
               Search trusted Australian home-care and aged-care services, compare verified services, and book with
               confidence.
             </p>
-            <div className="glass mt-8 max-w-2xl rounded-lg border border-white/70 p-3 shadow-soft">
-              <div className="grid gap-3 md:grid-cols-[1fr_auto]">
-                <label className="flex min-h-14 items-center gap-3 rounded-lg bg-white px-4">
-                  <Search className="h-5 w-5 text-[#7a3f8f]" />
-                  <input
-                    className="w-full border-0 bg-transparent text-base font-medium outline-none placeholder:text-porter-ink/45"
-                    placeholder="Search cleaning, transport, personal care..."
-                  />
-                </label>
-                <Link
-                  to="/services"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#111411] px-6 font-medium text-white"
-                >
-                  Browse services <ChevronRight className="h-5 w-5" />
-                </Link>
-              </div>
-            </div>
+            <ServiceSearchBar
+              className="mt-8 max-w-3xl"
+              servicePlaceholder="Cleaning, transport, personal care..."
+              actionLabel="Browse services"
+              actionTo="/services"
+            />
             <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm font-medium text-porter-ink/78 sm:grid-cols-3">
               <span className="flex min-h-11 items-center gap-2 rounded-lg bg-white/90 px-3 shadow-sm backdrop-blur-md">
                 <ShieldCheck className="h-4 w-4 shrink-0 text-[#7a3f8f]" />

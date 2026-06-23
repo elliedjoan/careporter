@@ -1,5 +1,5 @@
-import { Search } from "lucide-react";
 import { ServiceCard } from "../components/Cards";
+import { ServiceSearchBar } from "../components/ServiceSearchBar";
 import { services } from "../data/mockData";
 
 export function ServicesPage() {
@@ -9,10 +9,7 @@ export function ServicesPage() {
         <div>
           <h1 className="text-4xl font-semibold tracking-[-0.055em]">Book support</h1>
         </div>
-        <label className="flex min-h-14 items-center gap-3 rounded-full border border-black/[0.08] bg-white px-4 shadow-sm">
-          <Search className="h-5 w-5 text-[#111411]" />
-          <input className="w-full outline-none placeholder:text-porter-ink/40" placeholder="Search support services" />
-        </label>
+        <ServiceSearchBar actionTo="/services" />
       </div>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {services.map((service) => <ServiceCard key={service.id} service={service} />)}
