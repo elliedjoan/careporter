@@ -111,7 +111,7 @@ export function AppFrame({
 }: {
   appName: string;
   workspace: string;
-  navItems: Array<{ label: string; to: string; end?: boolean }>;
+  navItems: Array<{ label: string; to: string; end?: boolean; icon?: ReactNode; homeIconOnly?: boolean; badge?: string }>;
   children: ReactNode;
   logoSrc?: string;
   logoAlt?: string;
@@ -138,14 +138,25 @@ export function AppFrame({
               end={item.end}
               className={({ isActive }) =>
                 cn(
-                  "rounded-full border px-3 py-2.5 text-sm font-medium transition",
+                  "flex min-h-10 items-center rounded-full border text-sm font-medium transition",
+                  item.homeIconOnly ? "w-10 justify-center px-0" : "justify-between px-3",
                   isActive
                     ? "border-[#d8aecf] bg-[#d8aecf]/62 text-[#111411] shadow-[0_10px_26px_rgba(89,50,95,0.08)]"
                     : "border-transparent text-slate-600 hover:bg-white/70 hover:text-[#111411]",
                 )
               }
+              title={item.homeIconOnly ? item.label : undefined}
+              aria-label={item.homeIconOnly ? item.label : undefined}
             >
-              {item.label}
+              <span className="flex items-center gap-2.5">
+                {item.icon}
+                {!item.homeIconOnly && item.label}
+              </span>
+              {item.badge && !item.homeIconOnly && (
+                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1.5 text-[11px] font-semibold text-[#35665b]">
+                  {item.badge}
+                </span>
+              )}
             </NavLink>
           ))}
         </nav>
@@ -170,6 +181,7 @@ export function AppFrame({
                   )
                 }
               >
+                {item.icon && <span className="mr-1 inline-flex align-middle">{item.icon}</span>}
                 {item.label}
               </NavLink>
             ))}

@@ -1,15 +1,23 @@
 import { Link, Navigate, Route, Routes } from "react-router-dom";
-import { Download, UsersRound } from "lucide-react";
+import { Download, House, UsersRound } from "lucide-react";
 import { providerApprovalQueue, providerFeatureGates } from "@careporter/domain";
 import { AppFrame, FieldLabel, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
 
 const navItems = [
-  { label: "Overview", to: "/", end: true },
-  { label: "Approvals", to: "/approvals" },
+  { label: "Home", to: "/", end: true, icon: <House className="h-4 w-4" />, homeIconOnly: true },
+  { label: "Approvals", to: "/approvals", badge: "3" },
   { label: "Clients", to: "/clients" },
-  { label: "Invoices", to: "/invoices" },
+  { label: "Invoices", to: "/invoices", badge: "2" },
   { label: "Plan", to: "/plan" },
   { label: "Audit trail", to: "/audit" },
+];
+
+const overviewTiles = [
+  { title: "Approvals", to: "/approvals", badge: "Action required" },
+  { title: "Clients", to: "/clients" },
+  { title: "Invoices", to: "/invoices", badge: "2 due" },
+  { title: "Plan", to: "/plan" },
+  { title: "Audit trail", to: "/audit", badge: "3 new" },
 ];
 
 const providerInvoices = [
@@ -56,17 +64,22 @@ function OverviewPage() {
   return (
     <div>
       <h1 className="text-[2.1rem] font-semibold leading-[0.98] tracking-[-0.055em] text-[#111411] sm:text-[2.75rem]">
-        Overview
+        Home
       </h1>
 
       <section className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-        {navItems.map((tile) => (
+        {overviewTiles.map((tile) => (
           <Link
             key={tile.to}
             to={tile.to}
-            className="flex min-h-[8.5rem] items-end rounded-xl border border-black/[0.08] bg-white p-5 text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_36px_rgba(15,23,42,0.045)] transition hover:border-[#d8aecf] hover:bg-[#fffaf4]"
+            className="relative flex min-h-[8.5rem] items-center justify-center rounded-xl border border-black/[0.08] bg-white p-5 text-center text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_36px_rgba(15,23,42,0.045)] transition hover:border-[#d8aecf] hover:bg-[#fffaf4]"
           >
-            {tile.label}
+            {tile.title}
+            {tile.badge && (
+              <span className="absolute bottom-4 right-4 rounded-full border border-black/[0.08] bg-white px-2.5 py-1 text-[11px] font-semibold tracking-normal text-[#7a3f8f] shadow-sm">
+                {tile.badge}
+              </span>
+            )}
           </Link>
         ))}
       </section>

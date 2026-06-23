@@ -4,7 +4,7 @@ import {
   ChevronDown,
   FileCheck2,
   Headphones,
-  LayoutDashboard,
+  House,
   MessageCircle,
   UserRound,
   UsersRound,
@@ -13,7 +13,7 @@ import type { ReactNode } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const sidebarItems = [
-  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/dashboard", label: "Home", icon: House, home: true },
   { to: "/dashboard/bookings", label: "Bookings", icon: Calendar },
   { to: "/dashboard/messages", label: "Messages", icon: MessageCircle, badge: "2" },
   { to: "/dashboard/approvals", label: "Approvals", icon: FileCheck2, badge: "1" },
@@ -36,8 +36,11 @@ export function DashboardShell({ children }: { children: ReactNode }) {
               <NavLink
                 key={item.to}
                 to={item.to}
+                title={item.home ? item.label : undefined}
+                aria-label={item.home ? item.label : undefined}
                 className={[
-                  "flex min-h-9 items-center justify-between rounded-full border px-2.5 text-left text-[13px] font-medium transition",
+                  "flex min-h-9 items-center rounded-full border text-left text-[13px] font-medium transition",
+                  item.home ? "w-9 justify-center px-0" : "justify-between px-2.5",
                   isActive
                     ? "border-[#d8aecf] bg-[#d8aecf]/62 text-[#151917] shadow-[0_8px_24px_rgba(89,50,95,0.08)]"
                     : "border-transparent text-slate-600 hover:bg-white/72 hover:text-[#151917]",
@@ -45,7 +48,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
               >
                 <span className="flex items-center gap-2.5">
                   <Icon className="h-3.5 w-3.5" />
-                  {item.label}
+                  {!item.home && item.label}
                 </span>
                 {item.badge && (
                   <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#111411] px-1.5 text-[11px] font-medium text-white">

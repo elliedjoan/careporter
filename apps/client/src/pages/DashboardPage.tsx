@@ -140,10 +140,9 @@ const documents = [
 ];
 
 const dashboardTiles = [
-  { title: "Dashboard", to: "/dashboard" },
   { title: "Bookings", to: "/dashboard/bookings" },
-  { title: "Messages", to: "/dashboard/messages" },
-  { title: "Approvals", to: "/dashboard/approvals" },
+  { title: "Messages", to: "/dashboard/messages", badge: "2 new" },
+  { title: "Approvals", to: "/dashboard/approvals", badge: "Action required" },
   { title: "Saved", to: "/dashboard/services" },
   { title: "Profile", to: "/dashboard/profile" },
 ];
@@ -152,7 +151,7 @@ export function DashboardPage() {
   return (
     <DashboardShell>
       <h1 className="text-[2rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.35rem]">
-        Dashboard
+        Home
       </h1>
 
       <section className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -160,9 +159,14 @@ export function DashboardPage() {
           <Link
             key={tile.to}
             to={tile.to}
-            className="flex min-h-[8.5rem] items-end rounded-lg border border-black/[0.08] bg-[#fffaf4] p-5 text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_34px_rgba(89,50,95,0.045)] transition hover:border-[#d8aecf] hover:bg-white"
+            className="relative flex min-h-[8.5rem] items-center justify-center rounded-lg border border-black/[0.08] bg-[#fffaf4] p-5 text-center text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_34px_rgba(89,50,95,0.045)] transition hover:border-[#d8aecf] hover:bg-white"
           >
             {tile.title}
+            {tile.badge && (
+              <span className="absolute bottom-4 right-4 rounded-full border border-black/[0.08] bg-white px-2.5 py-1 text-[11px] font-semibold tracking-normal text-[#7a3f8f] shadow-sm">
+                {tile.badge}
+              </span>
+            )}
           </Link>
         ))}
       </section>

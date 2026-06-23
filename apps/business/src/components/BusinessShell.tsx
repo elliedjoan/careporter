@@ -4,8 +4,8 @@ import {
   CalendarDays,
   ChevronDown,
   FileCheck2,
+  House,
   Inbox,
-  LayoutDashboard,
   Plus,
   Receipt,
   Search,
@@ -17,7 +17,7 @@ import { businessProfile } from "../data/businessData";
 import { cx } from "../lib/utils";
 
 const primaryNav = [
-  { to: "/", label: "Overview", icon: LayoutDashboard },
+  { to: "/", label: "Home", icon: House, home: true },
   { to: "/service-profile", label: "Service profile", icon: Store },
   { to: "/availability", label: "Availability", icon: CalendarDays },
   { to: "/requests", label: "Requests", icon: CalendarCheck, badge: "5" },
@@ -51,8 +51,11 @@ export function BusinessShell() {
               <NavLink
                 key={item.to}
                 to={item.to}
+                title={item.home ? item.label : undefined}
+                aria-label={item.home ? item.label : undefined}
                 className={cx(
-                  "flex min-h-11 items-center justify-between rounded-full border px-3 text-sm font-medium transition",
+                  "flex min-h-11 items-center rounded-full border text-sm font-medium transition",
+                  item.home ? "w-11 justify-center px-0" : "justify-between px-3",
                   isActive
                     ? "border-[#d8aecf] bg-[#d8aecf]/62 text-business-ink shadow-[0_10px_26px_rgba(89,50,95,0.08)]"
                     : "border-transparent text-business-ink/68 hover:bg-white/72 hover:text-business-ink",
@@ -60,7 +63,7 @@ export function BusinessShell() {
               >
                 <span className="flex items-center gap-2.5">
                   <Icon className="h-4 w-4" />
-                  {item.label}
+                  {!item.home && item.label}
                 </span>
                 {item.badge && (
                   <span className={cx(

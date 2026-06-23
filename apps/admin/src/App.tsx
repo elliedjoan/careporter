@@ -1,15 +1,23 @@
 import { Link, Navigate, Route, Routes } from "react-router-dom";
-import { AlertTriangle, Banknote, Building2, FileCheck2 } from "lucide-react";
+import { AlertTriangle, Banknote, Building2, FileCheck2, House } from "lucide-react";
 import { adminVerificationQueue } from "@careporter/domain";
 import { AppFrame, FieldLabel, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
 
 const navItems = [
-  { label: "Overview", to: "/", end: true },
-  { label: "Verification", to: "/verification" },
+  { label: "Home", to: "/", end: true, icon: <House className="h-4 w-4" />, homeIconOnly: true },
+  { label: "Verification", to: "/verification", badge: "3" },
   { label: "Bookings", to: "/bookings" },
   { label: "Providers", to: "/providers" },
-  { label: "Payments", to: "/payments" },
-  { label: "Risks", to: "/risks" },
+  { label: "Payments", to: "/payments", badge: "2" },
+  { label: "Risks", to: "/risks", badge: "3" },
+];
+
+const overviewTiles = [
+  { title: "Verification", to: "/verification", badge: "Action required" },
+  { title: "Bookings", to: "/bookings", badge: "3 active" },
+  { title: "Providers", to: "/providers" },
+  { title: "Payments", to: "/payments", badge: "Action required" },
+  { title: "Risks", to: "/risks", badge: "Action required" },
 ];
 
 const adminBookings = [
@@ -50,17 +58,22 @@ function OverviewPage() {
   return (
     <div>
       <h1 className="text-[2.1rem] font-semibold leading-[0.98] tracking-[-0.055em] text-[#111411] sm:text-[2.75rem]">
-        Overview
+        Home
       </h1>
 
       <section className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-        {navItems.map((tile) => (
+        {overviewTiles.map((tile) => (
           <Link
             key={tile.to}
             to={tile.to}
-            className="flex min-h-[8.5rem] items-end rounded-xl border border-black/[0.08] bg-white p-5 text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_36px_rgba(15,23,42,0.045)] transition hover:border-[#d8aecf] hover:bg-[#fffaf4]"
+            className="relative flex min-h-[8.5rem] items-center justify-center rounded-xl border border-black/[0.08] bg-white p-5 text-center text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_36px_rgba(15,23,42,0.045)] transition hover:border-[#d8aecf] hover:bg-[#fffaf4]"
           >
-            {tile.label}
+            {tile.title}
+            {tile.badge && (
+              <span className="absolute bottom-4 right-4 rounded-full border border-black/[0.08] bg-white px-2.5 py-1 text-[11px] font-semibold tracking-normal text-[#7a3f8f] shadow-sm">
+                {tile.badge}
+              </span>
+            )}
           </Link>
         ))}
       </section>
