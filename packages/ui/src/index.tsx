@@ -228,13 +228,51 @@ export function AppFrame({
             </button>
           </div>
         </header>
-        <header className="sticky top-0 z-10 border-b border-black/[0.08] bg-[#f4ecde]/92 px-4 py-3 backdrop-blur lg:hidden">
-          {logoSrc ? (
-            <img src={logoSrc} alt={logoAlt ?? appName} className="h-auto w-[176px] object-contain" />
-          ) : (
-            <p className="text-sm font-semibold">{appName}</p>
-          )}
-          <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
+        <header className="sticky top-0 z-30 border-b border-black/[0.08] bg-[#f8f1e8]/92 px-4 py-3 backdrop-blur-xl lg:hidden">
+          <div className="flex items-center justify-between gap-3">
+            {logoSrc ? (
+              <img src={logoSrc} alt={logoAlt ?? appName} className="h-auto max-h-12 w-auto max-w-[156px] object-contain" />
+            ) : (
+              <p className="text-sm font-semibold">{appName}</p>
+            )}
+            <div className="flex items-center gap-2">
+              <NavLink
+                to="/"
+                end
+                title="Home"
+                aria-label="Home"
+                className={({ isActive }) =>
+                  cn(
+                    "flex h-10 w-10 items-center justify-center rounded-full border text-slate-700 shadow-[0_10px_24px_rgba(89,50,95,0.07)]",
+                    isActive ? "border-[#d8aecf] bg-white text-[#111411]" : "border-white/80 bg-white/86",
+                  )
+                }
+              >
+                <House className="h-4 w-4" />
+              </NavLink>
+              <button
+                type="button"
+                title="Notifications"
+                aria-label="Notifications"
+                className="relative flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-white/86 text-slate-700 shadow-[0_10px_24px_rgba(89,50,95,0.07)]"
+              >
+                <Bell className="h-4 w-4" />
+                {notificationCount && (
+                  <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#111411] px-1 text-[10px] font-semibold text-white">
+                    {notificationCount}
+                  </span>
+                )}
+              </button>
+              <button
+                type="button"
+                className="flex min-h-10 items-center gap-2 rounded-full border border-white/80 bg-white/86 px-2 text-sm font-medium text-[#111411] shadow-[0_10px_24px_rgba(89,50,95,0.07)]"
+              >
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#111411] text-xs font-semibold text-white">{profileInitials}</span>
+                <span className="hidden max-w-[92px] truncate sm:inline">{profileName ?? workspace}</span>
+              </button>
+            </div>
+          </div>
+          <nav className="mt-3 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -242,16 +280,21 @@ export function AppFrame({
                 end={item.end}
                 className={({ isActive }) =>
                   cn(
-                    "shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium",
+                    "inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-full border px-3 text-xs font-medium",
                     isActive ? "border-[#d8aecf] bg-white text-[#111411]" : "border-black/[0.08] bg-white/80 text-slate-700",
                   )
                 }
               >
-                {item.icon && <span className="mr-1 inline-flex align-middle">{item.icon}</span>}
+                {item.icon && <span className="inline-flex">{item.icon}</span>}
                 {item.label}
+                {item.badge && (
+                  <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-[#f1dced] px-1 text-[10px] font-semibold text-[#633475]">
+                    {item.badge}
+                  </span>
+                )}
               </NavLink>
             ))}
-          </div>
+          </nav>
         </header>
         <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">{children}</main>
       </div>

@@ -30,8 +30,8 @@ export function BusinessShell() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-[#f8f1e8] text-business-ink lg:grid lg:grid-cols-[264px_1fr]">
-      <aside className="hidden border-r border-black/[0.06] bg-white/70 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
+    <div className="min-h-screen bg-[#f8f1e8] text-business-ink">
+      <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.06] bg-white/70 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
         <div className="flex h-[112px] items-center border-b border-black/[0.06] px-4">
           <img
             src="/images/careporter-for-business-logo.png"
@@ -92,7 +92,7 @@ export function BusinessShell() {
         </div>
       </aside>
 
-      <div className="min-w-0 pb-24 lg:pb-0">
+      <div className="min-w-0 pb-24 lg:pl-[264px] lg:pb-0">
         <header className="sticky top-0 z-40 h-[112px] border-b border-black/[0.06] bg-[#f8f1e8]/82 backdrop-blur-xl">
           <div className="mx-auto flex h-full max-w-[1320px] items-center gap-3 px-4 sm:px-6 lg:px-7">
             <NavLink to="/" className="mr-auto flex items-center lg:hidden">
