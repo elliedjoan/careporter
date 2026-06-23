@@ -13,7 +13,6 @@ import {
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { DashboardShell, DashboardTopActions } from "../components/DashboardShell";
-import { ServiceSearchBar } from "../components/ServiceSearchBar";
 import { services } from "../data/mockData";
 
 const transportImage = services.find((service) => service.id === "transport")?.image ?? "/images/services/transport.png";
@@ -140,122 +139,33 @@ const documents = [
   { title: "Maggie's care preferences", source: "CarePorter", updated: "14 Jun 2026", type: "Profile" },
 ];
 
+const dashboardTiles = [
+  { title: "Dashboard", to: "/dashboard" },
+  { title: "Bookings", to: "/dashboard/bookings" },
+  { title: "Messages", to: "/dashboard/messages" },
+  { title: "Approvals", to: "/dashboard/approvals" },
+  { title: "Saved", to: "/dashboard/services" },
+  { title: "Profile", to: "/dashboard/profile" },
+];
+
 export function DashboardPage() {
   return (
     <DashboardShell>
-      <PageHeader
-        title="Hi Maggie"
-        description="Book support, then track what is happening now. The rest stays out of the way."
-        action={
+      <h1 className="text-[2rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.35rem]">
+        Dashboard
+      </h1>
+
+      <section className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {dashboardTiles.map((tile) => (
           <Link
-            to="/services"
-            className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#111411] px-4 text-sm font-medium text-white"
+            key={tile.to}
+            to={tile.to}
+            className="flex min-h-[8.5rem] items-end rounded-lg border border-black/[0.08] bg-[#fffaf4] p-5 text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_34px_rgba(89,50,95,0.045)] transition hover:border-[#d8aecf] hover:bg-white"
           >
-            Book a service
+            {tile.title}
           </Link>
-        }
-      />
-
-      <div className="mt-6 grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
-        <Card className="overflow-hidden bg-[#fffaf4] shadow-[0_18px_42px_rgba(89,50,95,0.06)]">
-          <div className="grid gap-5 p-4 sm:p-5 lg:grid-cols-[minmax(0,0.92fr)_220px] lg:items-center">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#7a3f8f]">Book</p>
-              <h2 className="mt-2 max-w-md text-[1.75rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.15rem]">
-                What support do you need today?
-              </h2>
-              <ServiceSearchBar
-                className="mt-5 max-w-2xl"
-                servicePlaceholder="Cleaning, transport, gardening..."
-                actionTo="/services"
-              />
-              <div className="mt-4 flex flex-wrap gap-2">
-                {[
-                  { label: "Cleaning", to: "/services/cleaning" },
-                  { label: "Transport", to: "/services/transport" },
-                  { label: "Gardening", to: "/services/gardening" },
-                  { label: "Meals", to: "/services/meals" },
-                ].map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.to}
-                    className="rounded-full border border-[#ead8ec] bg-white px-3 py-1.5 text-xs font-medium text-[#151917] transition hover:border-[#d8aecf]"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <img src={cleaningImage} alt="" className="h-44 w-full rounded-lg object-cover lg:h-52" />
-          </div>
-        </Card>
-
-        <Card className="bg-[#fffaf4] p-4 shadow-[0_18px_42px_rgba(89,50,95,0.06)] sm:p-5">
-          <div className="flex items-start justify-between gap-4">
-            <PanelHeading title="Current booking" />
-            <StatusPill status="Confirmed" />
-          </div>
-          <div className="mt-4 overflow-hidden rounded-lg">
-            <img src={transportImage} alt="" className="h-40 w-full object-cover" />
-          </div>
-          <div className="mt-4">
-            <h2 className="text-xl font-semibold tracking-[-0.04em] text-[#111411]">Transport with Kindway</h2>
-            <p className="mt-1 text-sm text-slate-600">Wed, 18 Jun at 9:15 am</p>
-          </div>
-          <div className="mt-5 grid gap-3">
-            {[
-              { label: "Requested", active: true },
-              { label: "Confirmed", active: true },
-              { label: "Next up", active: false },
-            ].map((step) => (
-              <div key={step.label} className="grid grid-cols-[18px_1fr] items-center gap-3">
-                <span className={["h-2.5 w-2.5 rounded-full", step.active ? "bg-[#111411]" : "bg-slate-300"].join(" ")} />
-                <span className={["text-sm font-medium", step.active ? "text-[#111411]" : "text-slate-500"].join(" ")}>
-                  {step.label}
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-5 grid gap-2 sm:grid-cols-2">
-            <Link
-              to="/dashboard/bookings/CP-1042"
-              className="flex min-h-10 items-center justify-center rounded-full bg-[#111411] px-4 text-sm font-medium text-white"
-            >
-              Track booking
-            </Link>
-            <Link
-              to="/dashboard/messages"
-              className="flex min-h-10 items-center justify-center rounded-full border border-black/[0.1] bg-white px-4 text-sm font-medium text-[#151917]"
-            >
-              Message
-            </Link>
-          </div>
-        </Card>
-      </div>
-
-      <div className="mt-4 grid gap-4 md:grid-cols-3">
-        <SimpleCard
-          title="Needs action"
-          body="BrightPath still needs to approve your home cleaning request."
-          action="Review"
-          to="/dashboard/approvals"
-          tone="amber"
-        />
-        <SimpleCard
-          title="Latest update"
-          body="Coast & Garden added a progress note after the garden tidy-up."
-          action="Open"
-          to="/dashboard/messages"
-          tone="sea"
-        />
-        <SimpleCard
-          title="Book again"
-          body="Northside Home Care is saved for repeat cleaning visits."
-          action="Book"
-          to="/services/cleaning"
-          tone="slate"
-        />
-      </div>
+        ))}
+      </section>
     </DashboardShell>
   );
 }

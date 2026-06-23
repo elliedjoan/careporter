@@ -1,7 +1,7 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { CheckCircle2, Download, LockKeyhole, MessageSquare, ReceiptText, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
-import { launchMetrics, providerApprovalQueue, providerFeatureGates } from "@careporter/domain";
-import { AppFrame, FieldLabel, MetricCard, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
+import { Download, UsersRound } from "lucide-react";
+import { providerApprovalQueue, providerFeatureGates } from "@careporter/domain";
+import { AppFrame, FieldLabel, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
 
 const navItems = [
   { label: "Overview", to: "/", end: true },
@@ -55,45 +55,21 @@ export function App() {
 function OverviewPage() {
   return (
     <div>
-      <PageHeader
-        eyebrow="Provider workspace"
-        title="Approve care with confidence"
-        description="Review provider-managed service requests, check progress, pay invoices, and upgrade when the provider team needs shared workflow controls."
-        action={<PrimaryButton>Review urgent approvals</PrimaryButton>}
-      />
+      <h1 className="text-[2.1rem] font-semibold leading-[0.98] tracking-[-0.055em] text-[#111411] sm:text-[2.75rem]">
+        Overview
+      </h1>
 
-      <section className="mt-6 grid gap-3 sm:grid-cols-3">
-        {launchMetrics.provider.map((metric, index) => (
-          <MetricCard key={metric.label} {...metric} tone={index === 0 ? "coral" : index === 1 ? "sea" : "lavender"} />
+      <section className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {navItems.map((tile) => (
+          <Link
+            key={tile.to}
+            to={tile.to}
+            className="flex min-h-[8.5rem] items-end rounded-xl border border-black/[0.08] bg-white p-5 text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_36px_rgba(15,23,42,0.045)] transition hover:border-[#d8aecf] hover:bg-[#fffaf4]"
+          >
+            {tile.label}
+          </Link>
         ))}
       </section>
-
-      <div className="mt-5 grid gap-5 xl:grid-cols-[1.12fr_0.88fr]">
-        <Surface className="p-4 sm:p-5">
-          <div className="flex items-start justify-between gap-4">
-            <h2 className="text-lg font-semibold tracking-[-0.03em] text-[#111411]">Approval queue</h2>
-            <StatusPill tone="amber">Free workflow</StatusPill>
-          </div>
-          <div className="mt-4 divide-y divide-black/[0.07]">
-            {providerApprovalQueue.map((approval) => (
-              <ApprovalRow key={approval.id} approval={approval} />
-            ))}
-          </div>
-        </Surface>
-
-        <Surface className="p-4 sm:p-5">
-          <div className="flex items-center gap-2">
-            <LockKeyhole className="h-4 w-4 text-[#7a3f8f]" />
-            <h2 className="text-lg font-semibold tracking-[-0.03em] text-[#111411]">Paid plan unlocks</h2>
-          </div>
-          <div className="mt-4 grid gap-3">
-            <FeatureLock title="Team seats" body="Route approvals to finance, care coordinators, and managers." />
-            <FeatureLock title="Bulk approvals" body="Approve repeat low-risk services without opening every booking." />
-            <FeatureLock title="Reports and exports" body="Download provider spend, audit, and invoice reports." />
-          </div>
-          <PrimaryButton className="mt-5 w-full">Upgrade provider workspace</PrimaryButton>
-        </Surface>
-      </div>
     </div>
   );
 }
@@ -244,16 +220,3 @@ function ApprovalRow({ approval }: { approval: (typeof providerApprovalQueue)[nu
   );
 }
 
-function FeatureLock({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="rounded-lg border border-black/[0.08] bg-white p-3">
-      <div className="flex items-start gap-3">
-        <Sparkles className="mt-0.5 h-4 w-4 text-[#7a3f8f]" />
-        <div>
-          <h3 className="text-sm font-semibold text-[#111411]">{title}</h3>
-          <p className="mt-1 text-xs leading-5 text-slate-600">{body}</p>
-        </div>
-      </div>
-    </div>
-  );
-}

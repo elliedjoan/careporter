@@ -1,7 +1,7 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { AlertTriangle, BadgeCheck, Banknote, Building2, FileCheck2, ShieldAlert, UsersRound } from "lucide-react";
-import { adminVerificationQueue, launchMetrics } from "@careporter/domain";
-import { AppFrame, FieldLabel, MetricCard, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
+import { AlertTriangle, Banknote, Building2, FileCheck2 } from "lucide-react";
+import { adminVerificationQueue } from "@careporter/domain";
+import { AppFrame, FieldLabel, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
 
 const navItems = [
   { label: "Overview", to: "/", end: true },
@@ -49,41 +49,21 @@ export function App() {
 function OverviewPage() {
   return (
     <div>
-      <PageHeader
-        eyebrow="Admin control room"
-        title="Keep the marketplace trusted"
-        description="Manage vendor verification, provider pilots, booking risks, payment events, and the human review steps that make CarePorter safe to launch."
-        action={<PrimaryButton>Open human review</PrimaryButton>}
-      />
-      <section className="mt-6 grid gap-3 sm:grid-cols-3">
-        {launchMetrics.admin.map((metric, index) => (
-          <MetricCard key={metric.label} {...metric} tone={index === 0 ? "amber" : index === 1 ? "sea" : "coral"} />
+      <h1 className="text-[2.1rem] font-semibold leading-[0.98] tracking-[-0.055em] text-[#111411] sm:text-[2.75rem]">
+        Overview
+      </h1>
+
+      <section className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {navItems.map((tile) => (
+          <Link
+            key={tile.to}
+            to={tile.to}
+            className="flex min-h-[8.5rem] items-end rounded-xl border border-black/[0.08] bg-white p-5 text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_36px_rgba(15,23,42,0.045)] transition hover:border-[#d8aecf] hover:bg-[#fffaf4]"
+          >
+            {tile.label}
+          </Link>
         ))}
       </section>
-      <div className="mt-5 grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
-        <Surface className="p-4 sm:p-5">
-          <div className="flex items-center gap-2">
-            <BadgeCheck className="h-4 w-4 text-[#35665b]" />
-            <h2 className="text-lg font-semibold tracking-[-0.03em]">Verification queue</h2>
-          </div>
-          <div className="mt-4 divide-y divide-black/[0.07]">
-            {adminVerificationQueue.map((item) => (
-              <VerificationRow key={item.id} item={item} />
-            ))}
-          </div>
-        </Surface>
-        <Surface className="p-4 sm:p-5">
-          <div className="flex items-center gap-2">
-            <ShieldAlert className="h-4 w-4 text-[#ef7f6d]" />
-            <h2 className="text-lg font-semibold tracking-[-0.03em]">Launch risks</h2>
-          </div>
-          <div className="mt-4 grid gap-3">
-            <RiskCard title="Invoice overdue" body="Provider-managed booking CP-1025 is overdue and visible to BrightPath finance." tone="coral" />
-            <RiskCard title="Compliance renewal" body="Bright Hands Cleaning needs renewed public liability insurance." tone="amber" />
-            <RiskCard title="Provider conversion" body="Harbour Care is using paid workflow during trial but no subscription is active." tone="lavender" />
-          </div>
-        </Surface>
-      </div>
     </div>
   );
 }
