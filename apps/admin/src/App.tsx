@@ -43,6 +43,8 @@ export function App() {
       appName="CarePorter Admin"
       workspace="Internal operations"
       navItems={navItems}
+      logoSrc="/images/careporter-internal-ops-logo.png"
+      logoAlt="CarePorter Internal Ops"
       searchPlaceholder="Search vendors, bookings, providers..."
       profileName="CarePorter Admin"
       profileInitials="CP"

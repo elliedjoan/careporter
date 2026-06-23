@@ -130,7 +130,7 @@ export function AppFrame({
       <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.06] bg-white/70 px-4 py-5 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
         <div className={cn("flex", logoSrc ? "flex-col items-start gap-3" : "items-center gap-3")}>
           {logoSrc ? (
-            <img src={logoSrc} alt={logoAlt ?? appName} className="h-auto w-full max-w-[178px] object-contain" />
+            <img src={logoSrc} alt={logoAlt ?? appName} className="max-h-[82px] w-full max-w-[178px] object-contain object-left" />
           ) : (
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111411] text-sm font-semibold text-white">CP</span>
           )}
