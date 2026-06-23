@@ -1,10 +1,9 @@
 import { Link, Navigate, Route, Routes } from "react-router-dom";
-import { AlertTriangle, Banknote, Building2, CalendarCheck, FileCheck2, House } from "lucide-react";
+import { AlertTriangle, Banknote, Building2, CalendarCheck, FileCheck2 } from "lucide-react";
 import { adminVerificationQueue } from "@careporter/domain";
 import { AppFrame, FieldLabel, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
 
 const navItems = [
-  { label: "Home", to: "/", end: true, icon: <House className="h-4 w-4" />, homeIconOnly: true },
   { label: "Verification", to: "/verification", icon: <FileCheck2 className="h-4 w-4" />, badge: "3" },
   { label: "Bookings", to: "/bookings", icon: <CalendarCheck className="h-4 w-4" /> },
   { label: "Providers", to: "/providers", icon: <Building2 className="h-4 w-4" /> },

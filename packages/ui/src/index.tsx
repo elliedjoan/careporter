@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Bell, ChevronDown, Search, Settings } from "lucide-react";
+import { Bell, ChevronDown, House, Search, Settings } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 export function cn(...classes: Array<string | false | null | undefined>) {
@@ -183,6 +183,20 @@ export function AppFrame({
                 placeholder={searchPlaceholder}
               />
             </label>
+            <NavLink
+              to="/"
+              end
+              title="Home"
+              aria-label="Home"
+              className={({ isActive }) =>
+                cn(
+                  "flex h-11 w-11 items-center justify-center rounded-full border text-slate-700 shadow-[0_12px_30px_rgba(89,50,95,0.07)] transition hover:bg-white",
+                  isActive ? "border-[#d8aecf] bg-white text-[#111411]" : "border-white/80 bg-white/86",
+                )
+              }
+            >
+              <House className="h-4 w-4" />
+            </NavLink>
             <button
               type="button"
               title="Notifications"

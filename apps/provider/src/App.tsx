@@ -1,10 +1,9 @@
 import { Link, Navigate, Route, Routes } from "react-router-dom";
-import { ClipboardCheck, CreditCard, Download, History, House, Receipt, UsersRound } from "lucide-react";
+import { ClipboardCheck, CreditCard, Download, History, Receipt, UsersRound } from "lucide-react";
 import { getTimeOfDayGreeting, providerApprovalQueue, providerFeatureGates } from "@careporter/domain";
 import { AppFrame, FieldLabel, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
 
 const navItems = [
-  { label: "Home", to: "/", end: true, icon: <House className="h-4 w-4" />, homeIconOnly: true },
   { label: "Approvals", to: "/approvals", icon: <ClipboardCheck className="h-4 w-4" />, badge: "3" },
   { label: "Clients", to: "/clients", icon: <UsersRound className="h-4 w-4" /> },
   { label: "Invoices", to: "/invoices", icon: <Receipt className="h-4 w-4" />, badge: "2" },
