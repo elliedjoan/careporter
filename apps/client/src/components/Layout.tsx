@@ -23,6 +23,12 @@ export function Layout() {
             />
           </NavLink>
           <nav className="hidden items-center gap-2 md:flex">
+            <a
+              href="https://careporter-business.vercel.app"
+              className="rounded-full border border-transparent px-4 py-2 text-sm font-medium text-[#7a3f8f] transition hover:bg-white/70 hover:text-[#5f2d72]"
+            >
+              List your Business
+            </a>
             {nav.map((item) => {
               const isActive = item.active?.some((path) => location.pathname.startsWith(path)) ?? location.pathname === item.to;
 
