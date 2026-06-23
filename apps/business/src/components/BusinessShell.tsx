@@ -22,7 +22,7 @@ const primaryNav = [
   { to: "/availability", label: "Availability", icon: CalendarDays },
   { to: "/requests", label: "Requests", icon: CalendarCheck, badge: "5" },
   { to: "/messages", label: "Messages", icon: Inbox, badge: "4" },
-  { to: "/documents", label: "Documents", icon: FileCheck2 },
+  { to: "/verification", label: "Verification", icon: FileCheck2 },
   { to: "/invoices", label: "Invoices", icon: Receipt, badge: "2" },
 ];
 

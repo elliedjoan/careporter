@@ -1,4 +1,5 @@
 import { FileUp, ShieldAlert } from "lucide-react";
+import { TrustFrameworkPanel } from "../components/TrustFrameworkPanel";
 import { FieldLabel, PageHeader, Panel, StatusBadge } from "../components/Primitives";
 import { documents } from "../data/businessData";
 
@@ -13,8 +14,8 @@ export function DocumentsPage() {
     <div>
       <PageHeader
         eyebrow="Verification"
-        title="Documents"
-        description="Upload the documents CarePorter needs to verify your vendor profile and keep your service visible to clients."
+        title="Verification"
+        description="Track your CarePorter trust level, upload compliance documents, and level up to Aged Care Ready."
         action={
           <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-business-ink px-3.5 text-sm font-medium text-white">
             <FileUp className="h-4 w-4" />
@@ -23,7 +24,9 @@ export function DocumentsPage() {
         }
       />
 
-      <Panel className="mt-6" title="Verification documents">
+      <TrustFrameworkPanel className="mt-6" />
+
+      <Panel className="mt-5" title="Verification documents">
         <div className="divide-y divide-business-line">
           {documents.map((document) => (
             <div key={document.name} className="grid gap-4 px-4 py-4 md:grid-cols-[42px_1fr_160px_150px_auto] md:items-center">

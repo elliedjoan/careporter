@@ -17,7 +17,8 @@ export function App() {
         <Route path="/availability" element={<AvailabilityPage />} />
         <Route path="/requests" element={<RequestsPage />} />
         <Route path="/messages" element={<MessagesPage />} />
-        <Route path="/documents" element={<DocumentsPage />} />
+        <Route path="/verification" element={<DocumentsPage />} />
+        <Route path="/documents" element={<Navigate to="/verification" replace />} />
         <Route path="/invoices" element={<InvoicesPage />} />
         <Route path="/services" element={<Navigate to="/service-profile" replace />} />
         <Route path="/bookings" element={<Navigate to="/requests" replace />} />
