@@ -113,7 +113,7 @@ export function AppFrame({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#f7f5ef] text-[#17211f]">
+    <div className="min-h-screen bg-[#f4ecde] text-[#17211f]">
       <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.08] bg-[#fbfaf7] px-4 py-5 lg:block">
         <div className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111411] text-sm font-semibold text-white">CP</span>
@@ -132,7 +132,7 @@ export function AppFrame({
                 cn(
                   "rounded-full border px-3 py-2.5 text-sm font-medium transition",
                   isActive
-                    ? "border-black/[0.08] bg-white text-[#111411] shadow-[0_10px_26px_rgba(15,23,42,0.05)]"
+                    ? "border-[#d8aecf] bg-[#d8aecf]/62 text-[#111411] shadow-[0_10px_26px_rgba(89,50,95,0.08)]"
                     : "border-transparent text-slate-600 hover:bg-white/70 hover:text-[#111411]",
                 )
               }
@@ -143,7 +143,7 @@ export function AppFrame({
         </nav>
       </aside>
       <div className="lg:pl-[264px]">
-        <header className="sticky top-0 z-10 border-b border-black/[0.08] bg-white/88 px-4 py-3 backdrop-blur lg:hidden">
+        <header className="sticky top-0 z-10 border-b border-black/[0.08] bg-[#f4ecde]/92 px-4 py-3 backdrop-blur lg:hidden">
           <p className="text-sm font-semibold">{appName}</p>
           <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
             {navItems.map((item) => (
@@ -154,7 +154,7 @@ export function AppFrame({
                 className={({ isActive }) =>
                   cn(
                     "shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium",
-                    isActive ? "border-black/[0.08] bg-[#111411] text-white" : "border-black/[0.08] bg-white text-slate-700",
+                    isActive ? "border-[#d8aecf] bg-[#d8aecf] text-[#111411]" : "border-black/[0.08] bg-white text-slate-700",
                   )
                 }
               >

@@ -30,13 +30,13 @@ export function ServicesPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <h2 className="text-2xl font-black text-business-ink">{serviceProfile.name}</h2>
+                  <h2 className="text-2xl font-semibold text-business-ink">{serviceProfile.name}</h2>
                   <StatusBadge tone="green">{serviceProfile.status}</StatusBadge>
                 </div>
                 <p className="mt-2 text-sm font-bold text-slate-600">{serviceProfile.category}</p>
               </div>
               <div className="rounded-lg border border-black/[0.08] bg-white p-3 text-right">
-                <p className="text-2xl font-black text-business-ink">{formatCurrency(serviceProfile.rate)}/hr</p>
+                <p className="text-2xl font-semibold text-business-ink">{formatCurrency(serviceProfile.rate)}/hr</p>
                 <p className="text-xs font-bold text-business-sea">Displayed base rate</p>
               </div>
             </div>
@@ -75,7 +75,7 @@ export function ServicesPage() {
           <div className="grid gap-3 p-4">
             {serviceProfile.requirements.map((requirement) => (
               <div key={requirement} className="flex items-center justify-between gap-3 rounded-lg border border-business-line bg-white p-3">
-                <span className="text-sm font-black text-business-ink">{requirement}</span>
+                <span className="text-sm font-semibold text-business-ink">{requirement}</span>
                 <StatusBadge tone={requirement === "Public liability insurance" ? "amber" : "green"}>
                   {requirement === "Public liability insurance" ? "Renew soon" : "Current"}
                 </StatusBadge>
@@ -97,7 +97,7 @@ export function ServicesPage() {
           {serviceExamples.map((example) => (
             <div key={example.id} className="grid gap-4 px-4 py-4 md:grid-cols-[1fr_120px_120px_140px_auto] md:items-center">
               <div>
-                <h3 className="font-black text-business-ink">{example.name}</h3>
+                <h3 className="font-semibold text-business-ink">{example.name}</h3>
                 <p className="mt-1 text-sm font-semibold text-slate-600">{example.availability}</p>
               </div>
               <FieldLabel label="Duration" value={example.duration} />

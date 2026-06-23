@@ -33,7 +33,7 @@ export function RequestsPage() {
                 <FieldLabel label="Request" value={request.id} />
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="font-black text-business-ink">{request.client}</h2>
+                    <h2 className="font-semibold text-business-ink">{request.client}</h2>
                     <StatusBadge tone={requestTone(request.status)}>{request.status}</StatusBadge>
                   </div>
                   <p className="mt-1 text-sm font-semibold text-slate-600">
@@ -78,8 +78,8 @@ export function RequestsPage() {
           return (
             <article key={item.label} className="rounded-lg border border-business-line bg-white p-4 shadow-business">
               <Icon className="h-4 w-4 text-business-coral" />
-              <p className="mt-3 text-3xl font-black">{item.value}</p>
-              <h2 className="mt-1 text-sm font-black">{item.label}</h2>
+              <p className="mt-3 text-3xl font-semibold">{item.value}</p>
+              <h2 className="mt-1 text-sm font-semibold">{item.label}</h2>
               <p className="mt-1 text-xs font-semibold text-slate-500">{item.body}</p>
             </article>
           );

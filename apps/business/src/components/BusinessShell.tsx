@@ -32,7 +32,7 @@ export function BusinessShell() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-[#f7f5ef] text-business-ink lg:grid lg:grid-cols-[252px_1fr]">
+    <div className="min-h-screen bg-[#f4ecde] text-business-ink lg:grid lg:grid-cols-[252px_1fr]">
       <aside className="hidden border-r border-black/10 bg-[#fbfaf7] lg:block">
         <div className="flex h-24 items-center border-b border-black/10 px-5">
           <img
@@ -54,7 +54,7 @@ export function BusinessShell() {
                 className={cx(
                   "flex min-h-11 items-center justify-between rounded-full border px-3 text-sm font-medium transition",
                   isActive
-                    ? "border-black/[0.08] bg-white text-business-ink shadow-[0_10px_26px_rgba(15,23,42,0.05)]"
+                    ? "border-[#d8aecf] bg-[#d8aecf]/62 text-business-ink shadow-[0_10px_26px_rgba(89,50,95,0.08)]"
                     : "border-transparent text-business-ink/68 hover:bg-white/72 hover:text-business-ink",
                 )}
               >
@@ -64,7 +64,7 @@ export function BusinessShell() {
                 </span>
                 {item.badge && (
                   <span className={cx(
-                    "flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-black",
+                    "flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-semibold",
                     isActive ? "bg-[#111411] text-white" : "bg-white text-business-sea",
                   )}>
                     {item.badge}
@@ -77,20 +77,20 @@ export function BusinessShell() {
 
         <div className="mx-3 mt-4 rounded-lg border border-black/10 bg-white p-3 shadow-business">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-business-ink/48">Workspace</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-business-ink/48">Workspace</p>
             <span className="rounded-full border border-black/[0.1] bg-white px-2 py-1 text-[10px] font-semibold text-business-sea">
               {businessProfile.verificationStatus}
             </span>
           </div>
-          <p className="mt-3 text-sm font-black">{businessProfile.name}</p>
+          <p className="mt-3 text-sm font-semibold">{businessProfile.name}</p>
           <p className="mt-1 text-xs font-semibold text-business-ink/62">{businessProfile.service} - {businessProfile.suburb}</p>
           <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
             <span className="rounded-lg border border-black/[0.06] bg-white p-2">
-              <span className="block font-black">{businessProfile.rating}</span>
+              <span className="block font-semibold">{businessProfile.rating}</span>
               <span className="text-business-ink/48">rating</span>
             </span>
             <span className="rounded-lg border border-black/[0.06] bg-white p-2">
-              <span className="block font-black">{businessProfile.responseTime}</span>
+              <span className="block font-semibold">{businessProfile.responseTime}</span>
               <span className="text-business-ink/48">reply</span>
             </span>
           </div>
@@ -98,7 +98,7 @@ export function BusinessShell() {
       </aside>
 
       <div className="min-w-0 pb-24 lg:pb-0">
-        <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f7f5ef]/95 backdrop-blur-xl">
+        <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f4ecde]/95 backdrop-blur-xl">
           <div className="flex min-h-16 items-center gap-3 px-4 sm:px-6 lg:px-7">
             <NavLink to="/" className="mr-auto flex items-center lg:hidden">
               <img
@@ -157,7 +157,7 @@ export function BusinessShell() {
         </main>
       </div>
 
-      <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-[#f7f5ef]/95 px-2 py-2 shadow-[0_-16px_36px_rgba(31,51,46,0.08)] backdrop-blur-xl lg:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-[#f4ecde]/95 px-2 py-2 shadow-[0_-16px_36px_rgba(31,51,46,0.08)] backdrop-blur-xl lg:hidden">
         <div className="grid grid-cols-5 gap-1">
           {mobileNav.map((item) => {
             const Icon = item.icon;
@@ -169,7 +169,7 @@ export function BusinessShell() {
                 to={item.to}
                 className={cx(
                   "flex min-h-14 flex-col items-center justify-center gap-1 rounded-full text-[11px] font-medium",
-                  isActive ? "bg-[#111411] text-white" : "text-business-ink/58",
+                  isActive ? "bg-[#d8aecf] text-business-ink" : "text-business-ink/58",
                 )}
               >
                 <Icon className="h-4 w-4" />

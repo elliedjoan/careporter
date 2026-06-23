@@ -41,8 +41,8 @@ export function InvoicesPage() {
           return (
             <article key={item.title} className="rounded-lg border border-business-line bg-white p-4 shadow-business">
               <Icon className="h-4 w-4 text-business-sea" />
-              <p className="mt-4 text-3xl font-black">{item.value}</p>
-              <h2 className="mt-1 text-sm font-black text-business-ink">{item.title}</h2>
+              <p className="mt-4 text-3xl font-semibold">{item.value}</p>
+              <h2 className="mt-1 text-sm font-semibold text-business-ink">{item.title}</h2>
               <p className="mt-1 text-xs font-semibold text-slate-500">{item.body}</p>
             </article>
           );
@@ -56,7 +56,7 @@ export function InvoicesPage() {
               <div className="grid gap-4 xl:grid-cols-[110px_1fr_180px_190px_140px_auto] xl:items-center">
                 <FieldLabel label="Invoice" value={invoice.id} />
                 <div>
-                  <h2 className="font-black text-business-ink">{invoice.client}</h2>
+                  <h2 className="font-semibold text-business-ink">{invoice.client}</h2>
                   <p className="mt-1 text-sm font-semibold text-slate-600">{invoice.service} - {invoice.serviceDate}</p>
                 </div>
                 <FieldLabel label="Sent to" value={invoice.sentTo} />
@@ -64,7 +64,7 @@ export function InvoicesPage() {
                   <FieldLabel label="Finance email" value={invoice.financeEmail} />
                   <p className="mt-1 text-xs font-semibold text-slate-500">Due {invoice.dueDate}</p>
                 </div>
-                <p className="text-sm font-black text-business-ink">{formatCurrency(invoice.amount)}</p>
+                <p className="text-sm font-semibold text-business-ink">{formatCurrency(invoice.amount)}</p>
                 <StatusBadge tone={invoiceTone(invoice.status)}>{invoice.status}</StatusBadge>
               </div>
               <div className="mt-4 flex flex-col gap-3 rounded-lg border border-business-line bg-white p-3 md:flex-row md:items-center md:justify-between">

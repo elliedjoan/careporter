@@ -1,5 +1,13 @@
-import { CalendarPlus, CheckCircle2, Clock3, FileUp, ReceiptText, Send } from "lucide-react";
-import { actionQueue, dashboardMetrics, invoices, serviceProfile, serviceRequests, todaySchedule } from "../data/businessData";
+import { CalendarPlus, CheckCircle2, Clock3, FileUp, ReceiptText, Send, ShieldCheck } from "lucide-react";
+import {
+  actionQueue,
+  dashboardMetrics,
+  invoices,
+  serviceProfile,
+  serviceRequests,
+  todaySchedule,
+  vendorVerificationLevels,
+} from "../data/businessData";
 import { FieldLabel, Panel, PageHeader, StatusBadge, TextAction } from "../components/Primitives";
 
 const metricIcon = [CalendarPlus, CheckCircle2, ReceiptText, FileUp];
@@ -19,7 +27,7 @@ export function OverviewPage() {
       <PageHeader
         eyebrow="Vendor dashboard"
         title={serviceProfile.name}
-        description="Confirm client requests, keep your availability current, complete services, and follow up invoices sent to care-provider finance contacts."
+        description="Confirm client requests, keep your availability current, complete services, and level up verification to win more provider-managed work."
         action={
           <button className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-business-ink px-3.5 text-sm font-medium text-white">
             <CalendarPlus className="h-4 w-4" />
@@ -32,19 +40,59 @@ export function OverviewPage() {
         {dashboardMetrics.map((metric, index) => {
           const Icon = metricIcon[index];
           return (
-            <article key={metric.label} className="rounded-lg border border-business-line bg-white p-4 shadow-business">
+            <article key={metric.label} className="rounded-lg border border-business-line bg-[#fffaf4] p-4 shadow-business">
               <div className="flex items-start justify-between gap-3">
-                <p className="text-sm font-bold text-slate-600">{metric.label}</p>
+                <p className="text-sm font-medium text-slate-600">{metric.label}</p>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.08] bg-white text-business-sea">
                   <Icon className="h-4 w-4" />
                 </span>
               </div>
-              <p className="mt-4 text-3xl font-black tracking-normal text-business-ink">{metric.value}</p>
-              <p className="mt-1 text-xs font-semibold text-slate-500">{metric.detail}</p>
+              <p className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-business-ink">{metric.value}</p>
+              <p className="mt-1 text-xs font-medium text-slate-500">{metric.detail}</p>
             </article>
           );
         })}
       </section>
+
+      <Panel
+        title="Verification pathway"
+        action={<TextAction>Upload documents</TextAction>}
+        className="mt-5 bg-[#fffaf4]"
+      >
+        <div className="grid gap-3 p-4 lg:grid-cols-[1fr_1fr_0.7fr]">
+          {vendorVerificationLevels.map((level) => (
+            <article key={level.name} className="rounded-lg border border-business-line bg-white p-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#d8aecf] text-business-ink">
+                    <ShieldCheck className="h-4 w-4" />
+                  </span>
+                  <div>
+                    <h2 className="text-sm font-semibold text-business-ink">{level.name}</h2>
+                    <p className="mt-0.5 text-xs text-slate-500">{level.status}</p>
+                  </div>
+                </div>
+                <StatusBadge tone={level.tone}>{level.status}</StatusBadge>
+              </div>
+              <p className="mt-4 text-sm leading-6 text-slate-600">{level.summary}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {level.checks.map((check) => (
+                  <span key={check} className="rounded-full border border-[#ead8ec] bg-[#fbf7fb] px-2.5 py-1 text-[11px] font-medium text-business-ink">
+                    {check}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+          <article className="rounded-lg border border-dashed border-[#d8aecf] bg-[#fbf7fb] p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#7a3f8f]">Future</p>
+            <h2 className="mt-2 text-lg font-semibold tracking-[-0.03em] text-business-ink">CarePorter Preferred</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              A future badge for high-performing, highly trusted vendors once monitoring and review history are proven.
+            </p>
+          </article>
+        </div>
+      </Panel>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[1.15fr_0.85fr]">
         <Panel title="Needs your attention" action={<TextAction>View requests</TextAction>}>
@@ -52,7 +100,7 @@ export function OverviewPage() {
             {actionQueue.map((item) => (
               <div key={item.id} className="grid gap-3 px-4 py-4 md:grid-cols-[1fr_150px_110px_auto] md:items-center">
                 <div>
-                  <h2 className="font-black text-business-ink">{item.title}</h2>
+                  <h2 className="font-semibold text-business-ink">{item.title}</h2>
                   <p className="mt-1 text-sm text-slate-600">{item.subject}</p>
                   <p className="mt-1 text-xs font-semibold text-slate-500">{item.meta}</p>
                 </div>
@@ -74,7 +122,7 @@ export function OverviewPage() {
                   {item.time}
                 </span>
                 <div className="min-w-0">
-                  <h3 className="truncate text-sm font-black">{item.service}</h3>
+                  <h3 className="truncate text-sm font-semibold">{item.service}</h3>
                   <p className="mt-0.5 truncate text-xs font-semibold text-slate-600">{item.client} - {item.worker}</p>
                 </div>
                 <StatusBadge tone={item.status === "Needs confirmation" ? "coral" : item.status === "In progress" ? "sea" : "slate"}>
@@ -93,7 +141,7 @@ export function OverviewPage() {
               <div key={request.id} className="grid gap-3 px-4 py-4 md:grid-cols-[1fr_auto] md:items-start">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="font-black">{request.client}</h3>
+                    <h3 className="font-semibold">{request.client}</h3>
                     <StatusBadge tone={requestTone(request.status)}>{request.status}</StatusBadge>
                   </div>
                   <p className="mt-1 text-sm font-semibold text-slate-600">{request.service} - {request.date}, {request.time}</p>
@@ -111,7 +159,7 @@ export function OverviewPage() {
               <article key={invoice.id} className="rounded-lg border border-black/[0.08] bg-white p-4">
                 <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                   <div>
-                    <h3 className="font-black text-business-ink">{invoice.id} is overdue</h3>
+                    <h3 className="font-semibold text-business-ink">{invoice.id} is overdue</h3>
                     <p className="mt-1 text-sm font-semibold text-slate-700">
                       Sent to {invoice.sentTo} at {invoice.financeEmail}
                     </p>
@@ -131,7 +179,7 @@ export function OverviewPage() {
             ))}
             <article className="rounded-lg border border-business-line bg-white p-4">
               <Clock3 className="h-4 w-4 text-business-sea" />
-              <h3 className="mt-2 font-black">When a service is complete</h3>
+              <h3 className="mt-2 font-semibold">When a service is complete</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 Tap complete, add notes or photos, and CarePorter generates the invoice using the care-provider approval and finance emails captured during the client request.
               </p>

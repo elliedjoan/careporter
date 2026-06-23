@@ -62,7 +62,7 @@ export function AvailabilityPage() {
           <Panel title="Client-facing next slot">
             <div className="p-4">
               <Clock className="h-4 w-4 text-business-sea" />
-              <p className="mt-3 text-2xl font-black">{serviceProfile.nextOpenSlot}</p>
+              <p className="mt-3 text-2xl font-semibold">{serviceProfile.nextOpenSlot}</p>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 This is the next time clients see when they request {serviceProfile.name.toLowerCase()}.
               </p>

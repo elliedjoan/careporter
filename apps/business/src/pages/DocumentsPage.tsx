@@ -31,7 +31,7 @@ export function DocumentsPage() {
                 <ShieldAlert className="h-4 w-4" />
               </span>
               <div>
-                <h2 className="font-black text-business-ink">{document.name}</h2>
+                <h2 className="font-semibold text-business-ink">{document.name}</h2>
                 <p className="mt-1 text-sm font-semibold text-slate-600">{document.type}</p>
               </div>
               <FieldLabel label="Expiry" value={document.expires} />

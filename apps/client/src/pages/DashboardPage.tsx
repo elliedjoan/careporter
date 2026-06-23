@@ -156,22 +156,22 @@ export function DashboardPage() {
       />
 
       <div className="mt-6 grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
-        <Card className="overflow-hidden shadow-none">
-          <div className="grid gap-5 p-4 sm:p-5 lg:grid-cols-[1fr_240px] lg:items-center">
+        <Card className="overflow-hidden bg-[#fffaf4] shadow-[0_18px_42px_rgba(89,50,95,0.06)]">
+          <div className="grid gap-5 p-4 sm:p-5 lg:grid-cols-[minmax(0,0.92fr)_220px] lg:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Book</p>
-              <h2 className="mt-2 max-w-xl text-[2rem] font-semibold leading-[1] tracking-[-0.055em] text-[#111411] sm:text-[2.65rem]">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#7a3f8f]">Book</p>
+              <h2 className="mt-2 max-w-md text-[1.75rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.15rem]">
                 What support do you need today?
               </h2>
               <Link
                 to="/services"
-                className="mt-5 flex min-h-14 items-center justify-between rounded-full border border-black/[0.1] bg-white px-4 text-left text-sm font-medium text-slate-500 shadow-[0_14px_34px_rgba(15,23,42,0.05)]"
+                className="mt-5 flex min-h-12 max-w-md items-center justify-between gap-3 rounded-full border border-[#ead8ec] bg-white px-4 text-left text-sm font-medium text-slate-500 shadow-[0_14px_34px_rgba(89,50,95,0.06)]"
               >
-                <span className="flex items-center gap-3">
-                  <Search className="h-4 w-4 text-[#111411]" />
-                  Cleaning, transport, gardening...
+                <span className="flex min-w-0 items-center gap-3">
+                  <Search className="h-4 w-4 shrink-0 text-[#7a3f8f]" />
+                  <span className="truncate">Cleaning, transport, gardening...</span>
                 </span>
-                <span className="rounded-full bg-[#111411] px-3 py-1.5 text-xs text-white">Search</span>
+                <span className="shrink-0 rounded-full bg-[#111411] px-3 py-1.5 text-xs text-white">Search</span>
               </Link>
               <div className="mt-4 flex flex-wrap gap-2">
                 {[
@@ -183,18 +183,18 @@ export function DashboardPage() {
                   <Link
                     key={item.label}
                     to={item.to}
-                    className="rounded-full border border-black/[0.1] bg-white px-3 py-1.5 text-xs font-medium text-[#151917] transition hover:border-black/20"
+                    className="rounded-full border border-[#ead8ec] bg-white px-3 py-1.5 text-xs font-medium text-[#151917] transition hover:border-[#d8aecf]"
                   >
                     {item.label}
                   </Link>
                 ))}
               </div>
             </div>
-            <img src={cleaningImage} alt="" className="h-48 w-full rounded-lg object-cover lg:h-56" />
+            <img src={cleaningImage} alt="" className="h-44 w-full rounded-lg object-cover lg:h-52" />
           </div>
         </Card>
 
-        <Card className="p-4 shadow-none sm:p-5">
+        <Card className="bg-[#fffaf4] p-4 shadow-[0_18px_42px_rgba(89,50,95,0.06)] sm:p-5">
           <div className="flex items-start justify-between gap-4">
             <PanelHeading title="Current booking" />
             <StatusPill status="Confirmed" />
@@ -608,7 +608,7 @@ function PageHeader({ title, description, action }: { title: string; description
   return (
     <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
       <div className="max-w-2xl">
-        <h1 className="text-[2rem] font-bold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.35rem]">{title}</h1>
+        <h1 className="text-[2rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.35rem]">{title}</h1>
         <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
       </div>
       <div className="flex items-center gap-2.5">
@@ -765,7 +765,7 @@ function SimpleCard({
   }[tone];
 
   return (
-    <Card className="p-4 shadow-none">
+    <Card className="bg-[#fffaf4] p-4 shadow-[0_14px_34px_rgba(89,50,95,0.045)]">
       <span className={`block h-2 w-2 rounded-full ${dotClass}`} />
       <h2 className="mt-4 text-base font-semibold tracking-[-0.03em] text-[#111411]">{title}</h2>
       <p className="mt-2 min-h-12 text-sm leading-6 text-slate-600">{body}</p>
@@ -829,7 +829,7 @@ function Avatar({ image, fallback }: { image: string | null; fallback: string })
 
 function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <section className={["rounded-lg border border-black/[0.08] bg-white shadow-[0_14px_36px_rgba(15,23,42,0.035)]", className].join(" ")}>
+    <section className={["rounded-lg border border-black/[0.08] bg-white shadow-[0_14px_36px_rgba(89,50,95,0.035)]", className].join(" ")}>
       {children}
     </section>
   );

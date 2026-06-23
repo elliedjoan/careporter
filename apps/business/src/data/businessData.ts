@@ -7,14 +7,32 @@ export const businessProfile = {
   service: "Garden maintenance",
   rating: 4.8,
   responseTime: "22 min",
-  verificationStatus: "Verified",
+  verificationStatus: "CarePorter Verified",
+  nextVerification: "CarePorter Aged Care Ready",
 };
+
+export const vendorVerificationLevels = [
+  {
+    name: "CarePorter Verified",
+    status: "Current",
+    tone: "sea" as Tone,
+    summary: "Your profile is live for clients and providers because the core compliance checks are on file.",
+    checks: ["ABN", "Insurance", "Police Check", "Verification"],
+  },
+  {
+    name: "CarePorter Aged Care Ready",
+    status: "Level up",
+    tone: "lavender" as Tone,
+    summary: "Complete aged-care readiness to build provider confidence and appear stronger in provider-managed requests.",
+    checks: ["Training", "Safeguarding", "Privacy", "Code of Conduct", "Onboarding Call"],
+  },
+];
 
 export const dashboardMetrics = [
   { label: "New requests", value: "5", detail: "2 need confirmation today", tone: "sea" },
   { label: "Services today", value: "4", detail: "1 ready to mark complete", tone: "amber" },
   { label: "Invoices due", value: "$840", detail: "2 overdue follow-ups", tone: "coral" },
-  { label: "Verification", value: "Live", detail: "Insurance renewal due 27 Jun", tone: "lavender" },
+  { label: "Verification", value: "Level 1", detail: "Aged Care Ready available", tone: "lavender" },
 ] as const;
 
 export const actionQueue = [

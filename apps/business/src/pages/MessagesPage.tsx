@@ -22,7 +22,7 @@ export function MessagesPage() {
                   {message.sender.slice(0, 2)}
                 </span>
                 <span className="min-w-0">
-                  <span className="block truncate text-sm font-black text-business-ink">{message.sender}</span>
+                  <span className="block truncate text-sm font-semibold text-business-ink">{message.sender}</span>
                   <span className="mt-0.5 block truncate text-xs font-bold text-slate-500">{message.context}</span>
                   <span className="mt-1 block truncate text-sm text-slate-600">{message.preview}</span>
                 </span>
