@@ -160,11 +160,11 @@ export function DashboardPage() {
           <Link
             key={tile.to}
             to={tile.to}
-            className="relative flex min-h-[7rem] items-center justify-center rounded-xl border border-[#e6c7e3] bg-[#fff9fe] p-4 text-center text-lg font-semibold tracking-[-0.03em] text-[#111411] shadow-[0_12px_30px_rgba(89,50,95,0.05)] transition hover:-translate-y-0.5 hover:border-[#d8aecf] hover:bg-white"
+            className="relative flex min-h-[6.75rem] overflow-hidden rounded-lg border border-white/80 bg-[linear-gradient(135deg,#ffffff_0%,#fffaf5_52%,#f3e2f7_100%)] p-4 pb-9 text-center text-[1.05rem] font-semibold tracking-[-0.025em] text-[#111411] shadow-[0_18px_48px_rgba(89,50,95,0.075)] transition hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(89,50,95,0.11)] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[linear-gradient(90deg,#111411_0%,#d8aecf_54%,#f7d56f_100%)] before:content-['']"
           >
-            {tile.title}
+            <span className="relative z-10">{tile.title}</span>
             {tile.badge && (
-              <span className="absolute bottom-3 right-3 rounded-full border border-[#d8aecf] bg-[#f1dced] px-2.5 py-1 text-[11px] font-semibold tracking-normal text-[#633475] shadow-sm">
+              <span className="absolute bottom-3 right-3 z-10 rounded-full border border-[#d8aecf] bg-white/90 px-2.5 py-1 text-[11px] font-semibold tracking-normal text-[#633475] shadow-sm">
                 {tile.badge}
               </span>
             )}

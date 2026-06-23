@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Bell, ChevronDown, Search, Settings } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 export function cn(...classes: Array<string | false | null | undefined>) {
@@ -108,6 +109,10 @@ export function AppFrame({
   children,
   logoSrc,
   logoAlt,
+  searchPlaceholder = "Search...",
+  profileName,
+  profileInitials = "CP",
+  notificationCount,
 }: {
   appName: string;
   workspace: string;
@@ -115,10 +120,14 @@ export function AppFrame({
   children: ReactNode;
   logoSrc?: string;
   logoAlt?: string;
+  searchPlaceholder?: string;
+  profileName?: string;
+  profileInitials?: string;
+  notificationCount?: string;
 }) {
   return (
-    <div className="min-h-screen bg-[#f4ecde] text-[#17211f]">
-      <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.08] bg-[#fbfaf7] px-4 py-5 lg:block">
+    <div className="min-h-screen bg-[linear-gradient(135deg,#f8f1e8_0%,#fffaf5_48%,#f7edf8_100%)] text-[#17211f]">
+      <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.06] bg-white/70 px-4 py-5 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
         <div className={cn("flex", logoSrc ? "flex-col items-start gap-3" : "items-center gap-3")}>
           {logoSrc ? (
             <img src={logoSrc} alt={logoAlt ?? appName} className="h-auto w-full max-w-[178px] object-contain" />
@@ -138,10 +147,10 @@ export function AppFrame({
               end={item.end}
               className={({ isActive }) =>
                 cn(
-                  "flex min-h-10 items-center rounded-full border text-sm font-medium transition",
+                  "flex min-h-10 items-center rounded-lg border text-sm font-medium transition",
                   item.homeIconOnly ? "w-10 justify-center px-0" : "justify-between px-3",
                   isActive
-                    ? "border-[#d8aecf] bg-[#d8aecf]/62 text-[#111411] shadow-[0_10px_26px_rgba(89,50,95,0.08)]"
+                    ? "border-[#ead2e8] bg-white text-[#111411] shadow-[0_12px_32px_rgba(89,50,95,0.08)]"
                     : "border-transparent text-slate-600 hover:bg-white/70 hover:text-[#111411]",
                 )
               }
@@ -153,7 +162,7 @@ export function AppFrame({
                 {!item.homeIconOnly && item.label}
               </span>
               {item.badge && !item.homeIconOnly && (
-                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1.5 text-[11px] font-semibold text-[#35665b]">
+                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#f1dced] px-1.5 text-[11px] font-semibold text-[#633475]">
                   {item.badge}
                 </span>
               )}
@@ -162,6 +171,47 @@ export function AppFrame({
         </nav>
       </aside>
       <div className="lg:pl-[264px]">
+        <header className="sticky top-0 z-20 hidden border-b border-black/[0.06] bg-[#f8f1e8]/82 px-4 py-3 backdrop-blur-xl lg:block">
+          <div className="mx-auto flex min-h-12 max-w-7xl items-center gap-3 lg:px-4">
+            <label className="flex min-h-11 min-w-0 flex-1 max-w-2xl items-center gap-3 rounded-full border border-white/80 bg-white/86 px-4 shadow-[0_14px_38px_rgba(89,50,95,0.07)]">
+              <Search className="h-4 w-4 text-[#7a3f8f]" />
+              <input
+                aria-label={searchPlaceholder}
+                className="w-full bg-transparent text-sm font-medium text-[#111411] outline-none placeholder:text-slate-500"
+                placeholder={searchPlaceholder}
+              />
+            </label>
+            <button
+              type="button"
+              title="Notifications"
+              aria-label="Notifications"
+              className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/80 bg-white/86 text-slate-700 shadow-[0_12px_30px_rgba(89,50,95,0.07)]"
+            >
+              <Bell className="h-4 w-4" />
+              {notificationCount && (
+                <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#111411] px-1 text-[10px] font-semibold text-white">
+                  {notificationCount}
+                </span>
+              )}
+            </button>
+            <button
+              type="button"
+              className="hidden min-h-11 items-center gap-2 rounded-full border border-white/80 bg-white/86 px-2.5 text-sm font-medium text-[#111411] shadow-[0_12px_30px_rgba(89,50,95,0.07)] xl:flex"
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#111411] text-xs font-semibold text-white">{profileInitials}</span>
+              {profileName ?? workspace}
+              <ChevronDown className="h-3.5 w-3.5 text-slate-500" />
+            </button>
+            <button
+              type="button"
+              title="Settings"
+              aria-label="Settings"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/80 bg-white/86 text-slate-700 shadow-[0_12px_30px_rgba(89,50,95,0.07)]"
+            >
+              <Settings className="h-4 w-4" />
+            </button>
+          </div>
+        </header>
         <header className="sticky top-0 z-10 border-b border-black/[0.08] bg-[#f4ecde]/92 px-4 py-3 backdrop-blur lg:hidden">
           {logoSrc ? (
             <img src={logoSrc} alt={logoAlt ?? appName} className="h-auto w-[176px] object-contain" />
@@ -176,8 +226,8 @@ export function AppFrame({
                 end={item.end}
                 className={({ isActive }) =>
                   cn(
-                    "shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium",
-                    isActive ? "border-[#d8aecf] bg-[#d8aecf] text-[#111411]" : "border-black/[0.08] bg-white text-slate-700",
+                    "shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium",
+                    isActive ? "border-[#d8aecf] bg-white text-[#111411]" : "border-black/[0.08] bg-white/80 text-slate-700",
                   )
                 }
               >
