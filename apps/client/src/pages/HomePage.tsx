@@ -114,8 +114,8 @@ export function HomePage() {
               confidence.
             </p>
             <ServiceSearchBar
-              className="mt-8 max-w-3xl"
-              servicePlaceholder="Cleaning, transport, personal care..."
+              className="mt-8 w-full max-w-[calc(100vw-2rem)] lg:w-[58rem] lg:max-w-none"
+              servicePlaceholder="Cleaning, transport, personal care"
               actionLabel="Browse services"
               actionTo="/services"
             />
