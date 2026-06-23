@@ -32,7 +32,7 @@ export function BusinessShell() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(135deg,#f8f1e8_0%,#fffaf5_48%,#f7edf8_100%)] text-business-ink lg:grid lg:grid-cols-[264px_1fr]">
+    <div className="min-h-screen bg-[#f8f1e8] text-business-ink lg:grid lg:grid-cols-[264px_1fr]">
       <aside className="hidden border-r border-black/[0.06] bg-white/70 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
         <div className="flex h-24 items-center border-b border-black/[0.06] px-5">
           <img

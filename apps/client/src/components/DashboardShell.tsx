@@ -26,7 +26,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(135deg,#f8f1e8_0%,#fffaf5_48%,#f7edf8_100%)] pb-24 text-[#151917] lg:flex lg:pb-0">
+    <div className="min-h-screen bg-[#f8f1e8] pb-24 text-[#151917] lg:flex lg:pb-0">
       <aside className="hidden w-[264px] shrink-0 flex-col border-r border-black/[0.06] bg-white/70 px-4 py-5 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:flex">
         <div className="mb-8">
           <p className="text-xl font-semibold tracking-[-0.05em] text-[#111411]">

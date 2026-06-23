@@ -126,7 +126,7 @@ export function AppFrame({
   notificationCount?: string;
 }) {
   return (
-    <div className="min-h-screen bg-[linear-gradient(135deg,#f8f1e8_0%,#fffaf5_48%,#f7edf8_100%)] text-[#17211f]">
+    <div className="min-h-screen bg-[#f8f1e8] text-[#17211f]">
       <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.06] bg-white/70 px-4 py-5 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
         <div className={cn("flex", logoSrc ? "flex-col items-start gap-3" : "items-center gap-3")}>
           {logoSrc ? (
