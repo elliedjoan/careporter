@@ -21,5 +21,8 @@
     "preview:business": "npm --workspace @careporter/business run preview",
     "preview:provider": "npm --workspace @careporter/provider run preview",
     "preview:admin": "npm --workspace @careporter/admin run preview"
+  },
+  "dependencies": {
+    "geist": "^1.7.2"
   }
 }

@@ -102,13 +102,13 @@ export function HomePage() {
         </div>
         <div className="relative mx-auto grid min-h-[680px] max-w-7xl items-center px-4 py-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
           <div className="max-w-2xl">
-            <span className="inline-flex rounded-full bg-[#d8aecf] px-4 py-2 text-sm font-black text-porter-ink/78 shadow-sm">
+            <span className="inline-flex rounded-full border border-[#d8aecf] bg-[#d8aecf]/72 px-4 py-2 text-sm font-medium text-porter-ink/78 shadow-sm">
               Verified care and support services
             </span>
-            <h1 className="mt-6 max-w-xl text-5xl font-black leading-[1.02] tracking-normal sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 max-w-xl text-[3.25rem] font-medium leading-[1.02] tracking-[-0.05em] sm:text-[4rem] lg:text-[4.35rem]">
               Finding trusted support is now simple.
             </h1>
-            <p className="mt-6 max-w-2xl rounded-lg bg-white/90 px-4 py-3 text-lg leading-8 text-porter-ink/78 shadow-sm backdrop-blur-md">
+            <p className="mt-6 max-w-2xl rounded-lg bg-white/90 px-4 py-3 text-lg leading-8 text-porter-ink/76 shadow-sm backdrop-blur-md">
               Search trusted Australian home-care and aged-care services, compare verified services, and book with
               confidence.
             </p>
@@ -117,19 +117,19 @@ export function HomePage() {
                 <label className="flex min-h-14 items-center gap-3 rounded-lg bg-white px-4">
                   <Search className="h-5 w-5 text-[#7a3f8f]" />
                   <input
-                    className="w-full border-0 bg-transparent text-base font-semibold outline-none placeholder:text-porter-ink/45"
+                    className="w-full border-0 bg-transparent text-base font-medium outline-none placeholder:text-porter-ink/45"
                     placeholder="Search cleaning, transport, personal care..."
                   />
                 </label>
                 <Link
                   to="/services"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#111411] px-6 font-black text-white"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#111411] px-6 font-medium text-white"
                 >
                   Browse services <ChevronRight className="h-5 w-5" />
                 </Link>
               </div>
             </div>
-            <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm font-black text-porter-ink/78 sm:grid-cols-3">
+            <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm font-medium text-porter-ink/78 sm:grid-cols-3">
               <span className="flex min-h-11 items-center gap-2 rounded-lg bg-white/90 px-3 shadow-sm backdrop-blur-md">
                 <ShieldCheck className="h-4 w-4 shrink-0 text-[#7a3f8f]" />
                 Verified
@@ -150,10 +150,10 @@ export function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <h2 className="text-3xl font-black">Popular support services</h2>
+            <h2 className="text-3xl font-semibold tracking-[-0.035em]">Popular support services</h2>
             <p className="mt-2 text-porter-ink/65">Care at home, in the community, and around everyday routines.</p>
           </div>
-          <Link to="/services" className="font-black text-[#7a3f8f]">View all services</Link>
+          <Link to="/services" className="font-medium text-[#7a3f8f]">View all services</Link>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.slice(0, 8).map((service) => <ServiceCard key={service.id} service={service} />)}
@@ -164,14 +164,14 @@ export function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div>
-              <h2 className="text-3xl font-black">Featured services near you</h2>
+              <h2 className="text-3xl font-semibold tracking-[-0.035em]">Featured services near you</h2>
               <p className="mt-3 leading-7 text-porter-ink/68">
                 Every service profile is built for confident decisions: availability, pricing, reviews, specialties,
                 and clear next steps.
               </p>
               <div className="mt-8 grid gap-3">
                 {["Select a service", "Choose a date and time", "Self-fund or request package approval"].map((item, index) => (
-                  <div key={item} className="flex items-center gap-3 rounded-lg bg-porter-mist p-4 font-bold">
+                  <div key={item} className="flex items-center gap-3 rounded-lg bg-porter-mist p-4 font-medium">
                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#d8aecf] text-[#111411]">{index + 1}</span>
                     {item}
                   </div>
@@ -225,7 +225,7 @@ export function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-8 rounded-lg bg-white p-6 shadow-sm md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
-            <h2 className="text-3xl font-black">Why families choose CarePorter</h2>
+            <h2 className="text-3xl font-semibold tracking-[-0.035em]">Why families choose CarePorter</h2>
             <p className="mt-3 max-w-xl leading-7 text-porter-ink/68">
               Finding the right support shouldn't be complicated. CarePorter helps you compare trusted services, book
               with confidence, and stay informed every step of the way.
@@ -253,7 +253,7 @@ export function HomePage() {
               <div key={item.title} className="flex min-h-28 items-start gap-3 rounded-lg bg-porter-mist p-4">
                 <Star className="h-4 w-4 fill-porter-butter text-porter-butter" />
                 <div>
-                  <h3 className="font-black">{item.title}</h3>
+                  <h3 className="font-semibold">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-porter-ink/64">{item.body}</p>
                 </div>
               </div>
@@ -265,7 +265,7 @@ export function HomePage() {
       <section className="bg-[#f4ecde] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-black tracking-normal">What clients are saying</h2>
+            <h2 className="text-3xl font-semibold tracking-[-0.035em]">What clients are saying</h2>
             <p className="mt-3 leading-7 text-porter-ink/68">
               Feedback from clients using CarePorter to compare services, manage approvals, and stay across
               care updates.
@@ -301,13 +301,13 @@ export function HomePage() {
                   </div>
                   <p className="mt-5 text-sm font-semibold leading-7 text-[#111411]">{review.quote}</p>
                   <div className="mt-6 flex flex-col items-center">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-sm font-black text-[#111411] shadow-sm">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-sm font-semibold text-[#111411] shadow-sm">
                       {review.name
                         .split(" ")
                         .map((part) => part[0])
                         .join("")}
                     </span>
-                    <h3 className="mt-3 font-black text-[#111411]">{review.name}</h3>
+                    <h3 className="mt-3 font-semibold text-[#111411]">{review.name}</h3>
                     <p className="mt-1 text-sm font-semibold text-[#111411]/70">{review.role}</p>
                   </div>
                 </article>
@@ -353,7 +353,7 @@ export function HomePage() {
               />
             </div>
             <div className="mt-5 flex flex-1 flex-col">
-              <h2 className="min-h-[3.6rem] max-w-full text-xl font-black leading-tight tracking-normal text-[#111411] xl:text-[1.45rem]">
+              <h2 className="min-h-[3.6rem] max-w-full text-xl font-semibold leading-tight tracking-[-0.025em] text-[#111411] xl:text-[1.45rem]">
                 Ready to list your services on CarePorter?
               </h2>
               <p className="mt-3 min-h-[2.625rem] max-w-xl text-sm leading-6 text-porter-ink/68">
@@ -362,7 +362,7 @@ export function HomePage() {
               </p>
               <Link
                 to="/business"
-                className="mt-5 inline-flex min-h-9 w-fit items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-black text-white"
+                className="mt-5 inline-flex min-h-9 w-fit items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-medium text-white"
               >
                 Learn more
               </Link>
@@ -378,7 +378,7 @@ export function HomePage() {
               />
             </div>
             <div className="mt-5 flex flex-1 flex-col">
-              <h2 className="min-h-[3.6rem] max-w-full text-xl font-black leading-tight tracking-normal text-[#111411] xl:text-[1.4rem]">
+              <h2 className="min-h-[3.6rem] max-w-full text-xl font-semibold leading-tight tracking-[-0.025em] text-[#111411] xl:text-[1.4rem]">
                 Ready for efficient management of your clients' bookings?
               </h2>
               <p className="mt-3 min-h-[2.625rem] max-w-xl text-sm leading-6 text-[#111411]/72">
@@ -386,7 +386,7 @@ export function HomePage() {
               </p>
               <Link
                 to="/providers"
-                className="mt-5 inline-flex min-h-9 w-fit items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-black text-white"
+                className="mt-5 inline-flex min-h-9 w-fit items-center justify-center rounded-lg bg-[#111411] px-4 text-sm font-medium text-white"
               >
                 Learn more
               </Link>

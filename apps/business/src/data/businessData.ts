@@ -21,7 +21,7 @@ export const vendorVerificationLevels = [
   },
   {
     name: "CarePorter Aged Care Ready",
-    status: "Level up",
+    status: "Next level",
     tone: "lavender" as Tone,
     summary: "Complete aged-care readiness to build provider confidence and appear stronger in provider-managed requests.",
     checks: ["Training", "Safeguarding", "Privacy", "Code of Conduct", "Onboarding Call"],
