@@ -151,9 +151,14 @@ const dashboardTiles = [
 export function DashboardPage() {
   return (
     <DashboardShell>
-      <h1 className="text-[1.8rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.2rem]">
-        {getTimeOfDayGreeting()}, Maggie
-      </h1>
+      <header className="flex items-start justify-between gap-4">
+        <h1 className="text-[1.8rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.2rem]">
+          {getTimeOfDayGreeting()}, Maggie
+        </h1>
+        <div className="hidden shrink-0 lg:block">
+          <DashboardTopActions />
+        </div>
+      </header>
 
       <section className="mt-5 grid max-w-4xl gap-3 sm:grid-cols-2">
         {dashboardTiles.map((tile) => (

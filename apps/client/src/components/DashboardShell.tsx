@@ -13,7 +13,6 @@ import type { ReactNode } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const sidebarItems = [
-  { to: "/dashboard", label: "Home", icon: House, home: true },
   { to: "/dashboard/bookings", label: "Bookings", icon: Calendar },
   { to: "/dashboard/messages", label: "Messages", icon: MessageCircle, badge: "2" },
   { to: "/dashboard/approvals", label: "Approvals", icon: FileCheck2, badge: "1" },
@@ -40,11 +39,8 @@ export function DashboardShell({ children }: { children: ReactNode }) {
               <NavLink
                 key={item.to}
                 to={item.to}
-                title={item.home ? item.label : undefined}
-                aria-label={item.home ? item.label : undefined}
                 className={[
-                  "flex min-h-10 items-center rounded-lg border text-left text-sm font-medium transition",
-                  item.home ? "w-10 justify-center px-0" : "justify-between px-3",
+                  "flex min-h-10 items-center justify-between rounded-lg border px-3 text-left text-sm font-medium transition",
                   isActive
                     ? "border-[#ead2e8] bg-white text-[#151917] shadow-[0_12px_32px_rgba(89,50,95,0.08)]"
                     : "border-transparent text-slate-600 hover:bg-white/70 hover:text-[#151917]",
@@ -52,7 +48,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
               >
                 <span className="flex items-center gap-2.5">
                   <Icon className="h-4 w-4" />
-                  {!item.home && item.label}
+                  {item.label}
                 </span>
                 {item.badge && (
                   <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#f1dced] px-1.5 text-[11px] font-semibold text-[#633475]">
@@ -95,6 +91,18 @@ export function DashboardShell({ children }: { children: ReactNode }) {
 export function DashboardTopActions() {
   return (
     <div className="flex items-center gap-2.5">
+      <NavLink
+        to="/dashboard"
+        end
+        title="Home"
+        aria-label="Home"
+        className={({ isActive }) => [
+          "flex h-11 w-11 items-center justify-center rounded-full border text-slate-700 shadow-[0_12px_30px_rgba(89,50,95,0.07)] transition hover:bg-white",
+          isActive ? "border-[#d8aecf] bg-white text-[#111411]" : "border-white/80 bg-white/86",
+        ].join(" ")}
+      >
+        <House className="h-4 w-4" />
+      </NavLink>
       <button
         type="button"
         className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/80 bg-white/86 text-slate-700 shadow-[0_12px_30px_rgba(89,50,95,0.07)]"

@@ -134,10 +134,12 @@ export function AppFrame({
           ) : (
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111411] text-sm font-semibold text-white">CP</span>
           )}
-          <div>
-            {!logoSrc && <p className="text-sm font-semibold text-[#111411]">{appName}</p>}
-            <p className="text-xs font-medium text-slate-500">{workspace}</p>
-          </div>
+          {!logoSrc && (
+            <div>
+              <p className="text-sm font-semibold text-[#111411]">{appName}</p>
+              <p className="text-xs font-medium text-slate-500">{workspace}</p>
+            </div>
+          )}
         </div>
         <nav className="mt-8 grid gap-1.5">
           {navItems.map((item) => (
