@@ -9,6 +9,7 @@
     "preview": "vite preview --host 127.0.0.1 --port 4174"
   },
   "dependencies": {
+    "@careporter/domain": "0.1.0",
     "@careporter/supabase": "0.1.0",
     "@vitejs/plugin-react": "^5.0.0",
     "lucide-react": "^0.468.0",

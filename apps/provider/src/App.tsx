@@ -1,6 +1,6 @@
 import { Link, Navigate, Route, Routes } from "react-router-dom";
 import { Download, House, UsersRound } from "lucide-react";
-import { providerApprovalQueue, providerFeatureGates } from "@careporter/domain";
+import { getTimeOfDayGreeting, providerApprovalQueue, providerFeatureGates } from "@careporter/domain";
 import { AppFrame, FieldLabel, PageHeader, PrimaryButton, SecondaryButton, StatusPill, Surface } from "@careporter/ui";
 
 const navItems = [
@@ -63,20 +63,20 @@ export function App() {
 function OverviewPage() {
   return (
     <div>
-      <h1 className="text-[2.1rem] font-semibold leading-[0.98] tracking-[-0.055em] text-[#111411] sm:text-[2.75rem]">
-        Home
+      <h1 className="text-[1.8rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.2rem]">
+        {getTimeOfDayGreeting()}, BrightPath Care Packages
       </h1>
 
-      <section className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <section className="mt-5 grid max-w-4xl gap-3 sm:grid-cols-2">
         {overviewTiles.map((tile) => (
           <Link
             key={tile.to}
             to={tile.to}
-            className="relative flex min-h-[8.5rem] items-center justify-center rounded-xl border border-black/[0.08] bg-white p-5 text-center text-xl font-semibold tracking-[-0.035em] text-[#111411] shadow-[0_14px_36px_rgba(15,23,42,0.045)] transition hover:border-[#d8aecf] hover:bg-[#fffaf4]"
+            className="relative flex min-h-[7rem] items-center justify-center rounded-xl border border-[#e6c7e3] bg-[#fff9fe] p-4 text-center text-lg font-semibold tracking-[-0.03em] text-[#111411] shadow-[0_12px_30px_rgba(89,50,95,0.05)] transition hover:-translate-y-0.5 hover:border-[#d8aecf] hover:bg-white"
           >
             {tile.title}
             {tile.badge && (
-              <span className="absolute bottom-4 right-4 rounded-full border border-black/[0.08] bg-white px-2.5 py-1 text-[11px] font-semibold tracking-normal text-[#7a3f8f] shadow-sm">
+              <span className="absolute bottom-3 right-3 rounded-full border border-[#d8aecf] bg-[#f1dced] px-2.5 py-1 text-[11px] font-semibold tracking-normal text-[#633475] shadow-sm">
                 {tile.badge}
               </span>
             )}
