@@ -6,6 +6,7 @@ import {
   Headphones,
   House,
   MessageCircle,
+  Settings,
   UserRound,
   UsersRound,
 } from "lucide-react";
@@ -25,12 +26,12 @@ export function DashboardShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-[#f8f1e8] pb-24 text-[#151917] lg:flex lg:pb-0">
-      <aside className="hidden w-[264px] shrink-0 flex-col border-r border-black/[0.06] bg-white/70 px-4 py-5 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:flex">
-        <div className="mb-8">
-          <img src="/images/careporter-logo.png" alt="CarePorter" className="h-7 w-auto object-contain" />
+      <aside className="hidden w-[264px] shrink-0 flex-col border-r border-black/[0.06] bg-white/70 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:flex">
+        <div className="flex h-[112px] items-center border-b border-black/[0.06] px-4">
+          <img src="/images/careporter-logo.png" alt="CarePorter" className="h-auto w-full max-w-[188px] object-contain object-left" />
         </div>
 
-        <nav className="grid gap-1.5">
+        <nav className="grid gap-1.5 px-3 py-5">
           {sidebarItems.map((item) => {
             const Icon = item.icon;
             const isActive = item.to === "/dashboard" ? location.pathname === item.to : location.pathname.startsWith(item.to);
@@ -60,7 +61,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
           })}
         </nav>
 
-        <div className="mt-auto rounded-lg border border-white/80 bg-white/82 p-3 shadow-[0_14px_40px_rgba(89,50,95,0.06)]">
+        <div className="mx-3 mb-5 mt-auto rounded-lg border border-white/80 bg-white/82 p-3 shadow-[0_14px_40px_rgba(89,50,95,0.06)]">
           <div className="flex items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#d8aecf] text-[#111411]">
               <Headphones className="h-4 w-4" />
@@ -77,7 +78,12 @@ export function DashboardShell({ children }: { children: ReactNode }) {
       </aside>
 
       <main className="min-w-0 flex-1">
-        <div className="mx-auto max-w-[1180px] px-4 py-4 sm:px-6 lg:px-7 lg:py-7">
+        <header className="sticky top-0 z-20 hidden h-[112px] border-b border-black/[0.06] bg-[#f8f1e8]/82 backdrop-blur-xl lg:block">
+          <div className="mx-auto flex h-full max-w-[1180px] items-center justify-end gap-3 px-4 sm:px-6 lg:px-7">
+            <DashboardTopActions />
+          </div>
+        </header>
+        <div className="mx-auto max-w-[1180px] px-4 py-4 sm:px-6 lg:px-7 lg:py-8">
           <div className="mb-5 flex items-center justify-end lg:hidden">
             <DashboardTopActions />
           </div>
@@ -119,6 +125,14 @@ export function DashboardTopActions() {
         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#d8aecf] text-xs font-medium text-[#111411]">MG</span>
         <span>Maggie</span>
         <ChevronDown className="h-3.5 w-3.5 text-slate-500" />
+      </button>
+      <button
+        type="button"
+        title="Settings"
+        aria-label="Settings"
+        className="hidden h-11 w-11 items-center justify-center rounded-full border border-white/80 bg-white/86 text-slate-700 shadow-[0_12px_30px_rgba(89,50,95,0.07)] lg:flex"
+      >
+        <Settings className="h-4 w-4" />
       </button>
     </div>
   );

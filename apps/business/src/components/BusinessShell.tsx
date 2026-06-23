@@ -6,7 +6,6 @@ import {
   FileCheck2,
   House,
   Inbox,
-  Plus,
   Receipt,
   Search,
   Settings,
@@ -33,15 +32,15 @@ export function BusinessShell() {
   return (
     <div className="min-h-screen bg-[#f8f1e8] text-business-ink lg:grid lg:grid-cols-[264px_1fr]">
       <aside className="hidden border-r border-black/[0.06] bg-white/70 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
-        <div className="flex h-24 items-center border-b border-black/[0.06] px-5">
+        <div className="flex h-[112px] items-center border-b border-black/[0.06] px-4">
           <img
             src="/images/careporter-for-business-logo.png"
             alt="CarePorter for Business"
-            className="h-auto w-full max-w-[178px] object-contain"
+            className="h-auto w-full max-w-[188px] object-contain object-left"
           />
         </div>
 
-        <nav className="grid gap-1.5 px-3 py-4">
+        <nav className="grid gap-1.5 px-3 py-5">
           {primaryNav.map((item) => {
             const Icon = item.icon;
             const isActive = item.to === "/" ? location.pathname === item.to : location.pathname.startsWith(item.to);
@@ -53,8 +52,8 @@ export function BusinessShell() {
                 className={cx(
                   "flex min-h-10 items-center justify-between rounded-lg border px-3 text-sm font-medium transition",
                   isActive
-                    ? "border-[#ead2e8] bg-white text-business-ink shadow-[0_12px_32px_rgba(89,50,95,0.08)]"
-                    : "border-transparent text-business-ink/68 hover:bg-white/70 hover:text-business-ink",
+                    ? "border-[#ead2e8] bg-white text-[#111411] shadow-[0_12px_32px_rgba(89,50,95,0.08)]"
+                    : "border-transparent text-slate-600 hover:bg-white/70 hover:text-[#111411]",
                 )}
               >
                 <span className="flex items-center gap-2.5">
@@ -62,10 +61,7 @@ export function BusinessShell() {
                   {item.label}
                 </span>
                 {item.badge && (
-                  <span className={cx(
-                    "flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-semibold",
-                    isActive ? "bg-[#111411] text-white" : "bg-[#f1dced] text-[#633475]",
-                  )}>
+                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#f1dced] px-1.5 text-[11px] font-semibold text-[#633475]">
                     {item.badge}
                   </span>
                 )}
@@ -97,8 +93,8 @@ export function BusinessShell() {
       </aside>
 
       <div className="min-w-0 pb-24 lg:pb-0">
-        <header className="sticky top-0 z-40 border-b border-black/[0.06] bg-[#f8f1e8]/82 backdrop-blur-xl">
-          <div className="mx-auto flex min-h-16 max-w-[1320px] items-center gap-3 px-4 sm:px-6 lg:px-7">
+        <header className="sticky top-0 z-40 h-[112px] border-b border-black/[0.06] bg-[#f8f1e8]/82 backdrop-blur-xl">
+          <div className="mx-auto flex h-full max-w-[1320px] items-center gap-3 px-4 sm:px-6 lg:px-7">
             <NavLink to="/" className="mr-auto flex items-center lg:hidden">
               <img
                 src="/images/careporter-for-business-logo.png"
@@ -125,14 +121,6 @@ export function BusinessShell() {
             >
               <House className="h-4 w-4" />
             </NavLink>
-            <button
-              type="button"
-              title="Create"
-              aria-label="Create"
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#111411] text-white shadow-[0_12px_30px_rgba(89,50,95,0.12)]"
-            >
-              <Plus className="h-4 w-4" />
-            </button>
             <button
               type="button"
               title="Notifications"

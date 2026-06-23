@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { DashboardShell, DashboardTopActions } from "../components/DashboardShell";
+import { DashboardShell } from "../components/DashboardShell";
 import { services } from "../data/mockData";
 
 const transportImage = services.find((service) => service.id === "transport")?.image ?? "/images/services/transport.png";
@@ -155,9 +155,6 @@ export function DashboardPage() {
         <h1 className="text-[1.8rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.2rem]">
           {getTimeOfDayGreeting()}, Maggie
         </h1>
-        <div className="hidden shrink-0 lg:block">
-          <DashboardTopActions />
-        </div>
       </header>
 
       <section className="mt-5 grid max-w-4xl gap-3 sm:grid-cols-2">
@@ -529,12 +526,7 @@ function PageHeader({ title, description, action }: { title: string; description
         <h1 className="text-[2rem] font-semibold leading-[1.05] tracking-[-0.045em] text-[#111411] sm:text-[2.35rem]">{title}</h1>
         <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
       </div>
-      <div className="flex items-center gap-2.5">
-        {action}
-        <div className="hidden lg:block">
-          <DashboardTopActions />
-        </div>
-      </div>
+      {action && <div className="flex items-center gap-2.5">{action}</div>}
     </header>
   );
 }

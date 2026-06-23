@@ -127,10 +127,10 @@ export function AppFrame({
 }) {
   return (
     <div className="min-h-screen bg-[#f8f1e8] text-[#17211f]">
-      <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.06] bg-white/70 px-4 py-5 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
-        <div className={cn("flex", logoSrc ? "flex-col items-start gap-3" : "items-center gap-3")}>
+      <aside className="fixed inset-y-0 left-0 hidden w-[264px] border-r border-black/[0.06] bg-white/70 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:block">
+        <div className={cn("flex h-[112px] items-center border-b border-black/[0.06] px-4", logoSrc ? "justify-start" : "gap-3")}>
           {logoSrc ? (
-            <img src={logoSrc} alt={logoAlt ?? appName} className="max-h-[82px] w-full max-w-[178px] object-contain object-left" />
+            <img src={logoSrc} alt={logoAlt ?? appName} className="h-auto w-full max-w-[188px] object-contain object-left" />
           ) : (
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111411] text-sm font-semibold text-white">CP</span>
           )}
@@ -141,7 +141,7 @@ export function AppFrame({
             </div>
           )}
         </div>
-        <nav className="mt-8 grid gap-1.5">
+        <nav className="grid gap-1.5 px-3 py-5">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -173,8 +173,8 @@ export function AppFrame({
         </nav>
       </aside>
       <div className="lg:pl-[264px]">
-        <header className="sticky top-0 z-20 hidden border-b border-black/[0.06] bg-[#f8f1e8]/82 px-4 py-3 backdrop-blur-xl lg:block">
-          <div className="mx-auto flex min-h-12 max-w-7xl items-center gap-3 lg:px-4">
+        <header className="sticky top-0 z-20 hidden h-[112px] border-b border-black/[0.06] bg-[#f8f1e8]/82 px-4 backdrop-blur-xl lg:block">
+          <div className="mx-auto flex h-full max-w-7xl items-center gap-3 lg:px-4">
             <label className="flex min-h-11 min-w-0 flex-1 max-w-2xl items-center gap-3 rounded-full border border-white/80 bg-white/86 px-4 shadow-[0_14px_38px_rgba(89,50,95,0.07)]">
               <Search className="h-4 w-4 text-[#7a3f8f]" />
               <input
