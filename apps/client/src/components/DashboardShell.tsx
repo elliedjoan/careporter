@@ -6,7 +6,6 @@ import {
   Headphones,
   House,
   MessageCircle,
-  Search,
   UserRound,
   UsersRound,
 } from "lucide-react";
@@ -29,10 +28,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-[#f8f1e8] pb-24 text-[#151917] lg:flex lg:pb-0">
       <aside className="hidden w-[264px] shrink-0 flex-col border-r border-black/[0.06] bg-white/70 px-4 py-5 shadow-[18px_0_60px_rgba(89,50,95,0.05)] backdrop-blur-xl lg:flex">
         <div className="mb-8">
-          <p className="text-xl font-semibold tracking-[-0.05em] text-[#111411]">
-            Care<span className="text-[#c986cf]">Porter</span>
-          </p>
-          <p className="mt-1 text-xs font-medium text-slate-500">Client dashboard</p>
+          <img src="/images/careporter-logo.png" alt="CarePorter" className="h-7 w-auto object-contain" />
         </div>
 
         <nav className="grid gap-1.5">
@@ -85,12 +81,6 @@ export function DashboardShell({ children }: { children: ReactNode }) {
       </aside>
 
       <main className="min-w-0 flex-1">
-        <header className="sticky top-0 z-40 hidden border-b border-black/[0.06] bg-[#f8f1e8]/82 px-4 py-3 backdrop-blur-xl lg:block">
-          <div className="mx-auto flex min-h-12 max-w-[1180px] items-center gap-3">
-            <DashboardSearch placeholder="Search bookings, services, messages..." />
-            <DashboardTopActions />
-          </div>
-        </header>
         <div className="mx-auto max-w-[1180px] px-4 py-4 sm:px-6 lg:px-7 lg:py-7">
           <div className="mb-5 flex items-center justify-end lg:hidden">
             <DashboardTopActions />
@@ -99,19 +89,6 @@ export function DashboardShell({ children }: { children: ReactNode }) {
         </div>
       </main>
     </div>
-  );
-}
-
-function DashboardSearch({ placeholder }: { placeholder: string }) {
-  return (
-    <label className="flex min-h-11 min-w-0 flex-1 max-w-2xl items-center gap-3 rounded-full border border-white/80 bg-white/86 px-4 shadow-[0_14px_38px_rgba(89,50,95,0.07)]">
-      <Search className="h-4 w-4 text-[#7a3f8f]" />
-      <input
-        aria-label={placeholder}
-        className="w-full bg-transparent text-sm font-medium text-[#111411] outline-none placeholder:text-slate-500"
-        placeholder={placeholder}
-      />
-    </label>
   );
 }
 
